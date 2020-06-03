@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    android:id="@+id/drawer_layout"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    tools:openDrawer="start">
+
+
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/mainmenu" />
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFF5DD"
+        tools:context=".MainActivity">
+        <include layout="@layout/toolbar"></include>
+
+        <TextView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="625dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginBottom="50dp"
+            android:fontFamily="@font/bungee_shade"
+            android:gravity="center_horizontal|top"
+            android:includeFontPadding="false"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:text="@string/verse"
+            android:textAlignment="center"
+            android:textSize="65sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.086" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="288dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/logo"
+            android:layout_alignEnd="@+id/logo"
+            android:layout_alignBottom="@+id/logo"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="0dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/placeholder"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/songname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/logo"
+            android:layout_alignTop="@+id/logo"
+            android:layout_alignEnd="@+id/logo"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="5dp"
+            android:fontFamily="@font/caveat_brush"
+            android:gravity="center|top"
+            android:includeFontPadding="false"
+            android:paddingTop="0dp"
+            android:paddingBottom="5dp"
+            android:text="@string/songname"
+            android:textSize="36sp"
+            android:visibility="invisible" />
+
+
+        <TextView
+            android:id="@+id/lyrics"
+            android:layout_width="wrap_content"
+            android:layout_height="425dp"
+            android:layout_below="@+id/songname"
+            android:layout_alignStart="@+id/logo"
+            android:layout_alignEnd="@+id/logo"
+            android:layout_alignBottom="@+id/logo"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:fontFamily="@font/walter_turncoat"
+            android:gravity="center_horizontal"
+            android:scrollbars="vertical"
+            android:text="@string/lyric"
+            android:textSize="24sp"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

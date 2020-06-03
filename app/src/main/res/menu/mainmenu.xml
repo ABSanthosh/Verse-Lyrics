@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/PlaySong">
+        <menu>
+            <item android:id="@+id/open_spotify"
+                android:title="@string/opnSpotify"/>
+        </menu>
+    </item>
+    <item android:title="@string/help">
+        <menu>
+            <item android:id="@+id/helper"
+                android:title="@string/helps"/>
+        </menu>
+    </item>
+<item android:title="@string/about">
+    <menu>
+        <item android:id="@+id/app_about1"
+            android:title="@string/about_app1"/>
+        <item android:id="@+id/app_about2"
+            android:title="@string/about_app2"/>
+        <item android:id="@+id/app_about3"
+            android:title="@string/about_app3"/>
+        <item android:id="@+id/app_about4"
+            android:title="@string/about_app4"/>
+        <item android:id="@+id/app_about5"
+            android:title="@string/about_app5"/>
+    </menu>
+</item>
+
+
+<item android:title="@string/contact">
+    <menu>
+        <item
+            android:id="@+id/otherapps"
+            android:title="@string/share"/>
+
+        <item
+            android:id="@+id/feedback"
+            android:title="@string/feedback"/>
+    </menu>
+</item>
+    <item android:title="@string/dev">
+        <menu>
+            <item
+                android:id="@+id/myname"
+                android:title="@string/name"/>
+        </menu>
+    </item>
+</menu>
