@@ -1,11 +1,29 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">#939393</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:statusBarColor">#00000000</item>
         <item name="android:windowContentTransitions">true</item>
+    </style>
+
+    <style name="LightTheme" parent="AppTheme">
+        <item name="textColor">#747065</item>
+        <item name="metaTextColor">#121212</item>
+        <item name="bgColor">#FFF5DD</item>
+        <item name="android:textColorSecondary">#121212</item>
+        <item name="fragcolor">#D8CCB0</item>
+        <item name="navcolor">#FFFFFF</item>
+    </style>
+
+    <style name="DarkTheme" parent="AppTheme">
+        <item name="textColor">#ACA38B</item>
+        <item name="metaTextColor">#B6B6B6</item>
+        <item name="bgColor">#232323</item>
+        <item name="android:textColorSecondary">#B6B6B6</item>
+        <item name="fragcolor">#232323</item>
+        <item name="navcolor">#232323</item>
     </style>
 
 </resources>

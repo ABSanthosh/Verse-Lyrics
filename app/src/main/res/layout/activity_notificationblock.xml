@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerlayout"
+    android:background="#FFF5DD">
+    <RelativeLayout
+        android:id="@+id/relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF5DD"
+        tools:context=".notificationblock">
+
+        <ImageView
+            android:id="@+id/backarrow"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:contentDescription="@string/backarrow"
+            app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+        <TextView
+            android:id="@+id/adblock"
+            android:layout_width="198dp"
+            android:layout_height="69dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="80dp"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/berkshire_swash"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@string/adblock"
+            android:textSize="56sp" tools:targetApi="o" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/adblock"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="47dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="46dp"
+            android:gravity="center"
+            android:text="@string/adblockdesc"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="238dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/adblocker"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="53dp"
+            android:layout_marginEnd="88dp"
+            android:gravity="center"
+            android:text="@string/buttonstate"
+            android:textSize="20sp" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/adblocker"
+            android:layout_width="wrap_content"
+            android:layout_height="52dp"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="154dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="73dp"
+            android:layout_marginEnd="157dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:scaleX="2"
+            android:scaleY="2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.846" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="43dp"
+            android:layout_below="@+id/adblock"
+            android:layout_alignEnd="@+id/adblock"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:text="@string/experimental"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+</ScrollView>

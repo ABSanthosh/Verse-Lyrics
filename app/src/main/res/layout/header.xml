@@ -3,7 +3,8 @@
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/bgColor">
 
 
     <TextView
@@ -17,7 +18,7 @@
         android:layout_marginTop="0dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="0dp"
-        android:background="#D8CCB0"
+        android:background="#C6BBA1"
         android:fontFamily="@font/yeseva_one"
         android:gravity="bottom"
         android:paddingStart="20sp"
@@ -39,7 +40,7 @@
         android:layout_marginEnd="211dp"
         android:layout_marginBottom="3dp"
         android:alpha="0.35"
-        app:srcCompat="@mipmap/flower" />
+        app:srcCompat="@mipmap/flower"/>
 
     <TextView
         android:id="@+id/navslogan"

@@ -2,6 +2,7 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/abril_fatface</item>
+        <item>@font/aladin</item>
         <item>@font/berkshire_swash</item>
         <item>@font/bungee_shade</item>
         <item>@font/caveat_brush</item>

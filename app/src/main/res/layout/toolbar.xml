@@ -2,8 +2,11 @@
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
-    android:theme="@style/TextAppearance.MaterialComponents.Overline">
+    android:theme="@style/TextAppearance.MaterialComponents.Overline"
+    android:textColor="?attr/textColor"
+    app:tint="?attr/metaTextColor">
 
 
 </androidx.appcompat.widget.Toolbar>

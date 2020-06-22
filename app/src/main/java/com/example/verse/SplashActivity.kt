@@ -10,6 +10,7 @@ import android.view.Gravity
 import android.view.WindowManager
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Switch
 import android.widget.TextView
 
 class SplashActivity : AppCompatActivity() {
@@ -18,7 +19,17 @@ class SplashActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
+
+        lateinit var sp:SharedPreferences
+
         super.onCreate(savedInstanceState)
+        sp = getSharedPreferences("theme", Context.MODE_PRIVATE)
+
+        if(sp.getBoolean("light",true)){
+            setTheme(R.style.LightTheme);
+        }else{
+            setTheme(R.style.DarkTheme);
+        }
         setContentView(R.layout.activity_splash)
 
         lateinit var logomovement: Animation
@@ -38,5 +49,11 @@ class SplashActivity : AppCompatActivity() {
                 overridePendingTransition(R.anim.splashfadin, R.anim.splashfadeout);
             }, 1750)
         }, 2000)
+
+        var editor: SharedPreferences.Editor = sharedPreferences.edit()
+        blockad = false
+        editor.putBoolean("blockad", blockad)
+        editor.apply()
+
     }
 }
