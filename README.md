@@ -32,9 +32,28 @@ A clean UI to help the user use the application without any prior knowledge on t
 
 ## Screenshots
 
-![HomeScreen](https://user-images.githubusercontent.com/24393343/83637121-b231c280-a5c4-11ea-93be-986225d2d443.jpg)
+<img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Dark%20mode%20demo.gif?raw=true" width="300" height="533">
 
-![Dark Mode Demo](https://user-images.githubusercontent.com/24393343/85295898-35588100-b4be-11ea-8663-4ef249876cf7.gif)
+<img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Splash%20Light.jpg?raw=true" width="300" height="533">
+<img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Splash%20Dark.jpg?raw=true" width="300" height="533">
+
+<img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Homepage%20Light.jpg?raw=true" width="300" height="533">
+<img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Homepage%20Dark.jpg?raw=true" width="300" height="533">
+
+<img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Navigation%20drawer(Light).jpg?raw=true" width="300" height="533">
+<img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Navigation%20drawer(Dark).jpg?raw=true" width="300" height="533">
+
+<img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Song%20Identification(Process)%20Light.jpg?raw=true" width="300" height="533">
+<img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Song%20Identification(Process)%20Dark.jpg?raw=true" width="300" height="533">
+
+<img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Song%20Identification(Result)%20Light.jpg?raw=true" width="300" height="533">
+<img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Song%20Identification(Result)%20Dark.jpg?raw=true" width="300" height="533">
+
+<img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Ad%20Block%20Frag.jpg?raw=true" width="300" height="533">
+<img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Help.jpg?raw=true" width="300" height="533">
+
+<img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-What's%20new.jpg?raw=true" width="300" height="533">
+<img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-About.jpg?raw=true" width="300" height="533">
 
 
 ## Contact
