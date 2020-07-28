@@ -31,6 +31,9 @@ A clean UI to help the user use the application without any prior knowledge on t
 
 ![HomeScreen](https://user-images.githubusercontent.com/24393343/83637121-b231c280-a5c4-11ea-93be-986225d2d443.jpg)
 
+![Dark Mode Demo](https://user-images.githubusercontent.com/24393343/85295898-35588100-b4be-11ea-8663-4ef249876cf7.gif)
+
+
 ## Contact
 You can contact me through my email id:
 1) [Mail](a.b.santhosh02@gmail.com) - a.b.santhosh02@gmail.com
