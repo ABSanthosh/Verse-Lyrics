@@ -43,9 +43,6 @@ class adblockfrag : DialogFragment() {
             } else if (action == "action2") {
                 performAction2()
             }
-            //This is used to close the notification tray
-            //val it = Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)
-            //context.sendBroadcast(it)
         }
 
         fun performAction1() {
@@ -72,14 +69,6 @@ class adblockfrag : DialogFragment() {
         }
 
         spotadblock.setOnClickListener {
-/*
-            val sharedPrefs = activity?.getSharedPreferences("save", Context.MODE_PRIVATE)
-            if (!sharedPrefs!!.getBoolean("value", true)) {
-                Toast.makeText(activity, "Turn off and on the notification access for verse to make ad block work.", Toast.LENGTH_LONG).show()
-                Handler().postDelayed({ startActivity(Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS")) },3000)
-            } else {}
-*/
-
             if (Settings.Secure.getString(activity?.contentResolver, "enabled_notification_listeners").contains("com.absan.verse"))
             {
                 //service is enabled do something
@@ -169,7 +158,6 @@ class adblockfrag : DialogFragment() {
             .setStyle(NotificationCompat.BigTextStyle().bigText("Turn Off blocking settings to remove notification"))
             .setOngoing(true)
             .setContentIntent(pi)
-            //.addAction(android.R.mipmap.sym_def_app_icon, "Stop blocking", stopblocking)
             .build()
 
         mNotificationManager.notify(0, notification)
