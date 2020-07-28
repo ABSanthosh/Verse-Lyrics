@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:foregroundTint="#3C3F41"
-    tools:openDrawer="start">
+    android:foregroundTint="#3C3F41">
 
 
     <com.google.android.material.navigation.NavigationView
@@ -101,9 +100,163 @@
             android:text="@string/songname"
             android:textColor="?attr/textColor"
             android:textSize="36sp"
-            android:visibility="invisible" />
+            android:visibility="visible" />
 
-        <ScrollView
+        <ViewFlipper
+            android:id="@+id/viewflipper"
+            android:layout_width="wrap_content"
+            android:layout_height="526dp"
+            android:layout_below="@+id/songname"
+            android:layout_alignStart="@+id/logo"
+            android:layout_alignEnd="@+id/logo"
+            android:layout_alignBottom="@+id/logo">
+
+
+
+            <ScrollView
+                android:id="@+id/lyricview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never">
+
+                <TextView
+                    android:id="@+id/lyrics"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:fontFamily="@font/walter_turncoat"
+                    android:gravity="center_horizontal"
+                    android:scrollbars="vertical"
+                    android:text="@string/lyric"
+                    android:textColor="?attr/textColor"
+                    android:textSize="24sp"
+                    android:visibility="invisible" />
+            </ScrollView>
+
+            <RelativeLayout
+                android:id="@+id/rl"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <pl.bclogic.pulsator4droid.library.PulsatorLayout
+                    android:id="@+id/pulsator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/songll"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    app:pulse_color="@color/colorAccent"
+                    app:pulse_count="4"
+                    app:pulse_duration="3000"
+                    app:pulse_interpolator="Linear"
+                    app:pulse_repeat="0"
+                    app:pulse_startFromScratch="true">
+
+                    <ImageView
+                        android:id="@+id/startid"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_centerInParent="true"
+                        android:contentDescription="@string/todo"
+                        android:src="@mipmap/verseicon4"
+                        android:visibility="visible" />
+                </pl.bclogic.pulsator4droid.library.PulsatorLayout>
+
+                <ScrollView
+                    android:id="@+id/acrcloud"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignBottom="@+id/pulsator"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:overScrollMode="never">
+
+                    <TextView
+                        android:id="@+id/acrlyrics"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginBottom="0dp"
+                        android:fontFamily="@font/walter_turncoat"
+                        android:gravity="center_horizontal"
+                        android:scrollbars="vertical"
+                        android:text="@string/lyric"
+                        android:textColor="?attr/textColor"
+                        android:textSize="24sp" />
+                </ScrollView>
+
+                <LinearLayout
+                    android:id="@+id/songll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/acrcloud"
+                    android:layout_alignEnd="@+id/acrcloud"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="0dp"
+                    android:contentDescription="@string/todo"
+                    android:orientation="horizontal"
+                    android:src="@mipmap/verseicon4"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/startid2"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/todo"
+                        android:src="@mipmap/verseicon4"
+                        android:visibility="invisible" />
+
+                    <ImageView
+                        android:id="@+id/spot"
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/todo"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:src="@drawable/ic_spotlogo"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <!--
+                <ImageView
+                    android:id="@+id/startid2"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignStart="@+id/acrcloud"
+                    android:layout_alignEnd="@+id/acrcloud"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="0dp"
+                    android:contentDescription="@string/todo"
+                    android:src="@mipmap/verseicon4"
+                    android:visibility="visible" />
+-->
+            </RelativeLayout>
+
+        </ViewFlipper>
+
+    </RelativeLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>
+
+
+    <!--
+
+     <ScrollView
+            android:id="@+id/lyricview"
             android:layout_width="match_parent"
             android:layout_height="425dp"
             android:layout_below="@+id/songname"
@@ -114,7 +267,7 @@
 
             <TextView
                 android:id="@+id/lyrics"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="7dp"
@@ -127,7 +280,209 @@
                 android:textColor="?attr/textColor"
                 android:textSize="24sp"
                 android:visibility="invisible" />
-        </ScrollView>
-    </RelativeLayout>
 
-</androidx.drawerlayout.widget.DrawerLayout>
+        </ScrollView>
+
+-->
+    <!--
+      <ViewFlipper
+                android:id="@+id/viewflipper"
+                android:layout_width="wrap_content"
+                android:layout_height="526dp"
+                android:layout_below="@+id/songname"
+                android:layout_alignStart="@+id/logo"
+                android:layout_alignEnd="@+id/logo"
+                android:layout_alignBottom="@+id/logo">
+
+
+                <ScrollView
+                    android:id="@+id/lyricview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:overScrollMode="never">
+
+                    <TextView
+                        android:id="@+id/lyrics"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginBottom="0dp"
+                        android:fontFamily="@font/walter_turncoat"
+                        android:gravity="center_horizontal"
+                        android:scrollbars="vertical"
+                        android:text="@string/lyric"
+                        android:textColor="?attr/textColor"
+                        android:textSize="24sp"
+                        android:visibility="invisible" />
+
+                </ScrollView>
+
+                <ScrollView
+                    android:id="@+id/acrcloud"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:overScrollMode="never">
+
+                    <TextView
+                        android:id="@+id/acrlyrics"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginBottom="0dp"
+                        android:fontFamily="@font/walter_turncoat"
+                        android:gravity="center_horizontal"
+                        android:scrollbars="vertical"
+                        android:text="@string/lyric"
+                        android:textColor="?attr/textColor"
+                        android:textSize="24sp" />
+
+                </ScrollView>
+
+            </ViewFlipper>
+    -->
+    <!--
+
+        <ViewFlipper
+            android:id="@+id/viewflipper"
+            android:layout_width="wrap_content"
+            android:layout_height="526dp"
+            android:layout_below="@+id/songname"
+            android:layout_alignStart="@+id/logo"
+            android:layout_alignEnd="@+id/logo"
+            android:layout_alignBottom="@+id/logo">
+
+            <ScrollView
+                android:id="@+id/lyricview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never">
+
+                <TextView
+                    android:id="@+id/lyrics"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:fontFamily="@font/walter_turncoat"
+                    android:gravity="center_horizontal"
+                    android:scrollbars="vertical"
+                    android:text="@string/lyric"
+                    android:textColor="?attr/textColor"
+                    android:textSize="24sp"
+                    android:visibility="invisible" />
+            </ScrollView>
+            <RelativeLayout
+                android:id="@+id/rl"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/startid2"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignStart="@+id/acrcloud"
+                    android:layout_alignEnd="@+id/acrcloud"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="0dp"
+                    android:contentDescription="@string/todo"
+                    android:src="@mipmap/verseicon4"
+                    android:visibility="invisible" />
+
+                <pl.bclogic.pulsator4droid.library.PulsatorLayout
+                    android:id="@+id/pulsator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/startid2"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginBottom="13dp"
+                    app:pulse_color="@color/colorAccent"
+                    app:pulse_count="4"
+                    app:pulse_duration="3000"
+                    app:pulse_interpolator="Linear"
+                    app:pulse_repeat="0"
+                    app:pulse_startFromScratch="true">
+
+                    <ImageView
+                        android:id="@+id/startid"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_centerInParent="true"
+                        android:contentDescription="@string/todo"
+                        android:src="@mipmap/verseicon4"
+                        android:visibility="visible" />
+                </pl.bclogic.pulsator4droid.library.PulsatorLayout>
+
+                <ScrollView
+                    android:id="@+id/acrcloud"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignBottom="@+id/pulsator"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:overScrollMode="never">
+
+                    <TextView
+                        android:id="@+id/acrlyrics"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginBottom="0dp"
+                        android:fontFamily="@font/walter_turncoat"
+                        android:gravity="center_horizontal"
+                        android:scrollbars="vertical"
+                        android:text="@string/lyric"
+                        android:textColor="?attr/textColor"
+                        android:textSize="24sp" />
+                </ScrollView>
+
+            </RelativeLayout>
+
+
+
+        </ViewFlipper>
+
+     -->
+<!--
+<LinearLayout
+                    android:id="@+id/songll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/acrcloud"
+                    android:layout_alignEnd="@+id/acrcloud"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/startid2"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="start"
+                        android:layout_marginTop="0dp"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/todo"
+                        android:src="@mipmap/verseicon4"
+                        android:visibility="visible" />
+
+                    <ImageView
+                        android:id="@+id/spot"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="0dp"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/spotifylogo"
+                        android:visibility="gone" />
+                </LinearLayout>
+-->

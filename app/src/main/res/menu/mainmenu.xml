@@ -9,6 +9,12 @@
                 android:id="@+id/adblockmenu"
                 android:icon="@drawable/block"
                 android:title="@string/blockad" />
+
+            <item
+                android:id="@+id/acr"
+                android:title="@string/acr"
+                android:icon="@drawable/ear"
+                />
         </menu>
     </item>
     <item android:title="@string/help">
@@ -16,6 +22,10 @@
             <item android:id="@+id/helper"
                 android:icon="@drawable/help"
                 android:title="@string/helps"/>
+
+            <item android:id="@+id/newfeatures"
+                android:icon="@drawable/whats_new"
+                android:title="@string/Whatnew"/>
         </menu>
     </item>
     <item android:title="@string/mode">
@@ -30,6 +40,10 @@
         <item android:id="@+id/aboutapp"
             android:title="@string/about"
             android:icon="@drawable/info">
+        </item>
+        <item android:id="@+id/rateapp"
+            android:title="@string/rate"
+            android:icon="@drawable/rate">
         </item>
     </menu>
 </item>

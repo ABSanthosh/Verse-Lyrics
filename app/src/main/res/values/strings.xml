@@ -7,12 +7,12 @@
     <string name="home">Home</string>
     <string name="contact">Contact</string>
     <string name="about">About</string>
-    <string name="share">Github</string>
+    <string name="share">GitHub</string>
     <string name="feedback">Feedback</string>
     <string name="navigation_drawer_open">Drawer Open</string>
     <string name="navigation_drawer_close">Drawer Closed</string>
-    <string name="nav_slogan">Lyrics for everybody!</string>
-    <string name="ver_1_0_2">ver.4.2.0.1</string>
+    <string name="nav_slogan">Lyrics for everyone!</string>
+    <string name="ver_1_0_2">ver.3.2</string>
     <string name="error_timeout_title">time out</string>
     <string name="yes">Yes</string>
     <string name="abt"></string>
@@ -33,7 +33,7 @@
     <string name="experimental">(Experimental)</string>
     <string name="blockad">Block Ads</string>
     <string name="helpcont1">Verse keep showing \'play a song on spotify?\'</string>
-    <string name="helpcont2">It\'s posible that you haven\'t turned on Device Broadcast status on the first usage of Verse\n\nSpotify >Settings >Device Broadcast Status</string>
+    <string name="helpcont2">It\'s possible that you haven\'t turned on Device Broadcast status on the first usage of Verse\n\nSpotify >Settings >Device Broadcast Status</string>
     <string name="helpcont3">Only song name is displayed and not the lyrics?</string>
     <string name="helpcont4">This app does not have the ability to give lyrics for all the songs(sometimes even if its quite popular)\n\nAlso lyrics for remixes won\'t match because...you know its called a remix\nfor a reason</string>
     <string name="open_spotify">Open Spotify</string>
@@ -54,4 +54,9 @@
     <string name="mode">Theme</string>
     <string name="light">Light Mode</string>
     <string name="dark">Dark Mode</string>
+    <string name="todo">todo</string>
+    <string name="acr">Identify Song</string>
+    <string name="Whatnew">What\'s New</string>
+    <string name="Whatnewcont">Ver.3.2\n\n-UI tweaks\n\n-Open the identified song in spotify if available.\n\n-Removed the toast message for song name and added a new UI for the same.\n\nVer.3.1\n\n-Fixed some typos\n\n-Added toast message to \'Identify Song\' option to show song name when Verse is not open\n\nVer.3.0\n\n-Added \"what\'s new\" in navigation menu\n\n-Added \"Rate app in Playstore\" feature\n\n-Added \"System default\" theme option.\n\n-Added \"Identify Song\" feature\n\n-Fixed Ad Block\n\n-Fixed version notation to match playstore.\n\n-Fixed uncertainty in song name when switched between \"Identify song\" and \"Lyrics\" options.\n\n-UI fixes\n\n-Removed old ester egg and added a new one.\n\n\nVer.3.0.1\n-Fixed Shared preferences.</string>
+    <string name="rate">Rate app in Play Store</string>
 </resources>

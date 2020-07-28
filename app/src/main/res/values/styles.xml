@@ -8,6 +8,7 @@
         <item name="android:windowContentTransitions">true</item>
     </style>
 
+
     <style name="LightTheme" parent="AppTheme">
         <item name="textColor">#747065</item>
         <item name="metaTextColor">#121212</item>
