@@ -32,38 +32,55 @@ A clean UI to help the user use the application without any prior knowledge on t
 
 ## Screenshots
 
-<p align="center"> Splash Screen</p>
+<p align="center"><b>Splash Screen</b></p>
 <p align="center">
 <img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Splash%20Light.jpg?raw=true" width="300" height="533">
 <img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Splash%20Dark.jpg?raw=true" width="300" height="533">
 </p>
+
+<p align="center"><b>Home Page</b></p>
 <p align="center">
 <img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Homepage%20Light.jpg?raw=true" width="300" height="533">
 <img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Homepage%20Dark.jpg?raw=true" width="300" height="533">
 </p>
+
+<p align="center"><b>Navigation Drawer</b></p>
 <p align="center">
 <img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Navigation%20drawer(Light).jpg?raw=true" width="300" height="533">
 <img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Navigation%20drawer(Dark).jpg?raw=true" width="300" height="533">
 </p>
+
+<p align="center"><b>Song Identification(Process)</b></p>
 <p align="center">
 <img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Song%20Identification(Process)%20Light.jpg?raw=true" width="300" height="533">
 <img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Song%20Identification(Process)%20Dark.jpg?raw=true" width="300" height="533">
 </p>
+
+<p align="center"><b>Song Identification(Result)</b></p>
 <p align="center">
 <img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Song%20Identification(Result)%20Light.jpg?raw=true" width="300" height="533">
 <img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Song%20Identification(Result)%20Dark.jpg?raw=true" width="300" height="533">
+</p>
+
+<p align="center">
+<b>Ad block Screen & Help screen</b>
 </p>
 <p align="center">
 <img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Ad%20Block%20Frag.jpg?raw=true" width="300" height="533">
 <img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Help.jpg?raw=true" width="300" height="533">
 </p>
+
+<p align="center"><b>What's New & About page</b></p>
 <p align="center">
 <img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-What's%20new.jpg?raw=true" width="300" height="533">
 <img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-About.jpg?raw=true" width="300" height="533">
 </p>
+
+<p align="center"><b>Dark Mode Demo</b></p>
 <p align="center">
 <img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Dark%20mode%20demo.gif?raw=true" width="300" height="533">
 </p>
+
 ## Contact
 You can contact me through my email id:
 1) [Mail](a.b.santhosh02@gmail.com) - a.b.santhosh02@gmail.com
