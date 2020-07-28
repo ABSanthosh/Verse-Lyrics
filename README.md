@@ -1,14 +1,16 @@
 # Verse
 
 A basic **Kotlin** application which scraps google to fetch lyrics using jsoup. 
+Uses ACR Cloud to identify the song played.
 
 
-
+ 
 ## Used concepts
 
 1) Broadcast receiver to fetch details about the song played in spotify.
 2) Jsoup to download the google search page for the played song.
 3) Kotlin to manipulate the received data from google. 
+4) ACRCloud's song recognition. 
 
 ## UI
 
@@ -19,6 +21,7 @@ A clean UI to help the user use the application without any prior knowledge on t
 1) Since the lyrics are scrapped from google, the lyrics for most of the songs are shown in the application.
 2) Works on multiple languages.
 3) Ability to open spotify from within the app.
+4) Song recognition. 
 
 
 ## TODO
