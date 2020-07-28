@@ -26,14 +26,7 @@ class SplashActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         sp = getSharedPreferences("theme", Context.MODE_PRIVATE)
-/*
-        if(sp.getBoolean("light",true)){
-            setTheme(R.style.LightTheme);
-        }else{
-            setTheme(R.style.DarkTheme);
-        }
 
- */
         if (sp.getString("light", "true")=="T") {
             setTheme(R.style.LightTheme);
         } else if(sp.getString("light", "true")=="F"){
