@@ -59,6 +59,7 @@ public var firsttime: Boolean = true
 var blockad by Delegates.notNull<Boolean>()
 
 
+//Service used to check if spotify is playing ad or song
 class CustomNotificationListener : NotificationListenerService() {
     private var muted = false
     private var originalVolume = 0
@@ -186,6 +187,8 @@ class CustomNotificationListener : NotificationListenerService() {
 
 }
 
+//Used to get data from spotify to know what song is being played
+//Copied from a spotify's dev page
 class SpotifyBroadcastReceiver : BroadcastReceiver() {
     internal object BroadcastTypes {
         val SPOTIFY_PACKAGE = "com.spotify.music"
@@ -206,7 +209,7 @@ class SpotifyBroadcastReceiver : BroadcastReceiver() {
                 val albumName = intent.getStringExtra("album")
                 val trackName = intent.getStringExtra("track")
                 var song_name: String = ""
-                //Log.d("DEBUG", trackName)
+           
 
                 song_name = trackName.split("(")[0]
                 song_name = trackName.split("-")[0]
@@ -369,7 +372,6 @@ class MainActivity : AppCompatActivity(), IACRCloudListener,
 
         var serviceIntent = Intent(this, CustomNotificationListener::class.java)
         startService(serviceIntent)
-        //startActivity(Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"))
 
 
         var logo: TextView = findViewById(R.id.logo)
@@ -393,14 +395,10 @@ class MainActivity : AppCompatActivity(), IACRCloudListener,
 
         this.mConfig.acrcloudListener = this
         this.mConfig.context = this
-        // Please create project in "http://console.acrcloud.cn/service/avr".
-        //this.mConfig.host = "identify-ap-southeast-1.acrcloud.com"
-        //this.mConfig.accessKey = "a339aac3597662325ce9e329cd899d30"
-        //this.mConfig.accessSecret = "FODChDxYHh1srhNtHgnLu2EpUKdggzfATfYDmOuQ"
 
         this.mConfig.host = "identify-global.acrcloud.com"
-        this.mConfig.accessKey = "e49c241cdaa4257fd4607ef93aa9ca7d"
-        this.mConfig.accessSecret = "TomUVHpZeWvtH2JIUqEXhdpDyY8bizyS6AGJ8Rds"
+        this.mConfig.accessKey = "->                                <-" //Access key goes here
+        this.mConfig.accessSecret = "->                                   <-"//Access Secret goes here
 
         // If you do not need volume callback, you set it false.
         this.mConfig.recorderConfig.isVolumeCallback = false
@@ -481,157 +479,6 @@ class MainActivity : AppCompatActivity(), IACRCloudListener,
         unregisterReceiver(mreceiver)
     }
 
-    /*
-    fun timestamp_to_sec(t: MutableList<String>): MutableList<Int> {
-        var min = mutableListOf<Int>()
-        var sec = mutableListOf<Int>()
-        var csec = mutableListOf<Int>()
-
-        for (i in 0..t.size - 1) {
-            var g = t[i].replace("[", "").replace("]", "")
-            min.add(g.split(":")[0].toInt())
-            sec.add(g.split(":")[1].split(".")[0].toInt())
-            csec.add(g.split(":")[1].split(".")[1].toInt())
-        }
-
-        var sec_list = mutableListOf<Int>()
-
-        for (i in 0..min.size - 1) {
-            sec_list.add((min[i] * 60) + (sec[i]) + (csec[i] / 100))
-        }
-
-        return sec_list
-    }
-
-    // TODO: 30-05-2020 FIX MUSIXMATCH SONG SEARCHER
-    // TODO: 01-07-2020 Turn off for now to upload to playstore
-    fun try_musixmatch(songname: String, an: String) {
-        runOnUiThread { lyrics.setText("") }
-        lyrics.scrollTo(0, 0)
-        var id_link =
-            "https://apic-desktop.musixmatch.com/ws/1.1/macro.subtitles.get?format=json&q_track={" + songname + "}&q_artist={" + an + "}&user_language=en&subtitle_format=lrc&app_id=web-desktop-app-v1.0&usertoken=1710144894f79b194e5a5866d9e084d48f227d257dcd8438261277"
-        //println(id_link)
-        var sly_thread: Thread = Thread {
-            var ua =
-                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
-            var lyrics_data = Jsoup.connect(id_link).ignoreContentType(true).execute().body()
-                .split("subtitle_body")[1].split("subtitle_avg_count")[0].dropLast(4).drop(3)
-                .split("\\n")
-            //
-            //println(lyrics_data)
-
-            var lyricslist = mutableListOf<String>()
-            var timestamps = mutableListOf<String>()
-
-            // seperate timestapm and lyrics
-            for (i in 0..lyrics_data.size - 1) {
-                var bb = lyrics_data[i]
-                timestamps.add(bb.slice(IntRange(0, 9)))
-                //Some have only one element in list and throws out of index error
-                try {
-                    lyricslist.add(lyrics_data[i].split("]")[1])
-                } catch (e: java.lang.Exception) {
-                    lyricslist.add("...")
-                }
-            }
-            var seclist = timestamp_to_sec(timestamps)
-
-            for (i in 0..lyricslist.size - 1) {
-                if (lyricslist[i] == " ") {
-                    lyricslist.set(i, "...")
-                }
-            }
-            //println(lyricslist)
-            //println(timestamps)
-            //println(seclist)
-
-            runOnUiThread {
-                lyrics.visibility = View.VISIBLE
-            }
-
-
-            for (i in lyricslist) {
-                runOnUiThread { lyrics.append(i + "\n\n") }
-
-            }
-
-            var n = mutableListOf<Int>()
-            var m = listOf<Int>()
-
-            runOnUiThread {
-                var f = lyrics.lineCount
-                var dummy = 0
-                for (i in 0 until f - 1) {
-                    var len = lyrics.text.subSequence(
-                        lyrics.layout.getLineStart(i),
-                        lyrics.layout.getLineEnd(i)
-                    ).length
-                    var le = lyrics.text.subSequence(
-                        lyrics.layout.getLineStart(i),
-                        lyrics.layout.getLineEnd(i)
-                    )
-                    if (len != 1) {
-                        dummy += 1
-                    } else {
-                        dummy += 1
-                        n.add(dummy)
-                    }
-                }
-                m = n.dropLast(2)
-                //println(n)
-            }
-            seclist = seclist.drop(1).toMutableList()
-            var decoy = 0
-
-            for (i in 0..seclist.size - 1) {
-
-                if (decoy <= seclist.size - 1) {
-                    Handler().postDelayed({
-                        try {
-                            lyricview.smoothScrollTo(0, lyrics.layout.getLineTop(n[i]))
-                        } catch (e: java.lang.Exception) {
-                        }
-                    }, (seclist[i] * 1000).toLong())
-                } else {
-                    decoy += 1
-                }
-            }
-
-
-        }
-        if (sly_thread.isAlive) {
-            sly_thread.run()
-        } else {
-            sly_thread.start()
-        }
-
-    }
-
-    fun try_syair(a: String, b: String) {
-        var link = "https://syair.info/search?q="
-        var search_q = b + " - " + a
-        search_q = URLEncoder.encode(search_q, "utf-8")
-        link = link + search_q
-        //println(link+"---------------------")
-        var ua =
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
-        Jsoup.connect(link).userAgent(ua).get().run {
-            val elements: Elements = select("[class='ul']")
-            //println( elements+"------------------")
-            var linklist =
-                elements.toString().replace("<div class=\"ul\">", "").replace("</div>", "")
-                    .split("<div class=\"li\">")
-            linklist = linklist.drop(1).dropLast(linklist.size - 2)
-            var song_link = linklist[0].split("<a href=\"")[1]
-            song_link = song_link.split("\" target=\"_blank\"")[0]
-            song_link = "https://syair.info/" + song_link
-            //println(song_link)
-        }
-
-    }
-
- */
-
     fun try_google(songname: String, an: String) {
         runOnUiThread { lyrics.setText("") }
         lyrics.scrollTo(0, 0)
@@ -642,7 +489,6 @@ class MainActivity : AppCompatActivity(), IACRCloudListener,
             id_link,
             "utf-8"
         ) + "+" + URLEncoder.encode(an, "utf-8") + "+" + "lyrics"
-        //println(id_link)
         var ly_thread: Thread = Thread {
             try {
                 var ua =
@@ -1127,23 +973,7 @@ class MainActivity : AppCompatActivity(), IACRCloudListener,
         toastCountDown.start()
 
     }
-
-    /*
-    fun confirmFireMissiles(det: String,art: String) {
-        var li: LayoutInflater = layoutInflater
-        var layout = li.inflate(R.layout.customtoast, findViewById(R.id.relativelay))
-        var dettext = layout.findViewById<TextView>(R.id.details)
-        var artname = layout.findViewById<TextView>(R.id.artist)
-        dettext.text = det
-        artname.text = art
-
-        val dialogBuilder: AlertDialog.Builder = AlertDialog.Builder(this)
-        dialogBuilder.setView(layout)
-        val alertDialog: AlertDialog = dialogBuilder.create()
-        alertDialog.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        alertDialog.show()
-    }
-     */
+        
     fun playonspotify(sid: String) {
         val base_link = "spotify:track:" + sid.replace(" ", "")
         //println(base_link)
@@ -1173,7 +1003,6 @@ class MainActivity : AppCompatActivity(), IACRCloudListener,
             songid = handleResult(result).split("-")[2]
         } catch (e: java.lang.Exception) {
             if (this.hasWindowFocus() == false) {
-                //Toast.makeText(this, "Unable to find song", Toast.LENGTH_LONG).show()
                 showctoast("Unable to find song", artist_name)
             }
         }
@@ -1187,7 +1016,7 @@ class MainActivity : AppCompatActivity(), IACRCloudListener,
                 spot.visibility = View.GONE
 
             }
-            //confirmFireMissiles(song_name, artist_name)
+           
 
         } else {
             songname.text = "Unable to find song"
@@ -1195,9 +1024,7 @@ class MainActivity : AppCompatActivity(), IACRCloudListener,
         }
 
         if (this.hasWindowFocus() == false) {
-            //println("---------------------")
-            showctoast(song_name, artist_name)
-            //Toast.makeText(this, song_name , Toast.LENGTH_LONG).show()
+            showctoast(song_name, artist_name)           
         }
         try {
             if (songname.text != "Unable to find song") {
