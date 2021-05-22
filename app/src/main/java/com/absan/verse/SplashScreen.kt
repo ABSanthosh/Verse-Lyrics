@@ -14,7 +14,6 @@ import android.view.animation.LinearInterpolator
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
-import java.util.Collections.rotate
 
 
 class SplashScreen : AppCompatActivity() {
@@ -44,15 +43,22 @@ class SplashScreen : AppCompatActivity() {
             applicationContext,
             R.anim.logoanimation
         )
+        LogoAnimation.fillBefore = true
+//        LogoAnimation.fillAfter = true
+//        LogoAnimation.isFillEnabled = true
+//        LogoAnimation.repeatCount = 0
+//        LogoAnimation.interpolator = LinearInterpolator()
 
         LogoAnimation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(p0: Animation?) {
             }
 
             override fun onAnimationEnd(p0: Animation?) {
+                SplashLogo.clearAnimation()
                 SplashLogo.gravity = Gravity.TOP
                 val intent = Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
+//                Handler(Looper.getMainLooper()).postDelayed({  }, 150)
                 overridePendingTransition(R.anim.splashfadin, R.anim.splashfadeout);
             }
 
@@ -62,13 +68,7 @@ class SplashScreen : AppCompatActivity() {
         })
 
         Handler(Looper.getMainLooper()).postDelayed({
-            // Add animation and prevent flicker after animation and before
-            // Gravity change
-            LogoAnimation.fillBefore = true
-            LogoAnimation.fillAfter = true
-            LogoAnimation.isFillEnabled = true
-            LogoAnimation.repeatCount = 0
-            LogoAnimation.interpolator = LinearInterpolator()
+            // Start animation
             SplashLogo.startAnimation(LogoAnimation)
         }, 2000)
         super.onCreate(savedInstanceState)

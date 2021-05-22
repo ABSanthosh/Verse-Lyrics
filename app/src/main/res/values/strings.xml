@@ -1,4 +1,38 @@
 <resources>
     <string name="app_name">Verse</string>
     <string name="verse">Verse</string>
+    <string name="status">Play a song on spotify</string>
+    <string name="Navbar__LogoDesc">flowerimg</string>
+    <string name="Navbar__Slogan">Lyrics for everyone!</string>
+    <string name="Navbar__Version">Ver. 4.0.0</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="Navbar__Play">Play a Song</string>
+    <string name="Navbar__Help">Help</string>
+    <string name="Navbar__Theme">Theme</string>
+    <string name="Navbar__about">About</string>
+    <string name="Navbar__contact">Contact</string>
+    <string name="Navbar__developer">Developer</string>
+
+    <string name="Navbar__OpenSpotify">Open Spotify</string>
+    <string name="Navbar__BlockAd">Mute Ads</string>
+    <string name="Navbar__Help2">Help Me!</string>
+    <string name="Navbar__New">What\'s New?</string>
+    <string name="Navbar__Lightmode">Light Mode</string>
+    <string name="Navbar__About">About</string>
+    <string name="Navbar__Rate">Rate app in Play Store</string>
+    <string name="Navbar__Github">Github</string>
+    <string name="Navbar__Feedback">Feedback</string>
+    <string name="Navbar__DevName">AB Santhosh</string>
+    <string name="Navbar__Open">Navigation Drawer opened</string>
+    <string name="Navbar__Close">Navigation Drawer Closed</string>
 </resources>
