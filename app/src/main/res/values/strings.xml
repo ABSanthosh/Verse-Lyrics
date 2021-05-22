@@ -35,4 +35,11 @@
     <string name="Navbar__DevName">AB Santhosh</string>
     <string name="Navbar__Open">Navigation Drawer opened</string>
     <string name="Navbar__Close">Navigation Drawer Closed</string>
+
+    <string name="Fragment__Border">Fragment Border</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="MuteAds">Mute Ads coming soon</string>
+    <string name="HelpMe">Help Me coming soon</string>
+    <string name="WhatsNew">What\'s New coming soon</string>
+    <string name="About">About coming soon</string>
 </resources>
