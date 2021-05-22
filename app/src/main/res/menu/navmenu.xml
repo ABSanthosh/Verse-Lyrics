@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/Navbar__Play">
+        <menu>
+            <item
+                android:id="@+id/open_spotify"
+                android:icon="@drawable/navbar__spotify"
+                android:title="@string/Navbar__OpenSpotify" />
+            <item
+                android:id="@+id/adblockmenu"
+                android:icon="@drawable/navbar__blockad"
+                android:title="@string/Navbar__BlockAd" />
+        </menu>
+    </item>
+    <item android:title="@string/Navbar__Help">
+        <menu>
+            <item
+                android:id="@+id/helper"
+                android:icon="@drawable/navbar__helpme"
+                android:title="@string/Navbar__Help2" />
+
+            <item
+                android:id="@+id/newfeatures"
+                android:icon="@drawable/navbar__new"
+                android:title="@string/Navbar__New" />
+        </menu>
+    </item>
+    <item android:title="@string/Navbar__Theme">
+        <menu>
+            <item
+                android:id="@+id/mode"
+                android:icon="@drawable/navbar__lightmode"
+                android:title="@string/Navbar__Lightmode" />
+        </menu>
+    </item>
+    <item android:title="@string/Navbar__about">
+        <menu>
+            <item
+                android:id="@+id/aboutapp"
+                android:icon="@drawable/navbar__info"
+                android:title="@string/Navbar__About" />
+            <item
+                android:id="@+id/rateapp"
+                android:icon="@drawable/navbar__rateapp"
+                android:title="@string/Navbar__Rate" />
+        </menu>
+    </item>
+
+
+    <item android:title="@string/Navbar__contact">
+        <menu>
+            <item
+                android:id="@+id/otherapps"
+                android:icon="@drawable/navbar__github"
+                android:title="@string/Navbar__Github" />
+
+            <item
+                android:id="@+id/feedback"
+                android:icon="@drawable/navbar__feedback"
+                android:title="@string/Navbar__Feedback" />
+        </menu>
+    </item>
+    <item android:title="@string/Navbar__developer">
+        <menu>
+            <item
+                android:id="@+id/myname"
+                android:icon="@drawable/navbar__dev"
+                android:title="@string/Navbar__DevName" />
+        </menu>
+    </item>
+</menu>
