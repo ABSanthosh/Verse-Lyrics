@@ -5,12 +5,12 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.Gravity
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.view.animation.LinearInterpolator
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
@@ -19,7 +19,6 @@ import androidx.core.content.res.ResourcesCompat
 class SplashScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         // Set full screen
         @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -43,22 +42,15 @@ class SplashScreen : AppCompatActivity() {
             applicationContext,
             R.anim.logoanimation
         )
-        LogoAnimation.fillBefore = true
-//        LogoAnimation.fillAfter = true
-//        LogoAnimation.isFillEnabled = true
-//        LogoAnimation.repeatCount = 0
-//        LogoAnimation.interpolator = LinearInterpolator()
-
         LogoAnimation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(p0: Animation?) {
             }
 
             override fun onAnimationEnd(p0: Animation?) {
-                SplashLogo.clearAnimation()
                 SplashLogo.gravity = Gravity.TOP
                 val intent = Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
-//                Handler(Looper.getMainLooper()).postDelayed({  }, 150)
+                finish()
                 overridePendingTransition(R.anim.splashfadin, R.anim.splashfadeout);
             }
 
