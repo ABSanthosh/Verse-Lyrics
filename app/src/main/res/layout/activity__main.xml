@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <include layout="@layout/navbar" />
+        <include layout="@layout/navbar__toolbar" />
 
         <TextView
             android:id="@+id/logo"
@@ -99,7 +99,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/header"
+        app:headerLayout="@layout/navbar__header"
         app:menu="@menu/navmenu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
