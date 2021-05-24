@@ -31,7 +31,7 @@ class SplashScreen : AppCompatActivity() {
         }
 
         // Set activity layout
-        setContentView(R.layout.splashscreen)
+        setContentView(R.layout.activity__splashscreen)
 
         // Set custom font
         val SplashLogo: TextView = findViewById(R.id.splashlogo)
