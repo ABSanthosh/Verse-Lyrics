@@ -31,12 +31,47 @@
     <string name="Navbar__About">About</string>
     <string name="Navbar__Rate">Rate app in Play Store</string>
     <string name="Navbar__Github">Github</string>
+    <string name="Navbar__Font">Fonts</string>
     <string name="Navbar__Feedback">Feedback</string>
     <string name="Navbar__DevName">AB Santhosh</string>
     <string name="Navbar__Open">Navigation Drawer opened</string>
     <string name="Navbar__Close">Navigation Drawer Closed</string>
 
+    <!--  General Fragment strings  -->
     <string name="Fragment__Border">Fragment Border</string>
+
+    <!--  About Fragment  -->
+    <string name="Fragment__About">About</string>
+    <string name="Fragment__About_C1">Verse basically automates the process of Googling the lyrics and shows this in a clean UI.\n\nIt uses the media feed from spotify to know what song is currently going on.\n\nI know ads are irritating but lately I\'ve been considering on showing few passive ads in the app. You can let me know how you feel about it through the feedback option. I\'ll make a decision based on your input.\n\nThanks for using Verse and If you have left a rating and a review on the PlayStore, I can\'t thank you enough. You made my day!</string>
+
+    <!--  Whats new Fragment  -->
+    <string name="Fragment__New">What\'s New?</string>
+    <string name="Fragment__New__Content">Ver.3.2\n\n-UI tweaks\n\n-Open the identified song in spotify if available.\n\n-Removed the toast message for song name and added a new UI for the same.\n\nVer.3.1\n\n-Fixed some typos\n\n-Added toast message to \'Identify Song\' option to show song name when Verse is not open\n\nVer.3.0\n\n-Added \"what\'s new\" in navigation menu\n\n-Added \"Rate app in Playstore\" feature\n\n-Added \"System default\" theme option.\n\n-Added \"Identify Song\" feature\n\n-Fixed Ad Block\n\n-Fixed version notation to match playstore.\n\n-Fixed uncertainty in song name when switched between \"Identify song\" and \"Lyrics\" options.\n\n-UI fixes\n\n-Removed old ester egg and added a new one.\n\n\nVer.3.0.1\n-Fixed Shared preferences.</string>
+
+
+    <!--  Mute Ads Fragment  -->
+    <string name="Fragment__BlockAd">Mute Ads</string>
+    <string name="Fragment__BlockAd_H1">How does is work?</string>
+    <string name="Fragment__BlockAd_C1">Using the spotify\'s Broadcast Verse calculates the time a song would play for and if there is no new next song while the song is not paused, It mutes the device until there\'s a new song.\n\nI would like to give shout out to oyvindsam\'s SpotMute app for all the core logic behind this function.\n If you don\'t need the lyrics functionality and only the Ad Mute with more customisations, Try SpotMute from playstore</string>
+    <string name="Fragment__BlockAd_B1">SpotMute</string>
+    <string name="Fragment__BlockAd_B2">Oyvindsam\'s GitHub</string>
+
+    <!--  Font Selector Fragment  -->
+    <string name="Fragment__FontSelector">Font Selector</string>
+    <string name="Fragment__FontSelector_H1">Preview</string>
+    <string name="Fragment__FontSelector_TestContent">Lorem ipsum dolor sit\n\nAenean a nisl lobortis, ullamcorper\n\nIn sagittis lacus eu neque venenatis ullamcorper.\n\nNunc et massa in sem ultricies placerat.\n\nSed vitae urna vel magna congue rutrum vel at tellus.\n\nNulla volutpat lacus ac eros placerat elementum.</string>
+    <string name="Fragment__FontSelector_H2">Select a Font</string>
+
+    <!--  Help Me Fragment  -->
+    <string name="Fragment__Help">Help</string>
+    <string name="Fragment__Help_H1">Verse not detecting Spotify songs</string>
+    <string name="Fragment__Help_C1">It\'s probably because you forgot to turn ON the Device Broadcast Status on the spotify app. </string>
+    <string name="Fragment__Help_H2">Don\'t know how to use verse?</string>
+    <string name="Fragment__Help_C2">Play a song on spotify, Open verse if you want to see the lyrics. Simple</string>
+    <string name="Fragment__Help_H3">Only song name no lyrics?</string>
+    <string name="Fragment__Help_C3">Even though google have lyrics to almost all the songs, There are no available lyrics for some songs. Unfortunately I can\'t do much in that case :(</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="MuteAds">Mute Ads coming soon</string>
     <string name="HelpMe">Help Me coming soon</string>
