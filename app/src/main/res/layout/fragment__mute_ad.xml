@@ -5,94 +5,260 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="300dp"
         android:layout_height="440dp"
+        android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="80dp">
 
-
-        <ImageView
-            android:id="@+id/topLeft"
-            android:layout_width="102dp"
-            android:layout_height="93dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="-5dp"
-            android:layout_marginTop="0dp"
-            android:contentDescription="@string/Fragment__Border"
-            android:rotation="-90"
-            android:rotationY="0"
-            app:srcCompat="@drawable/fragment__border"
-            tools:ignore="VectorDrawableCompat" />
-
-        <ImageView
-            android:id="@+id/topRight"
-            android:layout_width="102dp"
-            android:layout_height="93dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="-5dp"
-            android:contentDescription="@string/Fragment__Border"
-            app:srcCompat="@drawable/fragment__border"
-            tools:ignore="VectorDrawableCompat" />
-
-        <ImageView
-            android:id="@+id/bottomLeft"
-            android:layout_width="102dp"
-            android:layout_height="93dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="-5dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="0dp"
-            android:rotation="-180"
-            app:srcCompat="@drawable/fragment__border"
-            tools:ignore="VectorDrawableCompat"
-            android:contentDescription="@string/Fragment__Border"/>
-
-        <ImageView
-            android:id="@+id/bd4"
-            android:layout_width="102dp"
-            android:layout_height="93dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="-5dp"
-            android:layout_marginBottom="0dp"
-            android:rotation="90"
-            app:srcCompat="@drawable/fragment__border"
-            tools:ignore="VectorDrawableCompat"
-            android:contentDescription="@string/Fragment__Border"/>
-
-        <ScrollView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="none"
-            tools:layout_editor_absoluteX="25dp"
-            tools:layout_editor_absoluteY="80dp">
+            android:layout_height="440dp"
+            android:layout_gravity="center_horizontal">
 
-            <RelativeLayout
+
+            <ImageView
+                android:id="@+id/topLeft"
+                android:layout_width="102dp"
+                android:layout_height="93dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="-5dp"
+                android:layout_marginTop="0dp"
+                android:contentDescription="@string/Fragment__Border"
+                android:rotation="-90"
+                android:rotationY="0"
+                app:srcCompat="@drawable/fragment__border"
+                tools:ignore="VectorDrawableCompat" />
+
+            <ImageView
+                android:id="@+id/topRight"
+                android:layout_width="102dp"
+                android:layout_height="93dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="-5dp"
+                android:contentDescription="@string/Fragment__Border"
+                app:srcCompat="@drawable/fragment__border"
+                tools:ignore="VectorDrawableCompat" />
+
+
+            <ImageView
+                android:id="@+id/bottomLeft"
+                android:layout_width="102dp"
+                android:layout_height="93dp"
+                android:layout_below="@+id/MuteAd_github"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="-5dp"
+                android:layout_marginTop="20dp"
+                android:contentDescription="@string/Fragment__Border"
+                android:rotation="-180"
+                app:srcCompat="@drawable/fragment__border"
+                tools:ignore="VectorDrawableCompat" />
+
+            <ImageView
+                android:id="@+id/bottomRight"
+                android:layout_width="102dp"
+                android:layout_height="93dp"
+                android:layout_below="@+id/MuteAd_github"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="-5dp"
+                android:contentDescription="@string/Fragment__Border"
+                android:rotation="90"
+                app:srcCompat="@drawable/fragment__border"
+                tools:ignore="VectorDrawableCompat" />
+
+
+            <TextView
+                android:id="@+id/Heading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="0dp">
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:fontFamily="@font/aladin"
+                android:text="@string/Fragment__BlockAd"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="45sp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="205dp"
-                    android:text="@string/MuteAds"
-                    android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="25sp" />
+            <TextView
+                android:id="@+id/H1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Heading"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="18dp"
+                android:fontFamily="@font/aladin"
+                android:text="@string/Fragment__BlockAd_H1"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
-            </RelativeLayout>
-        </ScrollView>
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/C1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/H1"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="18dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/Fragment__BlockAd_C1"
+                android:textAlignment="viewStart"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                android:textStyle="normal" />
 
+            <Button
+                android:id="@+id/MuteAd_spotmute"
+                android:layout_width="wrap_content"
+                android:layout_height="52dp"
+                android:layout_below="@+id/C1"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="60dp"
+                android:background="#CDCDCD"
+                android:text="@string/Fragment__BlockAd_B1"
+                android:textAllCaps="false"
+
+                android:textColor="#272727"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/MuteAd_github"
+                android:layout_width="181dp"
+                android:layout_height="52dp"
+                android:layout_below="@+id/MuteAd_spotmute"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="60dp"
+                android:background="#CDCDCD"
+                android:text="@string/Fragment__BlockAd_B2"
+                android:textAllCaps="false"
+                android:textColor="#272727"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+    <!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--    xmlns:tools="http://schemas.android.com/tools"-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="match_parent">-->
+
+    <!--    <RelativeLayout-->
+    <!--        android:layout_width="300dp"-->
+    <!--        android:layout_height="440dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent">-->
+
+
+    <!--        <ImageView-->
+    <!--            android:id="@+id/topLeft"-->
+    <!--            android:layout_width="102dp"-->
+    <!--            android:layout_height="93dp"-->
+    <!--            android:layout_alignParentStart="true"-->
+    <!--            android:layout_alignParentTop="true"-->
+    <!--            android:layout_marginStart="-5dp"-->
+    <!--            android:layout_marginTop="0dp"-->
+    <!--            android:contentDescription="@string/Fragment__Border"-->
+    <!--            android:rotation="-90"-->
+    <!--            android:rotationY="0"-->
+    <!--            app:srcCompat="@drawable/fragment__border"-->
+    <!--            tools:ignore="VectorDrawableCompat" />-->
+
+    <!--        <ImageView-->
+    <!--            android:id="@+id/topRight"-->
+    <!--            android:layout_width="102dp"-->
+    <!--            android:layout_height="93dp"-->
+    <!--            android:layout_alignParentTop="true"-->
+    <!--            android:layout_alignParentEnd="true"-->
+    <!--            android:layout_marginTop="0dp"-->
+    <!--            android:layout_marginEnd="-5dp"-->
+    <!--            android:contentDescription="@string/Fragment__Border"-->
+    <!--            app:srcCompat="@drawable/fragment__border"-->
+    <!--            tools:ignore="VectorDrawableCompat" />-->
+
+    <!--        <ImageView-->
+    <!--            android:id="@+id/bottomLeft"-->
+    <!--            android:layout_width="102dp"-->
+    <!--            android:layout_height="93dp"-->
+    <!--            android:layout_alignParentStart="true"-->
+    <!--            android:layout_alignParentBottom="true"-->
+    <!--            android:layout_marginStart="-5dp"-->
+    <!--            android:layout_marginTop="60dp"-->
+    <!--            android:layout_marginBottom="0dp"-->
+    <!--            android:rotation="-180"-->
+    <!--            app:srcCompat="@drawable/fragment__border"-->
+    <!--            tools:ignore="VectorDrawableCompat"-->
+    <!--            android:contentDescription="@string/Fragment__Border"/>-->
+
+    <!--        <ImageView-->
+    <!--            android:id="@+id/bottomRight"-->
+    <!--            android:layout_width="102dp"-->
+    <!--            android:layout_height="93dp"-->
+    <!--            android:layout_alignParentEnd="true"-->
+    <!--            android:layout_alignParentBottom="true"-->
+    <!--            android:layout_marginTop="60dp"-->
+    <!--            android:layout_marginEnd="-5dp"-->
+    <!--            android:layout_marginBottom="0dp"-->
+    <!--            android:rotation="90"-->
+    <!--            app:srcCompat="@drawable/fragment__border"-->
+    <!--            tools:ignore="VectorDrawableCompat"-->
+    <!--            android:contentDescription="@string/Fragment__Border"/>-->
+
+    <!--        <ScrollView-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:scrollbars="none"-->
+    <!--            tools:layout_editor_absoluteX="25dp"-->
+    <!--            tools:layout_editor_absoluteY="80dp">-->
+
+    <!--            <RelativeLayout-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:paddingBottom="0dp">-->
+
+    <!--                    <TextView-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_alignParentTop="true"-->
+    <!--                        android:layout_marginTop="45dp"-->
+    <!--                        android:fontFamily="@font/aladin"-->
+    <!--                        android:text="@string/Fragment__BlockAd"-->
+    <!--                        android:textAlignment="center"-->
+    <!--                        android:textColor="#000000"-->
+    <!--                        android:textSize="45sp" />-->
+
+    <!--            </RelativeLayout>-->
+    <!--        </ScrollView>-->
+    <!--    </RelativeLayout>-->
+
+
+    <!--</androidx.constraintlayout.widget.ConstraintLayout>-->

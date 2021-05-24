@@ -5,94 +5,118 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <!--    <RelativeLayout-->
+    <!--        android:layout_width="300dp"-->
+    <!--        android:layout_height="440dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent">-->
+
+    <ScrollView
         android:layout_width="300dp"
         android:layout_height="440dp"
+        android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="80dp">
 
-
-        <ImageView
-            android:id="@+id/topLeft"
-            android:layout_width="102dp"
-            android:layout_height="93dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="-5dp"
-            android:layout_marginTop="0dp"
-            android:rotation="-90"
-            android:rotationY="0"
-            app:srcCompat="@drawable/fragment__border"
-            tools:ignore="VectorDrawableCompat"
-            android:contentDescription="@string/Fragment__Border"/>
-
-        <ImageView
-            android:id="@+id/topRight"
-            android:layout_width="102dp"
-            android:layout_height="93dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="-5dp"
-            app:srcCompat="@drawable/fragment__border"
-            tools:ignore="VectorDrawableCompat"
-            android:contentDescription="@string/Fragment__Border"/>
-
-        <ImageView
-            android:id="@+id/bottomLeft"
-            android:layout_width="102dp"
-            android:layout_height="93dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="-5dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="0dp"
-            android:rotation="-180"
-            app:srcCompat="@drawable/fragment__border"
-            tools:ignore="VectorDrawableCompat"
-            android:contentDescription="@string/Fragment__Border"/>
-
-        <ImageView
-            android:id="@+id/bd4"
-            android:layout_width="102dp"
-            android:layout_height="93dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="-5dp"
-            android:layout_marginBottom="0dp"
-            android:rotation="90"
-            app:srcCompat="@drawable/fragment__border"
-            tools:ignore="VectorDrawableCompat"
-            android:contentDescription="@string/Fragment__Border" />
-
-        <ScrollView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="none"
-            tools:layout_editor_absoluteX="25dp"
-            tools:layout_editor_absoluteY="80dp">
+            android:layout_height="440dp"
+            android:layout_gravity="center_horizontal">
 
-            <RelativeLayout
+
+            <ImageView
+                android:id="@+id/topLeft"
+                android:layout_width="102dp"
+                android:layout_height="93dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="-5dp"
+                android:layout_marginTop="0dp"
+                android:contentDescription="@string/Fragment__Border"
+                android:rotation="-90"
+                android:rotationY="0"
+                app:srcCompat="@drawable/fragment__border"
+                tools:ignore="VectorDrawableCompat" />
+
+            <ImageView
+                android:id="@+id/topRight"
+                android:layout_width="102dp"
+                android:layout_height="93dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="-5dp"
+                android:contentDescription="@string/Fragment__Border"
+                app:srcCompat="@drawable/fragment__border"
+                tools:ignore="VectorDrawableCompat" />
+
+
+            <ImageView
+                android:id="@+id/bottomLeft"
+                android:layout_width="102dp"
+                android:layout_height="93dp"
+                android:layout_below="@+id/New_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="-5dp"
+                android:contentDescription="@string/Fragment__Border"
+                android:rotation="-180"
+                app:srcCompat="@drawable/fragment__border"
+                tools:ignore="VectorDrawableCompat" />
+
+            <ImageView
+                android:id="@+id/bottomRight"
+                android:layout_width="102dp"
+                android:layout_height="93dp"
+                android:layout_below="@+id/New_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="-5dp"
+                android:contentDescription="@string/Fragment__Border"
+                android:rotation="90"
+                app:srcCompat="@drawable/fragment__border"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/Heading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="0dp">
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:fontFamily="@font/aladin"
+                android:text="@string/Fragment__New"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="45sp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="205dp"
-                    android:text="@string/WhatsNew"
-                    android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="22sp" />
+            <TextView
+                android:id="@+id/New_content"
+                android:layout_width="234dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Heading"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:text="@string/Fragment__New__Content"
+                android:textColor="#000000"
+                android:textSize="20sp" />
 
-            </RelativeLayout>
-        </ScrollView>
-    </RelativeLayout>
+        </RelativeLayout>
+
+
+    </ScrollView>
+    <!--    </RelativeLayout>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--<androidx.recyclerview.widget.RecyclerView-->
+    <!--android:id="@+id/recycler_view"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content" />-->
