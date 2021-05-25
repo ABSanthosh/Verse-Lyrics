@@ -18,7 +18,7 @@ import com.koolio.library.DownloadableFontList.FontListCallback
 import com.koolio.library.FontList
 
 class FontSelector : DialogFragment() {
-    private val API_KEY = "AIzaSyAMBkvj7pFmtfP0--6Kery9A3ZayQHEWgE"
+    private val API_KEY = "LOL Get your own key"
     private var mHandler: Handler? = null
     lateinit var textContent: TextView
 
