@@ -9,15 +9,14 @@ import android.util.Log
 
 class Spotify {
     companion object {
-        const val SPOTIFY_PACKAGE = "com.spotify.music"
-        const val PLAYBACK_STATE_CHANGED = SPOTIFY_PACKAGE + ".playbackstatechanged"
-        const val QUEUE_CHANGED = SPOTIFY_PACKAGE + ".queuechanged"
-        const val METADATA_CHANGED = SPOTIFY_PACKAGE + ".metadatachanged"
+        private const val SPOTIFY_PACKAGE = "com.spotify.music"
+        private const val PLAYBACK_STATE_CHANGED = "$SPOTIFY_PACKAGE.playbackstatechanged"
+        private const val QUEUE_CHANGED = "$SPOTIFY_PACKAGE.queuechanged"
+        private const val METADATA_CHANGED = "$SPOTIFY_PACKAGE.metadatachanged"
 
-        val INTENT_FILTER = IntentFilter().apply {
-            addAction(PLAYBACK_STATE_CHANGED)
+        var INTENT_FILTER = IntentFilter().apply {
+            addAction(this@Companion.PLAYBACK_STATE_CHANGED)
         }
-
 
         fun spotifyReceiver(callback: ((Song) -> Unit)): BroadcastReceiver =
             object : BroadcastReceiver() {
@@ -41,7 +40,6 @@ class Spotify {
                         timeSent = getLongExtra("timeSent", -1L),
                         registeredTime = System.currentTimeMillis()
                     )
-                    Log.d("intent", "action: ${intent.action}, song: ${song.track}")
 
                     return if (song.id.isEmpty()) null else song
                 } catch (e: IllegalStateException) {
