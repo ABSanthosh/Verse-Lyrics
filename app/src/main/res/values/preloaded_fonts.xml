@@ -3,6 +3,8 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/aladin</item>
         <item>@font/bungee_shade</item>
+        <item>@font/caveat_brush</item>
+        <item>@font/walter_turncoat</item>
         <item>@font/yeseva_one</item>
     </array>
 </resources>
