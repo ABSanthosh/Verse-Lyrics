@@ -4,10 +4,12 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.widget.TableLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -15,8 +17,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.absan.verse.Utils.*
+import com.absan.verse.data.*
 import com.absan.verse.ui.*
 import com.google.android.material.navigation.NavigationView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import org.json.JSONObject
 
 
 var count = 0
@@ -24,6 +31,12 @@ var count = 0
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var toggle: ActionBarDrawerToggle
+    private var running = false
+    private val spotifyReceiverLyrics = Spotify.spotifyReceiver(::handleSongIntent)
+    private var lastSong = Song()
+    private var pausedSong = Song()
+    private var NetworkCall = CoroutineScope(Dispatchers.Main)
+
     private val loggerServiceIntentForeground by lazy {
         Intent(
             "START_FOREGROUND",
@@ -93,6 +106,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Toggle for Ad mute function - End
     }
 
+    override fun onStart() {
+        startLoggerService()
+        super.onStart()
+    }
+
     override fun onBackPressed() {
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -101,6 +119,71 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             super.onBackPressed()
         }
     }
+
+    private fun startLoggerService() {
+        if (running) return
+        registerReceiver(
+            spotifyReceiverLyrics,
+            Spotify.INTENT_FILTER
+        )
+        running = true
+    }
+
+    override fun onDestroy() {
+        unregisterReceiver(spotifyReceiverLyrics)
+        super.onDestroy()
+    }
+
+    private fun handleSongIntent(song: Song) {
+        if (song.isDuplicateOf(lastSong)) return
+        Log.e("FistSongIntent", "${song.id} ${song.playing}")
+        lastSong = song
+        when {
+            song.playing -> {
+                if (findViewById<TextView>(R.id.status).visibility == View.VISIBLE) {
+                    findViewById<TextView>(R.id.status).visibility = View.GONE
+                }
+                handleNewSongPlaying(song)
+            }
+            else -> handleSongNotPlaying(song)
+        }
+    }
+
+    private fun handleNewSongPlaying(newSong: Song) {
+        val tableLayout = findViewById<TableLayout>(R.id.lyricsContainer)
+        if (tableLayout.childCount != 0 && newSong.id != pausedSong.id) {
+            tableLayout.removeAllViews()
+        }
+        val songName = findViewById<TextView>(R.id.songname)
+        songName.text = newSong.track
+        NetworkCall.launch {
+            MusixmatchSyncLyric(
+                song = newSong,
+                view = findViewById(R.id.lyricsContainer),
+                parent = findViewById(R.id.LyricsView),
+                context = applicationContext,
+                activity = this@MainActivity
+            )
+        }
+//        NetworkCall.launch {
+//            GoogleLyric(
+//                albumName = newSong.album,
+//                artistName = newSong.artist,
+//                artistsName = newSong.artist,
+//                songName = newSong.track,
+//                songId = newSong.id,
+//                view = findViewById(R.id.lyricsContainer),
+//                context = applicationContext
+//            )
+//        }
+    }
+
+    private fun handleSongNotPlaying(song: Song) {
+        pausedSong = song
+        Run.handler.removeCallbacksAndMessages(null)
+//        Log.e("SongNotPlaying", "Handle song not playing $song")
+    }
+
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.getItemId()) {
