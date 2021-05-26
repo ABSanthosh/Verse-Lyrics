@@ -4,7 +4,6 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,7 +47,7 @@ class FontSelector : DialogFragment() {
                 progressBar.visibility = View.GONE
 
                 listView.onItemClickListener =
-                    AdapterView.OnItemClickListener { parent, view, position, id ->
+                    AdapterView.OnItemClickListener { _, _, position, _ ->
                         startFontDownload(fontList.getFontByID(position).queryString)
                     }
                 setListViewHeightBasedOnChildren(listView)

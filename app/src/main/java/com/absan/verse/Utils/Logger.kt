@@ -1,7 +1,6 @@
 package com.absan.verse.Utils
 
 import android.app.Service
-import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.media.AudioManager
@@ -11,6 +10,7 @@ import com.absan.verse.data.Song
 import com.absan.verse.data.Spotify
 import com.absan.verse.data.isDuplicateOf
 import kotlinx.coroutines.*
+
 
 class Logger : Service() {
     private val audioManager by lazy { applicationContext.getSystemService(Context.AUDIO_SERVICE) as AudioManager }
@@ -37,7 +37,6 @@ class Logger : Service() {
     }
 
     override fun onDestroy() {
-        Log.e("End", "Service Ended")
         unregisterReceiver(spotifyReceiver)
         super.onDestroy()
     }
@@ -57,10 +56,8 @@ class Logger : Service() {
         running = true
     }
 
-
     private fun handleSongIntent(song: Song) {
         if (song.isDuplicateOf(lastSong)) return
-        Log.e("SongIntent", "log: $song")
         lastSong = song
         when {
             song.playing -> handleNewSongPlaying(song)
@@ -69,7 +66,6 @@ class Logger : Service() {
     }
 
     private fun handleSongNotPlaying(song: Song) {
-        Log.d("SongNotPlaying", "Handle song not playing")
         listener.coroutineContext.cancelChildren()
     }
 
@@ -82,7 +78,6 @@ class Logger : Service() {
     }
 
     private fun handleNewSongPlaying(newSong: Song) {
-        Log.d("NewSong", "Handle song playing")
         listener.coroutineContext.cancelChildren()
         if (isMuted) {
             setUnmuteTimer(
@@ -93,12 +88,12 @@ class Logger : Service() {
     }
 
     private fun setUnmuteTimer(wait: Long) {
-        Log.d(ContentValues.TAG, "Unmuting in $wait ms")
         listener.launch {
             delay(wait)
             unmute()
         }
     }
+
 
     @Synchronized
     private fun mute() {
@@ -140,7 +135,6 @@ class Logger : Service() {
     }
 
     private fun setMuteTimer(wait: Long) {
-        Log.d(ContentValues.TAG, "Muting in $wait ms")
         listener.launch {
             delay(wait)
             mute()
