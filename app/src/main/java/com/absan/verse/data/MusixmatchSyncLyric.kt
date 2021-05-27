@@ -3,15 +3,17 @@ package com.absan.verse.data
 import android.app.Activity
 import android.content.Context
 import android.graphics.Typeface
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
+import android.view.View
 import android.widget.ScrollView
 import android.widget.TableLayout
 import android.widget.TextView
+import com.absan.verse.R
+import com.absan.verse.Utils.Run
 import com.absan.verse.Utils.generateTextView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import org.jsoup.Jsoup
@@ -19,10 +21,7 @@ import java.net.URLEncoder
 import kotlin.properties.Delegates
 
 var SyncList = mutableListOf<JSONObject>()
-val lyricLooper = CoroutineScope(Dispatchers.Default)
-var currentMills by Delegates.notNull<Long>()
-var previousMills by Delegates.notNull<Long>()
-var totalMills by Delegates.notNull<Long>()
+
 
 suspend fun MusixmatchSyncLyric(
     song: Song,
@@ -87,16 +86,30 @@ suspend fun MusixmatchSyncLyric(
         val lyricDiv = document!!.select("body").text()
 
 
-        val checker = JSONObject(lyricDiv)
+        val checker1 = JSONObject(lyricDiv)
             .getJSONObject("message")
             .getJSONObject("body")
             .getJSONObject("macro_calls")
-            .getJSONObject("track.lyrics.get")
+            .getJSONObject("track.subtitles.get")
             .getJSONObject("message")
             .getJSONObject("header")
             .getInt("status_code")
 
-        if (checker != 404) {
+        var checker2 = true
+
+        try {
+            val checker2check = JSONObject(lyricDiv)
+                .getJSONObject("message")
+                .getJSONObject("body")
+                .getJSONObject("macro_calls")
+                .getJSONObject("track.subtitles.get")
+                .getJSONObject("message")
+                .getJSONArray("body")
+        } catch (err: Exception) {
+            checker2 = false
+        }
+
+        if (checker1 != 404 && !checker2) {
             val JSONobj = JSONObject(
                 JSONObject(lyricDiv)
                     .getJSONObject("message")
@@ -131,82 +144,69 @@ suspend fun MusixmatchSyncLyric(
         }
     }
 }
-//
-//class Run {
-//    companion object {
-//        val handler: Handler = Handler(Looper.getMainLooper())
-//
-//        lateinit var process:()->Unit
-//
-//        fun after(delay: Long, activity: Activity) {
-//            handler.postDelayed({
-//                handler.removeCallbacks(process)
-//                activity.runOnUiThread {
-//                    process()
-//                }
-//            }, delay)
-//        }
-//        fun stop(){
-//            handler.removeCallbacks(process)
-//        }
-//    }
-//}
 
-class Run {
-    companion object {
-        val handler: Handler = Handler(Looper.getMainLooper())
-        fun after(delay: Long, activity: Activity, process: () -> Unit) {
-
-            handler.postDelayed({
-                activity.runOnUiThread {
-                    process()
-                }
-            }, delay)
-        }
-    }
-}
 
 fun startScrolling(view: ScrollView, table: TableLayout, song: Song, activity: Activity) {
 
     val tagDate = song.registeredTime
     val tagOffset = System.currentTimeMillis() - tagDate
     val startOffset = tagOffset + song.propagation()
-    Log.e("startOffset", "$startOffset : ${song.playbackPosition}")
+    val karaokeOffset = 100L
+    var firstLine = false
+//    Log.e("startOffset", "$startOffset : ${song.playbackPosition} : $tagOffset : $tagDate")
 //    relativeTimeOffset = lineOffset - song.propagation() - To be calculated for every line
 
     Run.handler.removeCallbacksAndMessages(null)
+
     SyncList.forEachIndexed { index, jsonObject ->
         val lyricLineOffset = (jsonObject.getJSONObject("time").getDouble("total") * 1000).toLong()
 
         if (lyricLineOffset >= song.playbackPosition) {
             val relativeTimeOffset = lyricLineOffset - song.propagation()
             if (relativeTimeOffset >= 0) {
-                Log.e("LyricLooper", "$relativeTimeOffset :${SyncList[index].getString("text")}")
+//                Log.e(
+//                    "LyricLooper",
+//                    "${lyricLineOffset} : " +
+//                            "${startOffset} : " +
+//                            "${song.playbackPosition} : " +
+//                            "${lyricLineOffset - startOffset} : " +
+//                            "${lyricLineOffset - song.playbackPosition} : " +
+//                            "${(if (firstLine) song.playbackPosition else startOffset).toLong()} : " +
+//                            "${lyricLineOffset - Math.abs((if (firstLine) song.playbackPosition else startOffset).toLong())} :" +
+//                            SyncList[index].getString("text")
+//                )
 
-                Run.after(lyricLineOffset - song.playbackPosition, activity) {
+                Run.after(
+                    (lyricLineOffset - song.playbackPosition), activity
+                ) {
                     changeUI(
                         view,
                         table,
                         index
                     )
                 }
+//                firstLine = true
             }
-        }else{
-            (table.getChildAt(index) as TextView).setTypeface(
-                (table.getChildAt(index) as TextView).typeface,
-                Typeface.BOLD
+        } else {
+            changeUI(
+                view,
+                table,
+                index
             )
+            firstLine = true
         }
     }
 }
 
 fun changeUI(view: ScrollView, table: TableLayout, position: Int) {
-    Log.e("LyricLooper", SyncList[position].getString("text"))
-    view.smoothScrollTo(0, table.getChildAt(position).top)
-    (table.getChildAt(position) as TextView).setTypeface(
-        (table.getChildAt(position) as TextView).typeface,
-        Typeface.BOLD
-    )
+//    Log.e("SyncLyrics", SyncList[position].getString("text"))
+    if (table.getChildAt(position) != null) {
+        view.smoothScrollTo(0, table.getChildAt(position).top)
+        (table.getChildAt(position) as TextView).setTypeface(
+            (table.getChildAt(position) as TextView).typeface,
+            Typeface.BOLD
+        )
+    }
 }
 
 
