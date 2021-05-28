@@ -3,6 +3,9 @@ package com.absan.verse.data
 import android.content.Context
 import android.util.Log
 import android.widget.TableLayout
+import android.widget.TextView
+import com.absan.verse.R
+import com.absan.verse.Utils.copyrightTextView
 import com.absan.verse.Utils.generateTextView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -62,10 +65,9 @@ suspend fun MusixmatchNormalLyric(
             "signature_protocol=sha1"
 
     Log.e("Query", googleQuery)
-
     withContext(Dispatchers.IO) {
         val document: org.jsoup.nodes.Document? =
-            Jsoup.connect(googleQuery).userAgent(userAgent).get()
+            Jsoup.connect(googleQuery).timeout(60 * 1000).userAgent(userAgent).get()
 
         val lyricDiv = document!!.select("body").text()
         val checker = JSONObject(lyricDiv)
@@ -90,9 +92,12 @@ suspend fun MusixmatchNormalLyric(
                     .getString("lyrics_body")
                     .split("\n")
 
-            withContext(Dispatchers.Main) {
-                JSONobj.forEachIndexed { _, c ->
-                    view.addView(generateTextView(context, c))
+            if (view.findViewById<TextView>(R.id.copyright) == null) {
+                withContext(Dispatchers.Main) {
+                    JSONobj.forEachIndexed { _, c ->
+                        view.addView(generateTextView(context, c))
+                    }
+                    view.addView(copyrightTextView(context, googleQuery))
                 }
             }
         } else {
@@ -104,6 +109,5 @@ suspend fun MusixmatchNormalLyric(
         }
 
     }
-
 
 }

@@ -3,6 +3,9 @@ package com.absan.verse.data
 import android.content.Context
 import android.util.Log
 import android.widget.TableLayout
+import android.widget.TextView
+import com.absan.verse.R
+import com.absan.verse.Utils.copyrightTextView
 import com.absan.verse.Utils.generateTextView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -26,18 +29,23 @@ suspend fun GoogleLyric(
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) " +
                 "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
 
+
     withContext(Dispatchers.IO) {
         val document: org.jsoup.nodes.Document? =
-            Jsoup.connect(googleQuery).userAgent(userAgent).get()
+            Jsoup.connect(googleQuery).timeout(60 * 1000).userAgent(userAgent).get()
 
-        val lyricDiv = document!!.select("[class='ifM9O']").first()
-
-        if (lyricDiv != null) {
+        val lyricDiv = document!!.select("span").select("[jsname='YS01Ge']").first() != null
+        if (lyricDiv) {
             Log.e("Protocol", "Google")
             val element: Elements = document.select("span").select("[jsname='YS01Ge']")
-            element.forEachIndexed { _, line ->
+            if (view.findViewById<TextView>(R.id.copyright) == null) {
                 withContext(Dispatchers.Main) {
-                    view.addView(generateTextView(context, line.text()))
+                    element.forEachIndexed { _, line ->
+                        view.addView(generateTextView(context, line.text()))
+                    }
+                    view.addView(copyrightTextView(context, googleQuery, true))
+
+
                 }
             }
 
@@ -51,6 +59,6 @@ suspend fun GoogleLyric(
 
         }
 
-    }
 
+    }
 }
