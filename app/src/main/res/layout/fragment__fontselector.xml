@@ -99,7 +99,7 @@
                 android:text="@string/Fragment__FontSelector_H1"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="22sp"
+                android:textSize="28sp"
                 android:textStyle="bold" />
 
             <!--            <ScrollView-->
@@ -128,21 +128,22 @@
                 android:text="@string/Fragment__FontSelector_TestContent"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="17sp"
+                android:textSize="24sp"
                 android:textStyle="normal" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/setFont"
                 android:layout_width="115dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/testContent"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="15dp"
-                android:text="Button" />
+                android:text="@string/Fragment__FontSelector_B1"
+                android:textAllCaps="false" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/setDefault"
                 android:layout_width="115dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/testContent"
@@ -150,14 +151,15 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="30dp"
-                android:layout_toEndOf="@+id/button"
-                android:text="Button" />
+                android:layout_toEndOf="@+id/setFont"
+                android:text="@string/Fragment__FontSelector_B2"
+                android:textAllCaps="false" />
 
             <TextView
                 android:id="@+id/H2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/button"
+                android:layout_below="@+id/setFont"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="18dp"
@@ -165,7 +167,7 @@
                 android:text="@string/Fragment__FontSelector_H2"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="22sp"
+                android:textSize="28sp"
                 android:textStyle="bold" />
 
 
@@ -175,13 +177,17 @@
             <!--                android:layout_below="@+id/H2"-->
             <!--                android:layout_height="323dp">-->
 
-            <ListView
+            <TableLayout
                 android:id="@+id/font__Listview"
-                android:layout_width="match_parent"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
 
                 android:layout_below="@+id/H2"
-                android:layout_marginTop="15dp" />
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp" />
 
 
             <!--            </RelativeLayout>-->
@@ -189,19 +195,6 @@
 
 
     </ScrollView>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/progressBarHolder"
-        android:layout_width="300dp"
-        android:layout_height="440dp"
-        android:alpha="0.4"
-        android:animateLayoutChanges="true"
-        android:background="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
