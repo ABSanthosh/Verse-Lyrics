@@ -49,9 +49,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation 'com.github.cachapa:ExpandableLayout:2.9.2'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.22'
-    implementation 'com.github.firatkarababa:downloadable-font-list-library:1.0.2'
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
