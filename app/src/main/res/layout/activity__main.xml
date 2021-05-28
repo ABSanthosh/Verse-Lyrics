@@ -77,6 +77,22 @@
             android:textAlignment="center"
             android:textSize="20sp" />
 
+        <TextView
+            android:id="@+id/verseRestart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/songname"
+            android:layout_alignStart="@+id/logo"
+            android:layout_alignEnd="@+id/logo"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="50dp"
+            android:fontFamily="@font/aladin"
+            android:text="@string/mainActivity"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:visibility="visible" />
+
         <ScrollView
             android:id="@+id/LyricsView"
             android:layout_width="match_parent"

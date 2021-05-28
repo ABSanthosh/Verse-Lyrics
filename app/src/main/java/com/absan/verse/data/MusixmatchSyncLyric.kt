@@ -4,21 +4,17 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.Typeface
 import android.util.Log
-import android.view.View
 import android.widget.ScrollView
 import android.widget.TableLayout
 import android.widget.TextView
-import com.absan.verse.R
 import com.absan.verse.Utils.Run
+import com.absan.verse.Utils.copyrightTextView
 import com.absan.verse.Utils.generateTextView
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import org.jsoup.Jsoup
 import java.net.URLEncoder
-import kotlin.properties.Delegates
 
 var SyncList = mutableListOf<JSONObject>()
 
@@ -77,11 +73,11 @@ suspend fun MusixmatchSyncLyric(
             "signature=9uqG34C5SPnXUjFJTGzJdlyM%2BYI%3D&" +
             "signature_protocol=sha1"
 
-    Log.e("Query", "$googleQuery")
+    Log.e("Query", googleQuery)
 
     withContext(Dispatchers.IO) {
         val document: org.jsoup.nodes.Document? =
-            Jsoup.connect(googleQuery).userAgent(userAgent).get()
+            Jsoup.connect(googleQuery).timeout(60 * 1000).userAgent(userAgent).get()
 
         val lyricDiv = document!!.select("body").text()
 
@@ -127,12 +123,16 @@ suspend fun MusixmatchSyncLyric(
                 .split("},{").toTypedArray()
                 .map { JSONObject("{$it}") }
             SyncList.clear()
+
+//            if (view.findViewById<TextView>(R.id.copyright) == null) {
             withContext(Dispatchers.Main) {
-                JSONobj.forEachIndexed { index, c ->
+                JSONobj.forEachIndexed { _, c ->
                     view.addView(generateTextView(context, c.getString("text")))
                     SyncList.add(c)
                 }
+                view.addView(copyrightTextView(context, googleQuery))
             }
+//            }
             startScrolling(parent, view, song, activity)
 
         } else {
@@ -164,17 +164,17 @@ fun startScrolling(view: ScrollView, table: TableLayout, song: Song, activity: A
         if (lyricLineOffset >= song.playbackPosition) {
             val relativeTimeOffset = lyricLineOffset - song.propagation()
             if (relativeTimeOffset >= 0) {
-//                Log.e(
-//                    "LyricLooper",
-//                    "${lyricLineOffset} : " +
-//                            "${startOffset} : " +
-//                            "${song.playbackPosition} : " +
-//                            "${lyricLineOffset - startOffset} : " +
-//                            "${lyricLineOffset - song.playbackPosition} : " +
-//                            "${(if (firstLine) song.playbackPosition else startOffset).toLong()} : " +
-//                            "${lyricLineOffset - Math.abs((if (firstLine) song.playbackPosition else startOffset).toLong())} :" +
-//                            SyncList[index].getString("text")
-//                )
+                Log.e(
+                    "LyricLooper",
+                    "${lyricLineOffset} : " +
+                            "${startOffset} : " +
+                            "${song.playbackPosition} : " +
+                            "${lyricLineOffset - startOffset} : " +
+                            "${lyricLineOffset - song.playbackPosition} : " +
+                            "${(if (firstLine) song.playbackPosition else startOffset).toLong()} : " +
+                            "${lyricLineOffset - Math.abs((if (firstLine) song.playbackPosition else startOffset).toLong())} :" +
+                            SyncList[index].getString("text")
+                )
 
                 Run.after(
                     (lyricLineOffset - song.playbackPosition), activity
