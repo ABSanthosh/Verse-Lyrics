@@ -11,7 +11,12 @@
                 android:id="@+id/adblockmenu"
                 android:icon="@drawable/navbar__blockad"
                 android:title="@string/Navbar__BlockAd"
-                app:actionLayout="@layout/navbar__button" />
+                app:actionLayout="@layout/navbar__button__muteads" />
+            <item
+                android:id="@+id/synclyricmenu"
+                android:icon="@drawable/navbar__normallyric"
+                android:title="@string/Navbar__NormalLyric"
+                app:actionLayout="@layout/navbar__button__synclyrics" />
         </menu>
 
     </item>
