@@ -1,26 +1,37 @@
 package com.absan.verse.ui
 
+import android.content.Context
+import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
+import android.util.TypedValue
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
-import androidx.core.provider.FontRequest
-import androidx.core.provider.FontsContractCompat
+import android.widget.Button
+import android.widget.RelativeLayout
+import android.widget.TableLayout
+import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.DialogFragment
 import com.absan.verse.R
-import com.koolio.library.DownloadableFontList
-import com.koolio.library.DownloadableFontList.FontListCallback
-import com.koolio.library.FontList
+import com.absan.verse.Utils.ResetLyricView
+import com.absan.verse.Utils.requestCustomFont
+import com.absan.verse.data.Constants.TYPEFACE
+
 
 class FontSelector : DialogFragment() {
-    private val API_KEY = "LOL Get your own key"
-    private var mHandler: Handler? = null
     lateinit var textContent: TextView
-
+    private val mainPrefInstance by lazy {
+        activity!!.applicationContext.getSharedPreferences(
+            "main",
+            Context.MODE_PRIVATE
+        )
+    }
+    private lateinit var mHandler: Handler
 
     override fun getTheme() = R.style.RoundedCornersDialog
     override fun onCreateView(
@@ -29,100 +40,86 @@ class FontSelector : DialogFragment() {
     ): View? {
 
 
-        val fontListCallback: FontListCallback = object : FontListCallback {
-            override fun onFontListRetrieved(fontList: FontList) {
-                val listView = view!!.findViewById<ListView>(R.id.font__Listview)
-                val progressBar: androidx.constraintlayout.widget.ConstraintLayout =
-                    view!!.findViewById(R.id.progressBarHolder)
-
-                textContent = view?.findViewById(R.id.testContent)!!
-                listView!!.adapter = ArrayAdapter(
-                    context!!.applicationContext,
-                    R.layout.font__listitem, R.id.fontName, fontList.fontFamilyList.toTypedArray()
-                )
-                Toast.makeText(
-                    activity!!.applicationContext,
-                    "Fonts Loaded", Toast.LENGTH_LONG
-                ).show()
-                progressBar.visibility = View.GONE
-
-                listView.onItemClickListener =
-                    AdapterView.OnItemClickListener { _, _, position, _ ->
-                        startFontDownload(fontList.getFontByID(position).queryString)
-                    }
-                setListViewHeightBasedOnChildren(listView)
-
-            }
-
-            override fun onTypefaceRequestFailed(reason: Int) {
-            }
-        }
-
-        DownloadableFontList.requestDownloadableFontList(fontListCallback, API_KEY)
-
         return inflater.inflate(R.layout.fragment__fontselector, container, false)
     }
 
-    fun setListViewHeightBasedOnChildren(listView: ListView) {
-        val listAdapter = listView.adapter ?: return
-        var totalHeight = 0
-        var i = 0
-        val len = listAdapter.count
-        while (i < len) {
-            val listItem = listAdapter.getView(i, null, listView)
-            listItem.measure(0, 0)
-            totalHeight += listItem.measuredHeight
-            i++
-        }
-        val params = listView.layoutParams
-        params.height = (totalHeight
-                + listView.dividerHeight * (listAdapter.count - 1))
-        listView.layoutParams = params
-    }
+    override fun onStart() {
 
-    private fun startFontDownload(query: String) {
-        val request = FontRequest(
-            "com.google.android.gms.fonts",
-            "com.google.android.gms",
-            query,
-            R.array.com_google_android_gms_fonts_certs
+        textContent = view?.findViewById(R.id.testContent)!!
+        view!!.findViewById<Button>(R.id.setDefault).setOnClickListener {
+            mainPrefInstance.edit().apply {
+                putString("FontQuery", null)
+            }.apply()
+            TYPEFACE = Typeface.DEFAULT
+            ResetLyricView(activity!!.findViewById(R.id.lyricsContainer), context)
+            textContent.setTypeface(ResourcesCompat.getFont(context!!, R.font.walter_turncoat))
+        }
+
+        view!!.findViewById<Button>(R.id.setFont).setOnClickListener {
+            if (TYPEFACE != Typeface.DEFAULT) ResetLyricView(activity!!.findViewById(R.id.lyricsContainer))
+            TYPEFACE = textContent.typeface
+            ResetLyricView(activity!!.findViewById(R.id.lyricsContainer), context)
+        }
+
+
+        val handlerThread = HandlerThread("fonts")
+        handlerThread.start()
+        mHandler = Handler(handlerThread.looper)
+
+        val listView = view!!.findViewById<TableLayout>(R.id.font__Listview)
+
+        if (TYPEFACE != Typeface.DEFAULT) textContent.typeface = TYPEFACE
+
+        val sizeInDPHeight = 50
+        val sizeInDPMargin = 20
+        val HeightInDp = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP, sizeInDPHeight.toFloat(), resources
+                .displayMetrics
+        ).toInt()
+        val MarginInDp = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP, sizeInDPMargin.toFloat(), resources
+                .displayMetrics
+        ).toInt()
+
+        val params = RelativeLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            HeightInDp
         )
-        val callback: FontsContractCompat.FontRequestCallback =
-            object : FontsContractCompat.FontRequestCallback() {
-                override fun onTypefaceRetrieved(typeface: Typeface?) {
-                    textContent.typeface = typeface
-                    Toast.makeText(
-                        activity!!.applicationContext,
-                        "Preview Font set to: ${query.split("name=")[1].split("&weight")[0]}",
-                        Toast.LENGTH_LONG
+        params.setMargins(MarginInDp, 0, MarginInDp, 0)
+        val outval = TypedValue()
+        context!!.theme.resolveAttribute(android.R.attr.selectableItemBackground, outval, true)
+        val adview = Thread {
+            resources.getStringArray(R.array.family_names).forEachIndexed { _, s ->
+                val fontName = TextView(context)
+                fontName.text = s
+                fontName.textSize = 24F
+                fontName.layoutParams = params
+                fontName.setPadding(MarginInDp, 0, 0, 0)
+                fontName.setTextColor(Color.parseColor("#000000"))
+                fontName.isClickable = true
+                fontName.isFocusable = true
+                fontName.gravity = Gravity.CENTER_VERTICAL
+                fontName.setBackgroundResource(outval.resourceId)
+                fontName.setOnClickListener {
+                    requestCustomFont(
+                        context = context!!,
+                        familyName = (fontName.text).toString(),
+                        mHandler = mHandler,
+                        textView = textContent,
+                        setConstant = false
                     )
-                        .show()
                 }
+                   activity?.runOnUiThread { listView.addView(fontName)}
 
-                override fun onTypefaceRequestFailed(reason: Int) {
-                    Toast.makeText(
-                        activity!!.applicationContext,
-                        "Unable to fetch this font", Toast.LENGTH_LONG
-                    )
-                        .show()
-                }
             }
-        getHandlerThreadHandler()?.let {
-            FontsContractCompat
-                .requestFont(
-                    activity!!.applicationContext, request, callback,
-                    it
-                )
         }
-    }
-
-    private fun getHandlerThreadHandler(): Handler? {
-        if (mHandler == null) {
-            val handlerThread = HandlerThread("fonts")
-            handlerThread.start()
-            mHandler = Handler(handlerThread.looper)
+        if(adview.isAlive){
+            adview.run()
+        }else{
+            adview.start()
         }
-        return mHandler
-    }
 
+
+        super.onStart()
+    }
 }
