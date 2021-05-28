@@ -12,6 +12,7 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="mainActivity">Pause and Resume song to see effects</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
@@ -34,6 +35,8 @@
     <string name="Navbar__Font">Fonts</string>
     <string name="Navbar__Feedback">Feedback</string>
     <string name="Navbar__DevName">AB Santhosh</string>
+    <string name="Navbar__NormalLyric">Static Lyrics</string>
+    <string name="Navbar__SyncLyric">Live Lyrics(Beta)</string>
     <string name="Navbar__Open">Navigation Drawer opened</string>
     <string name="Navbar__Close">Navigation Drawer Closed</string>
 
@@ -59,8 +62,11 @@
     <!--  Font Selector Fragment  -->
     <string name="Fragment__FontSelector">Font Selector</string>
     <string name="Fragment__FontSelector_H1">Preview</string>
-    <string name="Fragment__FontSelector_TestContent">Lorem ipsum dolor sit\n\nAenean a nisl lobortis, ullamcorper\n\nIn sagittis lacus eu neque venenatis ullamcorper.\n\nNunc et massa in sem ultricies placerat.\n\nSed vitae urna vel magna congue rutrum vel at tellus.\n\nNulla volutpat lacus ac eros placerat elementum.</string>
+    <string name="Fragment__FontSelector_TestContent">Lorem ipsum dolor sit\n\nAenean a nisl lobortis, ullamcorper\n\nIn sagittis lacus eu neque venenatis.</string>
     <string name="Fragment__FontSelector_H2">Select a Font</string>
+    <string name="Fragment__FontSelector_B1">Set Font</string>
+    <string name="Fragment__FontSelector_B2">Default</string>
+
 
     <!--  Help Me Fragment  -->
     <string name="Fragment__Help">Help</string>
@@ -71,6 +77,10 @@
     <string name="Fragment__Help_H3">Only song name no lyrics?</string>
     <string name="Fragment__Help_C3">Even though google have lyrics to almost all the songs, There are no available lyrics for some songs. Unfortunately I can\'t do much in that case :(</string>
 
+    <!--  FirstTime Fragment  -->
+    <string name="Fragment__FirstTime">Set Up</string>
+    <string name="Fragment__FirstTime_H1">Broadcast status</string>
+    <string name="Fragment__FirstTime_C1">Verse detects the current playing song through Spotify\'s in-built Broadcast Status feature. Turn it on to start using Verse</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="MuteAds">Mute Ads coming soon</string>
