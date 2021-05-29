@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.absan.verse.R
 import kotlinx.coroutines.Dispatchers
@@ -49,7 +50,7 @@ suspend fun copyrightTextView(
         } else {
 //            try {
                 val document: org.jsoup.nodes.Document? =
-                    Jsoup.connect(googleQuery).userAgent(userAgent).get()
+                    Jsoup.connect(googleQuery).timeout(60 * 1000).userAgent(userAgent).get()
                 val lyricSource: Element =
                     document!!.select("div").select("[class='j04ED']").first()
                 copyrightText = "${lyricSource.text()} \n"
@@ -70,6 +71,7 @@ suspend fun copyrightTextView(
         ViewGroup.LayoutParams.MATCH_PARENT,
         ViewGroup.LayoutParams.WRAP_CONTENT
     )
+    copyrightLine.setTextColor(ContextCompat.getColor(context,R.color.textColor))
     params.setMargins(0, 0, 0, 15)
     copyrightLine.layoutParams = params
     copyrightLine.typeface = ResourcesCompat.getFont(context, R.font.walter_turncoat)
