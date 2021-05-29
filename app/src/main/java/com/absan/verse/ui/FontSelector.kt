@@ -15,6 +15,7 @@ import android.widget.Button
 import android.widget.RelativeLayout
 import android.widget.TableLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.DialogFragment
 import com.absan.verse.R
@@ -95,7 +96,7 @@ class FontSelector : DialogFragment() {
                 fontName.textSize = 24F
                 fontName.layoutParams = params
                 fontName.setPadding(MarginInDp, 0, 0, 0)
-                fontName.setTextColor(Color.parseColor("#000000"))
+                fontName.setTextColor(ContextCompat.getColor(context!!,R.color.textColor))
                 fontName.isClickable = true
                 fontName.isFocusable = true
                 fontName.gravity = Gravity.CENTER_VERTICAL
