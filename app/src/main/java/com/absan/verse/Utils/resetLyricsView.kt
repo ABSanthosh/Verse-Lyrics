@@ -14,8 +14,8 @@ fun ResetLyricView(table: TableLayout, context: Context? = null) {
     for(i in 0 until table.childCount-1) {
         if (table.getChildAt(i) != null) {
             (table.getChildAt(i) as TextView).setTypeface(
-                if(TYPEFACE != Typeface.DEFAULT) TYPEFACE else (
-                    ResourcesCompat.getFont(context!!,R.font.walter_turncoat)),
+                if(TYPEFACE != Typeface.DEFAULT || context == null) TYPEFACE else (
+                    ResourcesCompat.getFont(context,R.font.walter_turncoat)),
                 Typeface.NORMAL
             )
         }
