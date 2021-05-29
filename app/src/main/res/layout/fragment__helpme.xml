@@ -8,6 +8,7 @@
     <ScrollView
         android:layout_width="300dp"
         android:layout_height="440dp"
+        android:background="@color/fragcolor"
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,6 +35,7 @@
                 android:rotation="-90"
                 android:rotationY="0"
                 app:srcCompat="@drawable/fragment__border"
+                app:tint="@color/metaTextColor"
                 tools:ignore="VectorDrawableCompat" />
 
             <ImageView
@@ -46,6 +48,7 @@
                 android:layout_marginEnd="-5dp"
                 android:contentDescription="@string/Fragment__Border"
                 app:srcCompat="@drawable/fragment__border"
+                app:tint="@color/metaTextColor"
                 tools:ignore="VectorDrawableCompat" />
 
 
@@ -60,6 +63,7 @@
                 android:contentDescription="@string/Fragment__Border"
                 android:rotation="-180"
                 app:srcCompat="@drawable/fragment__border"
+                app:tint="@color/metaTextColor"
                 tools:ignore="VectorDrawableCompat" />
 
             <ImageView
@@ -72,6 +76,7 @@
                 android:contentDescription="@string/Fragment__Border"
                 android:rotation="90"
                 app:srcCompat="@drawable/fragment__border"
+                app:tint="@color/metaTextColor"
                 tools:ignore="VectorDrawableCompat" />
 
             <pl.droidsonroids.gif.GifImageView
@@ -96,7 +101,7 @@
                 android:fontFamily="@font/aladin"
                 android:text="@string/Fragment__Help"
                 android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="@color/textColor"
                 android:textSize="45sp" />
 
             <TextView
@@ -110,7 +115,7 @@
                 android:fontFamily="@font/aladin"
                 android:text="@string/Fragment__Help_H1"
                 android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="@color/textColor"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -125,7 +130,7 @@
                 android:fontFamily="sans-serif"
                 android:text="@string/Fragment__Help_C1"
                 android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="@color/textColor"
                 android:textSize="17sp"
                 android:textStyle="normal" />
 
@@ -141,7 +146,7 @@
                 android:fontFamily="@font/aladin"
                 android:text="@string/Fragment__Help_H2"
                 android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="@color/textColor"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -156,7 +161,7 @@
                 android:fontFamily="sans-serif"
                 android:text="@string/Fragment__Help_C2"
                 android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="@color/textColor"
                 android:textSize="17sp"
                 android:textStyle="normal" />
 
@@ -171,7 +176,7 @@
                 android:fontFamily="@font/aladin"
                 android:text="@string/Fragment__Help_H3"
                 android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="@color/textColor"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -186,7 +191,7 @@
                 android:fontFamily="sans-serif"
                 android:text="@string/Fragment__Help_C3"
                 android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="@color/textColor"
                 android:textSize="17sp"
                 android:textStyle="normal" />
 
