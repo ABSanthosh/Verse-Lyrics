@@ -22,7 +22,10 @@ class Logger : Service() {
     private val UNMUTEDELAY = 100
     private val listener = CoroutineScope(Dispatchers.Default)
     private var running = false
+    private val mainPrefInstance by lazy { getSharedPreferences("main", Context.MODE_PRIVATE) }
     private val spotifyReceiver = Spotify.spotifyReceiver(::handleSongIntent)
+
+    private var adsMutedCounter = 0
 
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -91,6 +94,7 @@ class Logger : Service() {
         listener.launch {
             delay(wait)
             unmute()
+            logAdMuted()
         }
     }
 
@@ -117,6 +121,11 @@ class Logger : Service() {
         } else {
             audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 20, 0);
         }
+    }
+
+    private fun logAdMuted() {
+        adsMutedCounter++
+        mainPrefInstance.edit().apply { putInt("AdCount", adsMutedCounter) }.apply()
     }
 
     private fun actionMute() {
