@@ -10,6 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/bgColor"
         tools:context=".MainActivity">
 
         <include layout="@layout/navbar__toolbar" />
@@ -40,6 +41,7 @@
             android:textAlignment="center"
             android:textSize="65sp"
             android:visibility="invisible"
+            android:textColor="@color/textColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -56,6 +58,7 @@
             android:layout_alignTop="@+id/logo"
             android:layout_alignEnd="@+id/logo"
             android:layout_marginStart="0dp"
+            android:textColor="@color/textColor"
             android:layout_marginTop="80dp"
             android:layout_marginEnd="0dp"
             android:fontFamily="@font/caveat_brush"
@@ -71,6 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/logo"
             android:layout_alignEnd="@+id/logo"
+            android:textColor="@color/textColor"
             android:layout_alignBottom="@+id/logo"
             android:layout_marginEnd="0dp"
             android:text="@string/status"
@@ -87,6 +91,7 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="120dp"
             android:layout_marginEnd="50dp"
+            android:textColor="@color/textColor"
             android:fontFamily="@font/aladin"
             android:text="@string/mainActivity"
             android:textAlignment="center"
@@ -109,7 +114,9 @@
             <TableLayout
                 android:id="@+id/lyricsContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:paddingStart="7dp"
+                android:paddingEnd="7dp" />
         </ScrollView>
 
     </RelativeLayout>
@@ -120,6 +127,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        android:background="@color/navcolor"
+        app:itemIconTint="@color/metaTextColor"
+        app:itemTextColor="@color/metaTextColor"
         app:headerLayout="@layout/navbar__header"
         app:menu="@menu/navmenu" />
 
