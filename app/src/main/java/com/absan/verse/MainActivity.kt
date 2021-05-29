@@ -3,12 +3,10 @@ package com.absan.verse
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.graphics.Typeface
+import android.content.res.Configuration
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.HandlerThread
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -17,6 +15,7 @@ import android.view.WindowManager
 import android.widget.TableLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -52,7 +51,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         )
     }
 
-    companion object{
+    companion object {
 
     }
 
@@ -70,6 +69,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             )
         }
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity__main)
 
         // Sharedpref setup - start
@@ -99,14 +99,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         logo.visibility = View.VISIBLE
         //Navigation Drawer -- End
 
-        //General setup - Start
-        val lyricTableLayout:TableLayout = findViewById(R.id.lyricsContainer)
-        //General setup - End
-
-
 
         // Toggle for Ad mute function - Start
         val menuItem__adblock: MenuItem = navigationView.menu.findItem(R.id.adblockmenu)
+        menuItem__adblock.actionView.findViewById<TextView>(R.id.AdCount).text =
+            mainPrefInstance.getInt("AdCount", 0).toString()
+
         val toggleButton__adblock: androidx.appcompat.widget.SwitchCompat =
             menuItem__adblock.actionView.findViewById(R.id.MuteAds__toggle)
         toggleButton__adblock.setOnCheckedChangeListener { _, isChecked ->
@@ -190,7 +188,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    @SuppressLint("CutPasteId", "UseCompatLoadingForDrawables")
     override fun onStart() {
+        val navigationView = findViewById<NavigationView>(R.id.navView)
+        val menuItem__adblock: MenuItem = navigationView.menu.findItem(R.id.adblockmenu)
+        menuItem__adblock.actionView.findViewById<TextView>(R.id.AdCount).text =
+            mainPrefInstance.getInt("AdCount", 0).toString()
+
         startLoggerService()
 
         if (mainPrefInstance.getBoolean("FirstTime", true)) FirstTime().show(
@@ -198,17 +203,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             "First time"
         )
 
-        if (Constants.TYPEFACE == Typeface.DEFAULT) {
-            val handlerThread = HandlerThread("fonts")
-            handlerThread.start()
-            requestCustomFont(
-                this,
-                mainPrefInstance.getString("FontQuery", null).toString(),
-                Handler(handlerThread.looper)
-            )
-        }
-
-        val navigationView = findViewById<NavigationView>(R.id.navView)
         navigationView.menu.findItem(R.id.adblockmenu)
             .actionView
             .findViewById<androidx.appcompat.widget.SwitchCompat>(R.id.MuteAds__toggle)
@@ -218,6 +212,24 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             .actionView
             .findViewById<androidx.appcompat.widget.SwitchCompat>(R.id.SyncLyric__toggle)
             .isChecked = mainPrefInstance.getBoolean("SyncLyrics", false)
+
+
+        val navDraw = findViewById<NavigationView>(R.id.navView).menu.findItem(R.id.mode)
+        when {
+            mainPrefInstance.getString("Theme", "light") == "light" -> {
+                navDraw.title = "Light Mode"
+                navDraw.icon = getDrawable(R.drawable.navbar__lightmode)
+            }
+            mainPrefInstance.getString("Theme", "light") == "dark" -> {
+                navDraw.title = "Dark Mode"
+                navDraw.icon = getDrawable(R.drawable.navbar__darkmode)
+            }
+            mainPrefInstance.getString("Theme", "light") == "default" -> {
+                navDraw.title = "Default Mode"
+                navDraw.icon = getDrawable(R.drawable.navbar__defaultmode)
+            }
+        }
+
 
         super.onStart()
     }
@@ -247,6 +259,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun handleSongIntent(song: Song) {
         if (song.isDuplicateOf(lastSong)) return
+
+        // Ad counter Updating
+        val navigationView = findViewById<NavigationView>(R.id.navView)
+        val menuItem__adblock: MenuItem = navigationView.menu.findItem(R.id.adblockmenu)
+        menuItem__adblock.actionView.findViewById<TextView>(R.id.AdCount).text =
+            mainPrefInstance.getInt("AdCount", 0).toString()
+
         Log.e("FistSongIntent", "${song.id} ${song.playing}")
         lastSong = song
         when {
@@ -280,7 +299,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (newSong.id != pausedSong.id) {
             tableLayout.removeAllViews()
         }
-
+        if (findViewById<TextView>(R.id.verseRestart).visibility == View.VISIBLE) {
+            findViewById<TextView>(R.id.verseRestart).visibility = View.GONE
+        }
         try {
             Run.handler.removeCallbacksAndMessages(null)
         } catch (err: Exception) {
@@ -301,6 +322,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (newSong.id != pausedSong.id) {
             tableLayout.removeAllViews()
         }
+        if (findViewById<TextView>(R.id.verseRestart).visibility == View.VISIBLE) {
+            findViewById<TextView>(R.id.verseRestart).visibility = View.GONE
+        }
         try {
             Run.handler.removeCallbacksAndMessages(null)
         } catch (err: Exception) {
@@ -319,7 +343,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         Run.handler.removeCallbacksAndMessages(null)
     }
 
+    fun Context.isDarkThemeOn(): Boolean {
+        return resources.configuration.uiMode and
+                Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
+    }
 
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.getItemId()) {
             R.id.open_spotify -> OpenSpotify(this)
@@ -331,8 +362,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 MuteAds().show(supportFragmentManager, "Ad Mute")
             }
             R.id.helper -> {
-//                HelpMe().show(supportFragmentManager, "Help me")
-                ResetLyricView(table = findViewById(R.id.lyricsContainer))
+                HelpMe().show(supportFragmentManager, "Help me")
             }
             R.id.newfeatures -> {
                 WhatsNew().show(supportFragmentManager, "Whats New")
@@ -344,6 +374,27 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 FontSelector().show(supportFragmentManager, "Font")
             }
             R.id.mode -> {
+                val navDraw = findViewById<NavigationView>(R.id.navView).menu.findItem(R.id.mode)
+                when {
+                    mainPrefInstance.getString("Theme", "light") == "light" -> {
+                        mainPrefInstance.edit().apply { putString("Theme", "dark") }.apply()
+                        navDraw.title = "Dark Mode"
+                        navDraw.icon = getDrawable(R.drawable.navbar__darkmode)
+                        ThemeHelper.applyTheme("dark")
+                    }
+                    mainPrefInstance.getString("Theme", "light") == "dark" -> {
+                        mainPrefInstance.edit().apply { putString("Theme", "default") }.apply()
+                        navDraw.title = "Default Mode"
+                        navDraw.icon = getDrawable(R.drawable.navbar__defaultmode)
+                        ThemeHelper.applyTheme("default", isDarkThemeOn())
+                    }
+                    mainPrefInstance.getString("Theme", "light") == "default" -> {
+                        mainPrefInstance.edit().apply { putString("Theme", "light") }.apply()
+                        navDraw.title = "Light Mode"
+                        navDraw.icon = getDrawable(R.drawable.navbar__lightmode)
+                        ThemeHelper.applyTheme("light")
+                    }
+                }
             }
             R.id.myname -> {
                 RickRollcount++;
