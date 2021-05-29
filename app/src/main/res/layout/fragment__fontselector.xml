@@ -13,6 +13,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/fragcolor"
         app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
@@ -33,6 +34,7 @@
                 android:rotation="-90"
                 android:rotationY="0"
                 app:srcCompat="@drawable/fragment__border"
+                app:tint="@color/metaTextColor"
                 tools:ignore="VectorDrawableCompat" />
 
             <ImageView
@@ -45,6 +47,7 @@
                 android:layout_marginEnd="-5dp"
                 android:contentDescription="@string/Fragment__Border"
                 app:srcCompat="@drawable/fragment__border"
+                app:tint="@color/metaTextColor"
                 tools:ignore="VectorDrawableCompat" />
 
             <ImageView
@@ -59,6 +62,7 @@
                 android:contentDescription="@string/Fragment__Border"
                 android:rotation="-180"
                 app:srcCompat="@drawable/fragment__border"
+                app:tint="@color/metaTextColor"
                 tools:ignore="VectorDrawableCompat" />
 
             <ImageView
@@ -72,6 +76,7 @@
                 android:layout_marginEnd="-5dp"
                 android:contentDescription="@string/Fragment__Border"
                 android:rotation="90"
+                app:tint="@color/metaTextColor"
                 app:srcCompat="@drawable/fragment__border"
                 tools:ignore="VectorDrawableCompat" />
 
@@ -84,7 +89,7 @@
                 android:fontFamily="@font/aladin"
                 android:text="@string/Fragment__FontSelector"
                 android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="@color/textColor"
                 android:textSize="45sp" />
 
             <TextView
@@ -98,44 +103,39 @@
                 android:fontFamily="@font/aladin"
                 android:text="@string/Fragment__FontSelector_H1"
                 android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="@color/textColor"
                 android:textSize="28sp"
                 android:textStyle="bold" />
 
-            <!--            <ScrollView-->
-            <!--                android:id="@+id/testContent"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="match_parent"-->
-            <!--                android:layout_below="@+id/H1"-->
-            <!--                android:layout_alignParentStart="true"-->
-            <!--                android:layout_alignParentEnd="true"-->
-            <!--                android:layout_marginStart="0dp"-->
-            <!--                android:layout_marginEnd="0dp">-->
-
-            <!--            </ScrollView>-->
-
-            <TextView
-                android:id="@+id/testContent"
+            <ScrollView
                 android:layout_width="211dp"
+                android:focusable="true"
                 android:layout_height="188dp"
                 android:layout_below="@+id/H1"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
+                android:id="@+id/testContentContainer"
+                >
+            <TextView
+                android:id="@+id/testContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="45dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="45dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/Fragment__FontSelector_TestContent"
                 android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="@color/textColor"
                 android:textSize="24sp"
                 android:textStyle="normal" />
+            </ScrollView>
 
             <Button
                 android:id="@+id/setFont"
                 android:layout_width="115dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/testContent"
+                android:layout_below="@+id/testContentContainer"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="15dp"
@@ -146,7 +146,7 @@
                 android:id="@+id/setDefault"
                 android:layout_width="115dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/testContent"
+                android:layout_below="@+id/testContentContainer"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
@@ -166,16 +166,10 @@
                 android:fontFamily="@font/aladin"
                 android:text="@string/Fragment__FontSelector_H2"
                 android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="@color/textColor"
                 android:textSize="28sp"
                 android:textStyle="bold" />
 
-
-            <!--            <RelativeLayout-->
-            <!--                android:id="@+id/fqyou"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_below="@+id/H2"-->
-            <!--                android:layout_height="323dp">-->
 
             <TableLayout
                 android:id="@+id/font__Listview"
@@ -189,8 +183,6 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="20dp" />
 
-
-            <!--            </RelativeLayout>-->
         </RelativeLayout>
 
 
