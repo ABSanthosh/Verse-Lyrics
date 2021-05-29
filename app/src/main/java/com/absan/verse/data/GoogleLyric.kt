@@ -11,6 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.jsoup.Jsoup
 import org.jsoup.select.Elements
+import java.lang.Exception
 import java.net.URLEncoder
 
 
@@ -31,34 +32,35 @@ suspend fun GoogleLyric(
 
 
     withContext(Dispatchers.IO) {
-        val document: org.jsoup.nodes.Document? =
-            Jsoup.connect(googleQuery).timeout(60 * 1000).userAgent(userAgent).get()
+        try {
+            val document: org.jsoup.nodes.Document? =
+                Jsoup.connect(googleQuery).timeout(60 * 1000).userAgent(userAgent).get()
 
-        val lyricDiv = document!!.select("span").select("[jsname='YS01Ge']").first() != null
-        if (lyricDiv) {
-            Log.e("Protocol", "Google")
-            val element: Elements = document.select("span").select("[jsname='YS01Ge']")
-            if (view.findViewById<TextView>(R.id.copyright) == null) {
-                withContext(Dispatchers.Main) {
-                    element.forEachIndexed { _, line ->
-                        view.addView(generateTextView(context, line.text()))
+            val lyricDiv = document!!.select("span").select("[jsname='YS01Ge']").first() != null
+            if (lyricDiv) {
+                Log.e("Protocol", "Google")
+                val element: Elements = document.select("span").select("[jsname='YS01Ge']")
+                if (view.findViewById<TextView>(R.id.copyright) == null) {
+                    withContext(Dispatchers.Main) {
+                        element.forEachIndexed { _, line ->
+                            view.addView(generateTextView(context, line.text()))
+                        }
+                        view.addView(copyrightTextView(context, googleQuery, true))
+
+
                     }
-                    view.addView(copyrightTextView(context, googleQuery, true))
-
-
                 }
+
+            } else {
+                Log.e("Protocol", "Musixmatch")
+                MusixmatchNormalLyric(
+                    song = song,
+                    view = view,
+                    context = context
+                )
+
             }
 
-        } else {
-            Log.e("Protocol", "Musixmatch")
-            MusixmatchNormalLyric(
-                song = song,
-                view = view,
-                context = context
-            )
-
-        }
-
-
+        }catch (err:Exception){}
     }
 }
