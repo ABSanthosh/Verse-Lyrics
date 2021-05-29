@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.absan.verse.R
 import com.absan.verse.data.Constants.TYPEFACE
@@ -20,10 +21,11 @@ fun generateTextView(context: Context, text: String): TextView {
 
     val lyricLine = TextView(context)
     lyricLine.textAlignment = View.TEXT_ALIGNMENT_CENTER
+    lyricLine.setTextColor(ContextCompat.getColor(context,R.color.textColor))
     if (text == "") {
         lyricLine.text = "♫\n"
     } else {
-        lyricLine.text = "${text} \n"
+        lyricLine.text = "$text \n"
     }
     val params = LinearLayout.LayoutParams(
         ViewGroup.LayoutParams.MATCH_PARENT,
