@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="15dp"
+    android:layout_marginTop="7.5dp"
+    android:layout_marginEnd="15dp"
+    android:layout_marginBottom="7.5dp"
+    android:background="@color/recyclerColor"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="8dp">
+
+    <RelativeLayout
+        android:id="@+id/saveSong__RowParent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/saveSong__Songname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
+            android:text="@string/placeholder"
+            android:textColor="@color/textColor"
+            android:textSize="23sp" />
+
+        <TextView
+            android:id="@+id/saveSong__Artistname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/saveSong__Songname"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="0dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
+            android:text="@string/placeholder"
+            android:textColor="@color/textColor"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/saveSong__songId"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_above="@+id/saveSong__Artistname"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="362dp"
+            android:layout_marginBottom="30dp"
+            android:text="@string/placeholder" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

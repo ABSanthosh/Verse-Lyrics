@@ -12,7 +12,6 @@ import androidx.fragment.app.DialogFragment
 import com.absan.verse.R
 
 class MuteAds : DialogFragment() {
-    //TODO:Add sharedPref to store if Mute ads was enabled or not
     override fun getTheme() = R.style.RoundedCornersDialog
     override fun onStart() {
         view?.findViewById<Button>(R.id.MuteAd_spotmute)?.setOnClickListener { OpenPlaystore() }

@@ -34,8 +34,10 @@
     <string name="Navbar__Github">Github</string>
     <string name="Navbar__Font">Fonts</string>
     <string name="Navbar__Feedback">Feedback</string>
+    <string name="Navbar__FeatureRequest">Feature Request</string>
     <string name="Navbar__DevName">AB Santhosh</string>
     <string name="Navbar__NormalLyric">Static Lyrics</string>
+    <string name="Navbar__SavedLyrics">Saved Lyrics</string>
     <string name="Navbar__SyncLyric">Live Lyrics(Beta)</string>
     <string name="Navbar__Open">Navigation Drawer opened</string>
     <string name="Navbar__Close">Navigation Drawer Closed</string>
@@ -49,7 +51,12 @@
 
     <!--  Whats new Fragment  -->
     <string name="Fragment__New">What\'s New?</string>
-    <string name="Fragment__New__Content">Ver.4.0.0\n\n-Added fonts selector\n\n-Synced lyrics(Beta)\n\n-New Icon\n\n-New Ad muting mechanism\n\n-New EasterEgg\n\n-Lyrics to more songs than before\n\nVer.3.2\n\n-UI tweaks\n\n-Open the identified song in spotify if available.\n\n-Removed the toast message for song name and added a new UI for the same.\n\nVer.3.1\n\n-Fixed some typos\n\n-Added toast message to \'Identify Song\' option to show song name when Verse is not open\n\nVer.3.0\n\n-Added \"what\'s new\" in navigation menu\n\n-Added \"Rate app in Playstore\" feature\n\n-Added \"System default\" theme option.\n\n-Added \"Identify Song\" feature\n\n-Fixed Ad Block\n\n-Fixed version notation to match playstore.\n\n-Fixed uncertainty in song name when switched between \"Identify song\" and \"Lyrics\" options.\n\n-UI fixes\n\n-Removed old ester egg and added a new one.\n\n\nVer.3.0.1\n-Fixed Shared preferences.</string>
+    <string name="Fragment__New__Content">Ver.4.0.0\n\n-Added fonts selector\n\n-Synced lyrics(Beta)\n\n-New Icon\n\n-New Ad muting mechanism\n\n-Save lyrics feature added(Only works while online)\n\n-New EasterEgg\n\n-Lyrics to more songs than before\n\nVer.3.2\n\n-UI tweaks\n\n-Open the identified song in spotify if available.\n\n-Removed the toast message for song name and added a new UI for the same.\n\nVer.3.1\n\n-Fixed some typos\n\n-Added toast message to \'Identify Song\' option to show song name when Verse is not open\n\nVer.3.0\n\n-Added \"what\'s new\" in navigation menu\n\n-Added \"Rate app in Playstore\" feature\n\n-Added \"System default\" theme option.\n\n-Added \"Identify Song\" feature\n\n-Fixed Ad Block\n\n-Fixed version notation to match playstore.\n\n-Fixed uncertainty in song name when switched between \"Identify song\" and \"Lyrics\" options.\n\n-UI fixes\n\n-Removed old ester egg and added a new one.\n\n\nVer.3.0.1\n-Fixed Shared preferences.</string>
+
+    <!--  Sync lyrics Fragment  -->
+    <string name="Fragment__sync">Synced lyrics?</string>
+    <string name="Fragment__sync_H1">Help wanted</string>
+    <string name="Fragment__sync_C1">If you tried to use the Sync lyric(Beta) feature, you would have noticed that the timings are waay off sometimes and its perfect sometimes.\nThis is because of the delay between spotify\'s broadcast to verse, verse fetching the lyrics from api and calculating the song offset(the current playback position of the song). I know its possible but for now I\'m burnt out from re-writing the whole app to make the code maintainable and easily add features(It was a mess previously)\n\nSo if you are a dev and would like to work on this feature, Contact me through the \"Contact me\" feature.\n\nThanks for using Verse and all the reviews on playstore! </string>
 
 
     <!--  Mute Ads Fragment  -->
@@ -83,8 +90,6 @@
     <string name="Fragment__FirstTime_C1">Verse detects the current playing song through Spotify\'s in-built Broadcast Status feature. Turn it on to start using Verse</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="MuteAds">Mute Ads coming soon</string>
-    <string name="HelpMe">Help Me coming soon</string>
-    <string name="WhatsNew">What\'s New coming soon</string>
-    <string name="About">About coming soon</string>
+    <string name="placeholder">Placeholder</string>
+    <string name="main_savelyrics">Save Lyrics</string>
 </resources>

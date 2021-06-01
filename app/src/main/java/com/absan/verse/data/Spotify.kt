@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.util.Log
 
 
 class Spotify {
@@ -29,7 +28,7 @@ class Spotify {
         fun SongFromIntent(intent: Intent): Song? {
             with(intent) {
                 try {
-                    val song: Song = Song(
+                    val song = Song(
                         getStringExtra("id") ?: "",
                         getStringExtra("artist") ?: "",
                         getStringExtra("album") ?: "",

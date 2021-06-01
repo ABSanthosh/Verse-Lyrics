@@ -21,4 +21,5 @@
     <color name="ColorSecondary">#121212</color>
     <color name="fragcolor">#D8CCB0</color>
     <color name="navcolor">#FFFFFF</color>
+    <color name="recyclerColor">#CFC7B5</color>
 </resources>
