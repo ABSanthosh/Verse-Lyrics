@@ -40,11 +40,11 @@ fun requestCustomFont(
 
         override fun onTypefaceRequestFailed(reason: Int) {
             Toast.makeText(context, "Unable to fetch font", Toast.LENGTH_SHORT).show()
+            Log.e("contexr",familyName)
         }
     }
 
-
-    if (familyName != "null" || familyName != null) {
+    if(familyName != "null") {
         FontsContractCompat
             .requestFont(context, request, callback, mHandler)
     }

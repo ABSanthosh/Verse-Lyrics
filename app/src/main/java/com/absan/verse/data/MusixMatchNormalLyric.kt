@@ -11,6 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import org.jsoup.Jsoup
+import java.lang.Exception
 import java.net.URLEncoder
 
 suspend fun MusixmatchNormalLyric(
@@ -65,49 +66,50 @@ suspend fun MusixmatchNormalLyric(
             "signature_protocol=sha1"
 
     Log.e("Query", googleQuery)
-    withContext(Dispatchers.IO) {
-        val document: org.jsoup.nodes.Document? =
-            Jsoup.connect(googleQuery).timeout(60 * 1000).userAgent(userAgent).get()
+    try {
+        withContext(Dispatchers.IO) {
+            val document: org.jsoup.nodes.Document? =
+                Jsoup.connect(googleQuery).timeout(60 * 1000).userAgent(userAgent).get()
 
-        val lyricDiv = document!!.select("body").text()
-        val checker = JSONObject(lyricDiv)
-            .getJSONObject("message")
-            .getJSONObject("body")
-            .getJSONObject("macro_calls")
-            .getJSONObject("track.lyrics.get")
-            .getJSONObject("message")
-            .getJSONObject("header")
-            .getInt("status_code")
+            val lyricDiv = document!!.select("body").text()
+            val checker = JSONObject(lyricDiv)
+                .getJSONObject("message")
+                .getJSONObject("body")
+                .getJSONObject("macro_calls")
+                .getJSONObject("track.lyrics.get")
+                .getJSONObject("message")
+                .getJSONObject("header")
+                .getInt("status_code")
 
-        if (checker != 404) {
-            val JSONobj =
-                JSONObject(lyricDiv)
-                    .getJSONObject("message")
-                    .getJSONObject("body")
-                    .getJSONObject("macro_calls")
-                    .getJSONObject("track.lyrics.get")
-                    .getJSONObject("message")
-                    .getJSONObject("body")
-                    .getJSONObject("lyrics")
-                    .getString("lyrics_body")
-                    .split("\n")
+            if (checker != 404) {
+                val JSONobj =
+                    JSONObject(lyricDiv)
+                        .getJSONObject("message")
+                        .getJSONObject("body")
+                        .getJSONObject("macro_calls")
+                        .getJSONObject("track.lyrics.get")
+                        .getJSONObject("message")
+                        .getJSONObject("body")
+                        .getJSONObject("lyrics")
+                        .getString("lyrics_body")
+                        .split("\n")
 
-            if (view.findViewById<TextView>(R.id.copyright) == null) {
-                withContext(Dispatchers.Main) {
-                    JSONobj.forEachIndexed { _, c ->
-                        view.addView(generateTextView(context, c))
+                if (view.findViewById<TextView>(R.id.copyright) == null) {
+                    withContext(Dispatchers.Main) {
+                        JSONobj.forEachIndexed { _, c ->
+                            view.addView(generateTextView(context, c))
+                        }
+                        view.addView(copyrightTextView(context, googleQuery))
                     }
-                    view.addView(copyrightTextView(context, googleQuery))
+                }
+            } else {
+                withContext(Dispatchers.Main) {
+                    if (view.childCount == 0) {
+                        view.addView(generateTextView(context, "No Lyrics available :("))
+                    }
                 }
             }
-        } else {
-            withContext(Dispatchers.Main) {
-                if (view.childCount == 0) {
-                    view.addView(generateTextView(context, "No Lyrics available :("))
-                }
-            }
+
         }
-
-    }
-
+    }catch (error:Exception){}
 }

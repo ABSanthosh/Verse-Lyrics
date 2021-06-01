@@ -12,6 +12,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.widget.ImageView
 import android.widget.TableLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -21,13 +22,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.absan.verse.Utils.*
+import com.absan.verse.Utils.DatabaseRelated.DatabaseHandler
+import com.absan.verse.Utils.DatabaseRelated.addSong
+import com.absan.verse.Utils.DatabaseRelated.removeSong
+import com.absan.verse.Utils.DatabaseRelated.setBookmark
 import com.absan.verse.data.*
 import com.absan.verse.ui.*
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -36,9 +40,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private var running = false
     private var isGoogle = true
     private val spotifyReceiverLyrics = Spotify.spotifyReceiver(::handleSongIntent)
+    private var currentSong = Song()
     private var lastSong = Song()
     private var pausedSong = Song()
     private var NetworkCall = CoroutineScope(Dispatchers.Main)
+    private var isSaved = false
     private val mainPrefInstance by lazy { getSharedPreferences("main", Context.MODE_PRIVATE) }
 
 
@@ -51,18 +57,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         )
     }
 
-    companion object {
-
-    }
-
-
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         // Set full screen
         @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.insetsController?.hide(WindowInsets.Type.statusBars())
-        } else {
+        }
+        else {
             window.setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
@@ -186,6 +188,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         // Toggle for Google and Musixmatch lyrics - End
 
+        // Save lyrics - Setup
+        val bookmarkIcon = findViewById<ImageView>(R.id.bookmark)
+        bookmarkIcon.setOnClickListener {
+            if(isSaved) {
+                removeSong(this,currentSong)
+                isSaved = false
+                setBookmark(isSaved,bookmarkIcon,this)
+            }else{
+                addSong(this,currentSong)
+                isSaved = true
+                setBookmark(isSaved,bookmarkIcon,this)
+                Log.e("SaveSong","$currentSong")
+            }
+        }
+        // Save lyrics - End
+
+
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -258,15 +277,33 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun handleSongIntent(song: Song) {
-        if (song.isDuplicateOf(lastSong)) return
-
         // Ad counter Updating
         val navigationView = findViewById<NavigationView>(R.id.navView)
         val menuItem__adblock: MenuItem = navigationView.menu.findItem(R.id.adblockmenu)
         menuItem__adblock.actionView.findViewById<TextView>(R.id.AdCount).text =
             mainPrefInstance.getInt("AdCount", 0).toString()
+        currentSong = song
 
-        Log.e("FistSongIntent", "${song.id} ${song.playing}")
+        if (song.isDuplicateOf(lastSong)) return
+
+        // Set bookmark if it already exists in db
+        isSaved = if(DatabaseHandler(this).isAlreadySaved(song)){
+            setBookmark(
+                true,
+                findViewById<ImageView>(R.id.bookmark),
+                this
+            )
+            true
+        }
+        else{
+            setBookmark(
+                false,
+                findViewById<ImageView>(R.id.bookmark),
+                this
+            )
+            false
+        }
+
         lastSong = song
         when {
             song.playing -> {
@@ -357,6 +394,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.rateapp -> RateOnPlayStore(this)
             R.id.otherapps -> OpenGitHub(this)
             R.id.feedback -> SendFeedback(this)
+            R.id.featureRequest -> OpenGoogleForm(this)
+
+            R.id.saveLyrics->{
+                SaveLyrics().show(supportFragmentManager, "Save Lyric")
+            }
+            R.id.synclyricmenu->{
+                SyncLyrics().show(supportFragmentManager, "Sync Lyric")
+            }
 
             R.id.adblockmenu -> {
                 MuteAds().show(supportFragmentManager, "Ad Mute")
@@ -397,7 +442,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
             }
             R.id.myname -> {
-                RickRollcount++;
+                RickRollcount++
                 if (RickRollcount >= 7) {
                     MyName(this)
                     RickRollcount = 0

@@ -25,8 +25,6 @@ class Logger : Service() {
     private val mainPrefInstance by lazy { getSharedPreferences("main", Context.MODE_PRIVATE) }
     private val spotifyReceiver = Spotify.spotifyReceiver(::handleSongIntent)
 
-    private var adsMutedCounter = 0
-
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         Log.e("Start", "Service started")
@@ -105,7 +103,7 @@ class Logger : Service() {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_MUTE, 0)
         } else {
-            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, 0);
+            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, 0)
         }
     }
 
@@ -119,11 +117,12 @@ class Logger : Service() {
                 0
             )
         } else {
-            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 20, 0);
+            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 20, 0)
         }
     }
 
     private fun logAdMuted() {
+        var adsMutedCounter = mainPrefInstance.getInt("AdCount", 0)
         adsMutedCounter++
         mainPrefInstance.edit().apply { putInt("AdCount", adsMutedCounter) }.apply()
     }

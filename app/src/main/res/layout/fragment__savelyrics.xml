@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="440dp"
+        android:background="@color/fragcolor"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="80dp">
+
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="440dp"-->
+<!--            android:layout_gravity="center_horizontal">-->
+
+
+            <ImageView
+                android:id="@+id/topLeft"
+                android:layout_width="102dp"
+                android:layout_height="93dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="-5dp"
+                android:layout_marginTop="0dp"
+                android:contentDescription="@string/Fragment__Border"
+                android:rotation="-90"
+                android:rotationY="0"
+                app:srcCompat="@drawable/fragment__border"
+                app:tint="@color/metaTextColor"
+                tools:ignore="VectorDrawableCompat" />
+
+            <ImageView
+                android:id="@+id/topRight"
+                android:layout_width="102dp"
+                android:layout_height="93dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="-5dp"
+                android:contentDescription="@string/Fragment__Border"
+                app:srcCompat="@drawable/fragment__border"
+                app:tint="@color/metaTextColor"
+                tools:ignore="VectorDrawableCompat" />
+
+
+        <ImageView
+            android:id="@+id/bottomLeft"
+            android:layout_width="102dp"
+            android:layout_height="93dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="-5dp"
+            android:contentDescription="@string/Fragment__Border"
+            android:rotation="-180"
+            app:srcCompat="@drawable/fragment__border"
+            app:tint="@color/metaTextColor"
+            tools:ignore="VectorDrawableCompat" />
+
+        <ImageView
+            android:id="@+id/bottomRight"
+            android:layout_width="102dp"
+            android:layout_height="93dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="-5dp"
+            android:contentDescription="@string/Fragment__Border"
+            android:rotation="90"
+            app:srcCompat="@drawable/fragment__border"
+            app:tint="@color/metaTextColor"
+            tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/Heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="45dp"
+                android:fontFamily="@font/aladin"
+                android:text="@string/Navbar__SavedLyrics"
+                android:textAlignment="center"
+                android:textColor="@color/textColor"
+                android:textSize="45sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/savedLyrics_Recycler"
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:layout_below="@+id/Heading"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="22dp"
+            android:overScrollMode="never" />
+
+
+<!--        </RelativeLayout>-->
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

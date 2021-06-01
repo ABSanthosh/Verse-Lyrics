@@ -75,74 +75,76 @@ suspend fun MusixmatchSyncLyric(
 
     Log.e("Query", googleQuery)
 
-    withContext(Dispatchers.IO) {
-        val document: org.jsoup.nodes.Document? =
-            Jsoup.connect(googleQuery).timeout(60 * 1000).userAgent(userAgent).get()
+    try {
+        withContext(Dispatchers.IO) {
+            val document: org.jsoup.nodes.Document? =
+                Jsoup.connect(googleQuery).timeout(60 * 1000).userAgent(userAgent).get()
 
-        val lyricDiv = document!!.select("body").text()
+            val lyricDiv = document!!.select("body").text()
 
 
-        val checker1 = JSONObject(lyricDiv)
-            .getJSONObject("message")
-            .getJSONObject("body")
-            .getJSONObject("macro_calls")
-            .getJSONObject("track.subtitles.get")
-            .getJSONObject("message")
-            .getJSONObject("header")
-            .getInt("status_code")
-
-        var checker2 = true
-
-        try {
-            val checker2check = JSONObject(lyricDiv)
+            val checker1 = JSONObject(lyricDiv)
                 .getJSONObject("message")
                 .getJSONObject("body")
                 .getJSONObject("macro_calls")
                 .getJSONObject("track.subtitles.get")
                 .getJSONObject("message")
-                .getJSONArray("body")
-        } catch (err: Exception) {
-            checker2 = false
-        }
+                .getJSONObject("header")
+                .getInt("status_code")
 
-        if (checker1 != 404 && !checker2) {
-            val JSONobj = JSONObject(
+            var checker2 = true
+
+            try {
                 JSONObject(lyricDiv)
                     .getJSONObject("message")
                     .getJSONObject("body")
                     .getJSONObject("macro_calls")
                     .getJSONObject("track.subtitles.get")
                     .getJSONObject("message")
-                    .getJSONObject("body")
-                    .getJSONArray("subtitle_list")[0].toString()
-            )
-                .getJSONObject("subtitle")
-                .getString("subtitle_body")
-                .drop(2)
-                .dropLast(2)
-                .split("},{").toTypedArray()
-                .map { JSONObject("{$it}") }
-            SyncList.clear()
+                    .getJSONArray("body")
+            } catch (err: Exception) {
+                checker2 = false
+            }
+
+            if (checker1 != 404 && !checker2) {
+                val JSONobj = JSONObject(
+                    JSONObject(lyricDiv)
+                        .getJSONObject("message")
+                        .getJSONObject("body")
+                        .getJSONObject("macro_calls")
+                        .getJSONObject("track.subtitles.get")
+                        .getJSONObject("message")
+                        .getJSONObject("body")
+                        .getJSONArray("subtitle_list")[0].toString()
+                )
+                    .getJSONObject("subtitle")
+                    .getString("subtitle_body")
+                    .drop(2)
+                    .dropLast(2)
+                    .split("},{").toTypedArray()
+                    .map { JSONObject("{$it}") }
+                SyncList.clear()
 
 //            if (view.findViewById<TextView>(R.id.copyright) == null) {
-            withContext(Dispatchers.Main) {
-                JSONobj.forEachIndexed { _, c ->
-                    view.addView(generateTextView(context, c.getString("text")))
-                    SyncList.add(c)
+                withContext(Dispatchers.Main) {
+                    JSONobj.forEachIndexed { _, c ->
+                        view.addView(generateTextView(context, c.getString("text")))
+                        SyncList.add(c)
+                    }
+                    view.addView(copyrightTextView(context, googleQuery))
                 }
-                view.addView(copyrightTextView(context, googleQuery))
-            }
 //            }
-            startScrolling(parent, view, song, activity)
+                startScrolling(parent, view, song, activity)
 
-        } else {
-            withContext(Dispatchers.Main) {
-                if (view.childCount == 0) {
-                    view.addView(generateTextView(context, "No Lyrics available :("))
+            } else {
+                withContext(Dispatchers.Main) {
+                    if (view.childCount == 0) {
+                        view.addView(generateTextView(context, "No Lyrics available :("))
+                    }
                 }
             }
         }
-    }
+    }catch (error:java.lang.Exception){}
 }
 
 
@@ -151,7 +153,6 @@ fun startScrolling(view: ScrollView, table: TableLayout, song: Song, activity: A
     val tagDate = song.registeredTime
     val tagOffset = System.currentTimeMillis() - tagDate
     val startOffset = tagOffset + song.propagation()
-    val karaokeOffset = 100L
     var firstLine = false
 //    Log.e("startOffset", "$startOffset : ${song.playbackPosition} : $tagOffset : $tagDate")
 //    relativeTimeOffset = lineOffset - song.propagation() - To be calculated for every line

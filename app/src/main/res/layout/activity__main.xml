@@ -119,6 +119,19 @@
                 android:paddingEnd="7dp" />
         </ScrollView>
 
+        <ImageView
+            android:id="@+id/bookmark"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="50dp"
+            app:srcCompat="@drawable/main__bookmark"
+            tools:ignore="VectorDrawableCompat"
+            app:tint="@color/textColor"
+            android:contentDescription="@string/main_savelyrics" />
+
     </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView

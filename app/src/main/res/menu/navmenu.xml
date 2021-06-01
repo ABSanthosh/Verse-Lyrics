@@ -17,6 +17,10 @@
                 android:icon="@drawable/navbar__normallyric"
                 android:title="@string/Navbar__NormalLyric"
                 app:actionLayout="@layout/navbar__button__synclyrics" />
+            <item
+                android:id="@+id/saveLyrics"
+                android:icon="@drawable/main__bookmark"
+                android:title="@string/Navbar__SavedLyrics" />
         </menu>
 
     </item>
@@ -70,6 +74,10 @@
                 android:id="@+id/feedback"
                 android:icon="@drawable/navbar__feedback"
                 android:title="@string/Navbar__Feedback" />
+            <item
+                android:id="@+id/featureRequest"
+                android:icon="@drawable/navbar__featurerequest"
+                android:title="@string/Navbar__FeatureRequest" />
         </menu>
     </item>
     <item android:title="@string/Navbar__developer">
