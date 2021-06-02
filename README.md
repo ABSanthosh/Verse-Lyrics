@@ -30,8 +30,9 @@ A clean UI to help the user use the application without any prior knowledge on t
 3) Ability to read notifications by spotify to detect advertisement and mute the device till the ad is over. (This feature has already been implemented but the problem is to get user permission to gain notification access for the app and work forever. If you are interested/ have a solution to this problem, post your answer in                                   [Stack Overflow](https://stackoverflow.com/questions/62158583/notificationlistenerservice-requires-to-toggle-notification-access-on-every-laun) )
 
 
-## Screenshots
-
+<details>
+<summary>Screenshots</summary>
+<br>
 <p align="center"><b>Splash Screen</b></p>
 <p align="center">
 <img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Splash%20Light.jpg?raw=true" width="300" height="533">
