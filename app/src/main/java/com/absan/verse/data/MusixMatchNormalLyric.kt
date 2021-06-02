@@ -1,7 +1,6 @@
 package com.absan.verse.data
 
 import android.content.Context
-import android.util.Log
 import android.widget.TableLayout
 import android.widget.TextView
 import com.absan.verse.R
@@ -11,7 +10,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import org.jsoup.Jsoup
-import java.lang.Exception
 import java.net.URLEncoder
 
 suspend fun MusixmatchNormalLyric(
@@ -65,7 +63,7 @@ suspend fun MusixmatchNormalLyric(
             "signature=9uqG34C5SPnXUjFJTGzJdlyM%2BYI%3D&" +
             "signature_protocol=sha1"
 
-    Log.e("Query", googleQuery)
+    // Log.e("Query", googleQuery)
     try {
         withContext(Dispatchers.IO) {
             val document: org.jsoup.nodes.Document? =
@@ -111,5 +109,6 @@ suspend fun MusixmatchNormalLyric(
             }
 
         }
-    }catch (error:Exception){}
+    } catch (error: Exception) {
+    }
 }
