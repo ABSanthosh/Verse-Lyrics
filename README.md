@@ -81,6 +81,7 @@ A clean UI to help the user use the application without any prior knowledge on t
 <p align="center">
 <img src="https://github.com/ABSanthosh/Verse-Lyrics/blob/First_upload/Github%20illustrations/Verse-Dark%20mode%20demo.gif?raw=true" width="300" height="533">
 </p>
+<br>
 
 ## Contact
 You can contact me through my email id:
