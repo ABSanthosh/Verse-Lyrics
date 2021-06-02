@@ -27,7 +27,6 @@ class Logger : Service() {
 
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        Log.e("Start", "Service started")
         when (intent?.action) {
             "START_FOREGROUND" -> startLoggerService()
             "STOP_SERVICE" -> stopSelf()

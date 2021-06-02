@@ -7,7 +7,6 @@ import android.content.res.Configuration
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowInsets
@@ -63,8 +62,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.insetsController?.hide(WindowInsets.Type.statusBars())
-        }
-        else {
+        } else {
             window.setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
@@ -191,15 +189,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Save lyrics - Setup
         val bookmarkIcon = findViewById<ImageView>(R.id.bookmark)
         bookmarkIcon.setOnClickListener {
-            if(isSaved) {
-                removeSong(this,currentSong)
+            if (isSaved) {
+                removeSong(this, currentSong)
                 isSaved = false
-                setBookmark(isSaved,bookmarkIcon,this)
-            }else{
-                addSong(this,currentSong)
+                setBookmark(isSaved, bookmarkIcon, this)
+            } else {
+                addSong(this, currentSong)
                 isSaved = true
-                setBookmark(isSaved,bookmarkIcon,this)
-                Log.e("SaveSong","$currentSong")
+                setBookmark(isSaved, bookmarkIcon, this)
+                // Log.e("SaveSong","$currentSong")
             }
         }
         // Save lyrics - End
@@ -287,15 +285,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (song.isDuplicateOf(lastSong)) return
 
         // Set bookmark if it already exists in db
-        isSaved = if(DatabaseHandler(this).isAlreadySaved(song)){
+        isSaved = if (DatabaseHandler(this).isAlreadySaved(song)) {
             setBookmark(
                 true,
                 findViewById<ImageView>(R.id.bookmark),
                 this
             )
             true
-        }
-        else{
+        } else {
             setBookmark(
                 false,
                 findViewById<ImageView>(R.id.bookmark),
@@ -396,10 +393,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.feedback -> SendFeedback(this)
             R.id.featureRequest -> OpenGoogleForm(this)
 
-            R.id.saveLyrics->{
+            R.id.saveLyrics -> {
                 SaveLyrics().show(supportFragmentManager, "Save Lyric")
             }
-            R.id.synclyricmenu->{
+            R.id.synclyricmenu -> {
                 SyncLyrics().show(supportFragmentManager, "Sync Lyric")
             }
 

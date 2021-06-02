@@ -40,7 +40,6 @@ fun requestCustomFont(
 
         override fun onTypefaceRequestFailed(reason: Int) {
             Toast.makeText(context, "Unable to fetch font", Toast.LENGTH_SHORT).show()
-            Log.e("contexr",familyName)
         }
     }
 

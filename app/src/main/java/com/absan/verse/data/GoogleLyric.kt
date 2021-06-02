@@ -1,7 +1,6 @@
 package com.absan.verse.data
 
 import android.content.Context
-import android.util.Log
 import android.widget.TableLayout
 import android.widget.TextView
 import com.absan.verse.R
@@ -11,7 +10,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.jsoup.Jsoup
 import org.jsoup.select.Elements
-import java.lang.Exception
 import java.net.URLEncoder
 
 
@@ -38,7 +36,7 @@ suspend fun GoogleLyric(
 
             val lyricDiv = document!!.select("span").select("[jsname='YS01Ge']").first() != null
             if (lyricDiv) {
-                Log.e("Protocol", "Google")
+                // Log.e("Protocol", "Google")
                 val element: Elements = document.select("span").select("[jsname='YS01Ge']")
                 if (view.findViewById<TextView>(R.id.copyright) == null) {
                     withContext(Dispatchers.Main) {
@@ -52,7 +50,7 @@ suspend fun GoogleLyric(
                 }
 
             } else {
-                Log.e("Protocol", "Musixmatch")
+                // Log.e("Protocol", "Musixmatch")
                 MusixmatchNormalLyric(
                     song = song,
                     view = view,
@@ -61,6 +59,7 @@ suspend fun GoogleLyric(
 
             }
 
-        }catch (err:Exception){}
+        } catch (err: Exception) {
+        }
     }
 }

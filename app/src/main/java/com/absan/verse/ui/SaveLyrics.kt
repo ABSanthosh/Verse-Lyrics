@@ -2,7 +2,6 @@ package com.absan.verse.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,7 +25,6 @@ class SaveLyrics : DialogFragment() {
 
     override fun onStart() {
         setAdapter(requireView().context)
-        Log.e("DATA", "${DatabaseHandler(requireView().context).readLyrics()}")
         super.onStart()
     }
 

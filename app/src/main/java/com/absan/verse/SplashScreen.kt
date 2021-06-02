@@ -6,7 +6,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.Gravity
 import android.view.WindowInsets
 import android.view.WindowManager
@@ -15,11 +14,9 @@ import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
-import com.absan.verse.Utils.ThemeHelper
 
 
 class SplashScreen : AppCompatActivity() {
-    private val mainPrefInstance by lazy { getSharedPreferences("main", Context.MODE_PRIVATE) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // Set full screen

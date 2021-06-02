@@ -144,7 +144,8 @@ suspend fun MusixmatchSyncLyric(
                 }
             }
         }
-    }catch (error:java.lang.Exception){}
+    } catch (error: java.lang.Exception) {
+    }
 }
 
 
