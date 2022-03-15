@@ -8,5 +8,5 @@ pluginManagement {
 
 
 rootProject.name = "Verse"
-
+include ':app-remote-lib'
 include ':app'
