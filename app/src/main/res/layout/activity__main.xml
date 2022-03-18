@@ -5,8 +5,8 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:openDrawer="end"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    tools:openDrawer="end">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginStart="0dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="53dp"
             android:layout_marginEnd="0dp"
             android:fontFamily="@font/satisfy"
             android:gravity="center|top"
@@ -96,22 +96,23 @@
             android:layout_marginTop="0dp"
             android:layout_marginEnd="0dp"
             android:layout_marginBottom="0dp"
-            android:paddingStart="35dp"
-            android:paddingEnd="35dp"
+            android:overScrollMode="never"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
             android:paddingBottom="35dp">
 
             <TableLayout
                 android:id="@+id/lyricsContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="7dp"
-                android:paddingEnd="7dp" />
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp" />
         </ScrollView>
 
         <ImageView
             android:id="@+id/bookmark"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="14dp"
@@ -130,9 +131,64 @@
         android:layout_gravity="end"
         android:background="@color/navcolor"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/navbar__header"
         app:itemIconTint="@color/metaTextColor"
-        app:itemTextColor="@color/metaTextColor"
-        app:menu="@menu/navmenu" />
+        app:itemTextColor="@color/metaTextColor">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <include
+                android:id="@+id/IncludedHeader"
+                layout="@layout/navbar__header"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp" />
+
+            <RelativeLayout
+                android:id="@+id/topNavPanel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/bottomNavPanel"
+                android:layout_below="@+id/IncludedHeader"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Test" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/bottomNavPanel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="0dp"
+                android:orientation="vertical"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="theme" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Settings" />
+            </LinearLayout>
+        </RelativeLayout>
+
+
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>
