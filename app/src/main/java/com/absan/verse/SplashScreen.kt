@@ -21,23 +21,25 @@ class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         // Set full screen
         @Suppress("DEPRECATION")
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.insetsController?.hide(WindowInsets.Type.statusBars())
-        } else {
-            window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-            )
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                window.insetsController?.hide(WindowInsets.Type.statusBars())
+            } else {
+                window.setFlags(
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN
+                )
+            }
+        } catch (err: Exception) {
         }
 
         // Set activity layout
         setContentView(R.layout.activity__splashscreen)
 
-        // Set custom font
+//        // Set custom font
         val SplashLogo: TextView = findViewById(R.id.splashlogo)
         SplashLogo.typeface = ResourcesCompat.getFont(this, R.font.bungee_shade)
-
-        // Load Animation
+//        // Load Animation
         val LogoAnimation: Animation = AnimationUtils.loadAnimation(
             applicationContext,
             R.anim.logoanimation
@@ -47,11 +49,11 @@ class SplashScreen : AppCompatActivity() {
             }
 
             override fun onAnimationEnd(p0: Animation?) {
-                SplashLogo.gravity = Gravity.TOP
+                SplashLogo.alpha = 0.0F
                 val intent = Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
                 finish()
-                overridePendingTransition(R.anim.splashfadin, R.anim.splashfadeout);
+                overridePendingTransition(0, 0);
             }
 
             override fun onAnimationRepeat(p0: Animation?) {
@@ -60,7 +62,6 @@ class SplashScreen : AppCompatActivity() {
         })
 
         Handler(Looper.getMainLooper()).postDelayed({
-            // Start animation
             SplashLogo.startAnimation(LogoAnimation)
         }, 2000)
         super.onCreate(savedInstanceState)
