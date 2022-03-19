@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         )
     }
 
-    @SuppressLint("UseCompatLoadingForDrawables")
+    @SuppressLint("UseCompatLoadingForDrawables", "CommitPrefEdits")
     override fun onCreate(savedInstanceState: Bundle?) {
         // Set full screen
         @Suppress("DEPRECATION")
@@ -83,6 +83,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Navigation drawer -- Start
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.navbar)
+
         toggle = ActionBarDrawerToggle(
             this,
             drawerLayout,
@@ -90,103 +91,108 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.string.Navbar__Open,
             R.string.Navbar__Close
         )
+
+
         drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
         toggle.isDrawerIndicatorEnabled = true
 
-        val navigationView = findViewById<NavigationView>(R.id.navView)
-        navigationView.setNavigationItemSelectedListener(this)
-        navigationView.bringToFront()
 
-        val logo: TextView = findViewById(R.id.logo)
-        logo.visibility = View.VISIBLE
+
+        toggle.syncState()
+
+//        val navigationView = findViewById<NavigationView>(R.id.navView)
+//        navigationView.setNavigationItemSelectedListener(this)
+//        navigationView.bringToFront()
+
+//        val logo: TextView = findViewById(R.id.logo)
+//        logo.visibility = View.VISIBLE
         //Navigation Drawer -- End
 
 
         // Toggle for Ad mute function - Start
-        val menuItem__adblock: MenuItem = navigationView.menu.findItem(R.id.adblockmenu)
-        menuItem__adblock.actionView.findViewById<TextView>(R.id.AdCount).text =
-            mainPrefInstance.getInt("AdCount", 0).toString()
-
-        val toggleButton__adblock: androidx.appcompat.widget.SwitchCompat =
-            menuItem__adblock.actionView.findViewById(R.id.MuteAds__toggle)
-        toggleButton__adblock.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                this.startService(loggerServiceIntentForeground)
-                Toast.makeText(
-                    this,
-                    "Muting service started",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-                sharedEditor.apply {
-                    putBoolean("MuteAd", true)
-                }.apply()
-
-            } else {
-                this.stopService(loggerServiceIntentForeground)
-                Toast.makeText(
-                    this,
-                    "Muting service ended",
-                    Toast.LENGTH_SHORT
-                ).show()
-                sharedEditor.apply {
-                    putBoolean("MuteAd", false)
-                }.apply()
-            }
-        }
+//        val menuItem__adblock: MenuItem = navigationView.menu.findItem(R.id.adblockmenu)
+//        menuItem__adblock.actionView.findViewById<TextView>(R.id.AdCount).text =
+//            mainPrefInstance.getInt("AdCount", 0).toString()
+//
+//        val toggleButton__adblock: androidx.appcompat.widget.SwitchCompat =
+//            menuItem__adblock.actionView.findViewById(R.id.MuteAds__toggle)
+//        toggleButton__adblock.setOnCheckedChangeListener { _, isChecked ->
+//            if (isChecked) {
+//                this.startService(loggerServiceIntentForeground)
+//                Toast.makeText(
+//                    this,
+//                    "Muting service started",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//
+//                sharedEditor.apply {
+//                    putBoolean("MuteAd", true)
+//                }.apply()
+//
+//            } else {
+//                this.stopService(loggerServiceIntentForeground)
+//                Toast.makeText(
+//                    this,
+//                    "Muting service ended",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//                sharedEditor.apply {
+//                    putBoolean("MuteAd", false)
+//                }.apply()
+//            }
+//        }
         // Toggle for Ad mute function - End
 
         // Toggle for Google and Musixmatch lyrics - Start
-        val googleVmusixmatch: MenuItem = navigationView.menu.findItem(R.id.synclyricmenu)
-        val tooglegoogleVmusixmatch: androidx.appcompat.widget.SwitchCompat =
-            googleVmusixmatch.actionView.findViewById(R.id.SyncLyric__toggle)
-        tooglegoogleVmusixmatch.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                Toast.makeText(
-                    this,
-                    "Switched to Live Lyrics(Beta)",
-                    Toast.LENGTH_SHORT
-                ).show()
-                isGoogle = false
-                navigationView.menu.findItem(R.id.synclyricmenu).title =
-                    getString(R.string.Navbar__SyncLyric)
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    navigationView.menu.findItem(R.id.synclyricmenu).icon =
-                        getDrawable(R.drawable.navbar__synclyric)
-                }
-
-                sharedEditor.apply {
-                    putBoolean("SyncLyrics", true)
-                }.apply()
-
-                val tableLayout = findViewById<TableLayout>(R.id.lyricsContainer)
-                tableLayout.removeAllViews()
-                findViewById<TextView>(R.id.verseRestart).visibility = View.VISIBLE
-
-            } else {
-                Toast.makeText(
-                    this,
-                    "Switched to Normal Lyrics",
-                    Toast.LENGTH_SHORT
-                ).show()
-                isGoogle = true
-                navigationView.menu.findItem(R.id.synclyricmenu).title =
-                    getString(R.string.Navbar__NormalLyric)
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    navigationView.menu.findItem(R.id.synclyricmenu).icon =
-                        getDrawable(R.drawable.navbar__normallyric)
-                }
-
-                sharedEditor.apply {
-                    putBoolean("SyncLyrics", false)
-                }.apply()
-
-                Run.handler.removeCallbacksAndMessages(null)
-                ResetLyricView(table = findViewById(R.id.lyricsContainer))
-            }
-        }
+//        val googleVmusixmatch: MenuItem = navigationView.menu.findItem(R.id.synclyricmenu)
+//        val tooglegoogleVmusixmatch: androidx.appcompat.widget.SwitchCompat =
+//            googleVmusixmatch.actionView.findViewById(R.id.SyncLyric__toggle)
+//        tooglegoogleVmusixmatch.setOnCheckedChangeListener { _, isChecked ->
+//            if (isChecked) {
+//                Toast.makeText(
+//                    this,
+//                    "Switched to Live Lyrics(Beta)",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//                isGoogle = false
+//                navigationView.menu.findItem(R.id.synclyricmenu).title =
+//                    getString(R.string.Navbar__SyncLyric)
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                    navigationView.menu.findItem(R.id.synclyricmenu).icon =
+//                        getDrawable(R.drawable.navbar__synclyric)
+//                }
+//
+//                sharedEditor.apply {
+//                    putBoolean("SyncLyrics", true)
+//                }.apply()
+//
+//                val tableLayout = findViewById<TableLayout>(R.id.lyricsContainer)
+//                tableLayout.removeAllViews()
+//                findViewById<TextView>(R.id.verseRestart).visibility = View.VISIBLE
+//
+//            } else {
+//                Toast.makeText(
+//                    this,
+//                    "Switched to Normal Lyrics",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//                isGoogle = true
+//                navigationView.menu.findItem(R.id.synclyricmenu).title =
+//                    getString(R.string.Navbar__NormalLyric)
+//
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                    navigationView.menu.findItem(R.id.synclyricmenu).icon =
+//                        getDrawable(R.drawable.navbar__normallyric)
+//                }
+//
+//                sharedEditor.apply {
+//                    putBoolean("SyncLyrics", false)
+//                }.apply()
+//
+//                Run.handler.removeCallbacksAndMessages(null)
+//                ResetLyricView(table = findViewById(R.id.lyricsContainer))
+//            }
+//        }
         // Toggle for Google and Musixmatch lyrics - End
 
         // Save lyrics - Setup
@@ -211,10 +217,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     @SuppressLint("CutPasteId", "UseCompatLoadingForDrawables")
     override fun onStart() {
-        val navigationView = findViewById<NavigationView>(R.id.navView)
-        val menuItem__adblock: MenuItem = navigationView.menu.findItem(R.id.adblockmenu)
-        menuItem__adblock.actionView.findViewById<TextView>(R.id.AdCount).text =
-            mainPrefInstance.getInt("AdCount", 0).toString()
+//        val navigationView = findViewById<NavigationView>(R.id.navView)
+//        val menuItem__adblock: MenuItem = navigationView.menu.findItem(R.id.adblockmenu)
+//        menuItem__adblock.actionView.findViewById<TextView>(R.id.AdCount).text =
+//            mainPrefInstance.getInt("AdCount", 0).toString()
 
         startLoggerService()
 
@@ -223,32 +229,32 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             "First time"
         )
 
-        navigationView.menu.findItem(R.id.adblockmenu)
-            .actionView
-            .findViewById<androidx.appcompat.widget.SwitchCompat>(R.id.MuteAds__toggle)
-            .isChecked = mainPrefInstance.getBoolean("MuteAd", false)
+//        navigationView.menu.findItem(R.id.adblockmenu)
+//            .actionView
+//            .findViewById<androidx.appcompat.widget.SwitchCompat>(R.id.MuteAds__toggle)
+//            .isChecked = mainPrefInstance.getBoolean("MuteAd", false)
+//
+//        navigationView.menu.findItem(R.id.synclyricmenu)
+//            .actionView
+//            .findViewById<androidx.appcompat.widget.SwitchCompat>(R.id.SyncLyric__toggle)
+//            .isChecked = mainPrefInstance.getBoolean("SyncLyrics", false)
 
-        navigationView.menu.findItem(R.id.synclyricmenu)
-            .actionView
-            .findViewById<androidx.appcompat.widget.SwitchCompat>(R.id.SyncLyric__toggle)
-            .isChecked = mainPrefInstance.getBoolean("SyncLyrics", false)
 
-
-        val navDraw = findViewById<NavigationView>(R.id.navView).menu.findItem(R.id.mode)
-        when {
-            mainPrefInstance.getString("Theme", "light") == "light" -> {
-                navDraw.title = "Light Mode"
-                navDraw.icon = getDrawable(R.drawable.navbar__lightmode)
-            }
-            mainPrefInstance.getString("Theme", "light") == "dark" -> {
-                navDraw.title = "Dark Mode"
-                navDraw.icon = getDrawable(R.drawable.navbar__darkmode)
-            }
-            mainPrefInstance.getString("Theme", "light") == "default" -> {
-                navDraw.title = "Default Mode"
-                navDraw.icon = getDrawable(R.drawable.navbar__defaultmode)
-            }
-        }
+//        val navDraw = findViewById<NavigationView>(R.id.navView).menu.findItem(R.id.mode)
+//        when {
+//            mainPrefInstance.getString("Theme", "light") == "light" -> {
+//                navDraw.title = "Light Mode"
+//                navDraw.icon = getDrawable(R.drawable.navbar__lightmode)
+//            }
+//            mainPrefInstance.getString("Theme", "light") == "dark" -> {
+//                navDraw.title = "Dark Mode"
+//                navDraw.icon = getDrawable(R.drawable.navbar__darkmode)
+//            }
+//            mainPrefInstance.getString("Theme", "light") == "default" -> {
+//                navDraw.title = "Default Mode"
+//                navDraw.icon = getDrawable(R.drawable.navbar__defaultmode)
+//            }
+//        }
 
 
         super.onStart()
@@ -256,8 +262,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onBackPressed() {
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START)
+
+        if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
+            drawerLayout.closeDrawer(GravityCompat.END)
         } else {
             super.onBackPressed()
         }
@@ -279,10 +286,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun handleSongIntent(song: Song) {
         // Ad counter Updating
-        val navigationView = findViewById<NavigationView>(R.id.navView)
-        val menuItem__adblock: MenuItem = navigationView.menu.findItem(R.id.adblockmenu)
-        menuItem__adblock.actionView.findViewById<TextView>(R.id.AdCount).text =
-            mainPrefInstance.getInt("AdCount", 0).toString()
+//        val navigationView = findViewById<NavigationView>(R.id.navView)
+//        val menuItem__adblock: MenuItem = navigationView.menu.findItem(R.id.adblockmenu)
+//        menuItem__adblock.actionView.findViewById<TextView>(R.id.AdCount).text =
+//            mainPrefInstance.getInt("AdCount", 0).toString()
         currentSong = song
 
         if (song.isDuplicateOf(lastSong)) return
@@ -307,9 +314,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         lastSong = song
         when {
             song.playing -> {
-                if (findViewById<TextView>(R.id.status).visibility == View.VISIBLE) {
-                    findViewById<TextView>(R.id.status).visibility = View.GONE
-                }
+//                if (findViewById<TextView>(R.id.status).visibility == View.VISIBLE) {
+//                    findViewById<TextView>(R.id.status).visibility = View.GONE
+//                }
                 handleNewSongPlaying(song)
             }
             else -> handleSongNotPlaying(song)
@@ -318,10 +325,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun handleNewSongPlaying(newSong: Song) {
         val songName = findViewById<TextView>(R.id.songname)
+        val artistName = findViewById<TextView>(R.id.artistName)
+
         songName.text = newSong.track
-        if (findViewById<TextView>(R.id.verseRestart).visibility == View.VISIBLE) {
-            findViewById<TextView>(R.id.verseRestart).visibility = View.GONE
-        }
+        artistName.text = newSong.artist
+//        if (findViewById<TextView>(R.id.verseRestart).visibility == View.VISIBLE) {
+//            findViewById<TextView>(R.id.verseRestart).visibility = View.GONE
+//        }
 
         if (isGoogle) {
             GoogleLyrics(newSong)
@@ -336,9 +346,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (newSong.id != pausedSong.id) {
             tableLayout.removeAllViews()
         }
-        if (findViewById<TextView>(R.id.verseRestart).visibility == View.VISIBLE) {
-            findViewById<TextView>(R.id.verseRestart).visibility = View.GONE
-        }
+//        if (findViewById<TextView>(R.id.verseRestart).visibility == View.VISIBLE) {
+//            findViewById<TextView>(R.id.verseRestart).visibility = View.GONE
+//        }
         try {
             Run.handler.removeCallbacksAndMessages(null)
         } catch (err: Exception) {
@@ -359,9 +369,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (newSong.id != pausedSong.id) {
             tableLayout.removeAllViews()
         }
-        if (findViewById<TextView>(R.id.verseRestart).visibility == View.VISIBLE) {
-            findViewById<TextView>(R.id.verseRestart).visibility = View.GONE
-        }
+//        if (findViewById<TextView>(R.id.verseRestart).visibility == View.VISIBLE) {
+//            findViewById<TextView>(R.id.verseRestart).visibility = View.GONE
+//        }
         try {
             Run.handler.removeCallbacksAndMessages(null)
         } catch (err: Exception) {
@@ -419,27 +429,27 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 FontSelector().show(supportFragmentManager, "Font")
             }
             R.id.mode -> {
-                val navDraw = findViewById<NavigationView>(R.id.navView).menu.findItem(R.id.mode)
-                when {
-                    mainPrefInstance.getString("Theme", "light") == "light" -> {
-                        mainPrefInstance.edit().apply { putString("Theme", "dark") }.apply()
-                        navDraw.title = "Dark Mode"
-                        navDraw.icon = getDrawable(R.drawable.navbar__darkmode)
-                        ThemeHelper.applyTheme("dark")
-                    }
-                    mainPrefInstance.getString("Theme", "light") == "dark" -> {
-                        mainPrefInstance.edit().apply { putString("Theme", "default") }.apply()
-                        navDraw.title = "Default Mode"
-                        navDraw.icon = getDrawable(R.drawable.navbar__defaultmode)
-                        ThemeHelper.applyTheme("default", isDarkThemeOn())
-                    }
-                    mainPrefInstance.getString("Theme", "light") == "default" -> {
-                        mainPrefInstance.edit().apply { putString("Theme", "light") }.apply()
-                        navDraw.title = "Light Mode"
-                        navDraw.icon = getDrawable(R.drawable.navbar__lightmode)
-                        ThemeHelper.applyTheme("light")
-                    }
-                }
+//                val navDraw = findViewById<NavigationView>(R.id.navView).menu.findItem(R.id.mode)
+//                when {
+//                    mainPrefInstance.getString("Theme", "light") == "light" -> {
+//                        mainPrefInstance.edit().apply { putString("Theme", "dark") }.apply()
+//                        navDraw.title = "Dark Mode"
+//                        navDraw.icon = getDrawable(R.drawable.navbar__darkmode)
+//                        ThemeHelper.applyTheme("dark")
+//                    }
+//                    mainPrefInstance.getString("Theme", "light") == "dark" -> {
+//                        mainPrefInstance.edit().apply { putString("Theme", "default") }.apply()
+//                        navDraw.title = "Default Mode"
+//                        navDraw.icon = getDrawable(R.drawable.navbar__defaultmode)
+//                        ThemeHelper.applyTheme("default", isDarkThemeOn())
+//                    }
+//                    mainPrefInstance.getString("Theme", "light") == "default" -> {
+//                        mainPrefInstance.edit().apply { putString("Theme", "light") }.apply()
+//                        navDraw.title = "Light Mode"
+//                        navDraw.icon = getDrawable(R.drawable.navbar__lightmode)
+//                        ThemeHelper.applyTheme("light")
+//                    }
+//                }
             }
             R.id.myname -> {
                 RickRollcount++
