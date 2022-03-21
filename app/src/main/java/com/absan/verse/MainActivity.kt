@@ -103,6 +103,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
         }
 
+        findViewById<RelativeLayout>(R.id.openSettings).setOnClickListener {
+            startActivity(Intent(this, Settings::class.java))
+        }
+
 //        val navigationView = findViewById<NavigationView>(R.id.navView)
 //        navigationView.setNavigationItemSelectedListener(this)
 //        navigationView.bringToFront()
@@ -263,6 +267,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onStart()
     }
 
+    fun openSettings() {
+        startActivity(Intent(this, Settings::class.java))
+    }
+
     override fun onBackPressed() {
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
 
@@ -319,7 +327,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             song.playing -> {
                 if (findViewById<RelativeLayout>(R.id.NoSongParent).visibility == View.VISIBLE) {
                     findViewById<RelativeLayout>(R.id.NoSongParent).visibility = View.GONE
-                }else{
+                } else {
                     findViewById<RelativeLayout>(R.id.NoSongParent).visibility = View.VISIBLE
                 }
                 handleNewSongPlaying(song)
@@ -466,4 +474,5 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         return true
     }
+
 }

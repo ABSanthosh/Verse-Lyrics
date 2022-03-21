@@ -18,24 +18,24 @@
         android:roundIcon="@mipmap/verse_icon_round"
         android:supportsRtl="true"
         android:theme="@style/DarkThemeApp">
-<!--        <activity-->
-<!--            android:name=".MainActivity"-->
-<!--            android:launchMode="singleTop"-->
-<!--            android:screenOrientation="portrait"-->
-<!--            tools:ignore="LockedOrientationActivity" />-->
-<!--        <activity-->
-<!--            android:name=".SplashScreen"-->
-<!--            android:exported="true"-->
-<!--            android:launchMode="singleTop"-->
-<!--            android:noHistory="true"-->
-<!--            android:parentActivityName=".MainActivity"-->
-<!--            android:screenOrientation="portrait"-->
-<!--            tools:ignore="LockedOrientationActivity">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
+        <!--        <activity-->
+        <!--            android:name=".MainActivity"-->
+        <!--            android:launchMode="singleTop"-->
+        <!--            android:screenOrientation="portrait"-->
+        <!--            tools:ignore="LockedOrientationActivity" />-->
+        <!--        <activity-->
+        <!--            android:name=".SplashScreen"-->
+        <!--            android:exported="true"-->
+        <!--            android:launchMode="singleTop"-->
+        <!--            android:noHistory="true"-->
+        <!--            android:parentActivityName=".MainActivity"-->
+        <!--            android:screenOrientation="portrait"-->
+        <!--            tools:ignore="LockedOrientationActivity">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.MAIN" />-->
+        <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+        <!--            </intent-filter>-->
+        <!--        </activity>-->
 
         <activity
             android:name=".MainActivity"
@@ -49,6 +49,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".Settings" />
 
         <meta-data
             android:name="preloaded_fonts"
