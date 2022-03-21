@@ -7,11 +7,9 @@ import android.content.res.Configuration
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.view.Gravity
-import android.view.MenuItem
-import android.view.WindowInsets
-import android.view.WindowManager
+import android.view.*
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TableLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -319,9 +317,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         lastSong = song
         when {
             song.playing -> {
-//                if (findViewById<TextView>(R.id.status).visibility == View.VISIBLE) {
-//                    findViewById<TextView>(R.id.status).visibility = View.GONE
-//                }
+                if (findViewById<RelativeLayout>(R.id.NoSongParent).visibility == View.VISIBLE) {
+                    findViewById<RelativeLayout>(R.id.NoSongParent).visibility = View.GONE
+                }else{
+                    findViewById<RelativeLayout>(R.id.NoSongParent).visibility = View.VISIBLE
+                }
                 handleNewSongPlaying(song)
             }
             else -> handleSongNotPlaying(song)
