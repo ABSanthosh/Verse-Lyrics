@@ -417,15 +417,43 @@
                 android:layout_marginBottom="0dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="theme" />
 
-                <TextView
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Settings" />
+                    android:layout_height="45dp"
+                    android:layout_below="@+id/openSavedLyrics"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_marginBottom="8dp"
+                    android:id="@+id/openRecentSongs"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/recentSongImage"
+                        android:layout_width="24.47dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="10dp"
+                        android:src="@drawable/settings" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_toEndOf="@+id/recentSongImage"
+                        android:fontFamily="@font/manrope"
+                        android:text="Settings"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
 
             </LinearLayout>
 
