@@ -1,10 +1,14 @@
 package com.absan.verse
 
-import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 
 
 class Settings : AppCompatActivity() {
+
+    override fun onBackPressed() {
+        finish();
+    }
 
 }

@@ -41,7 +41,7 @@
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
-            android:noHistory="true"
+            android:noHistory="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
@@ -50,7 +50,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Settings" />
+        <activity android:name=".Settings"
+            android:parentActivityName=".MainActivity"
+            android:noHistory="false"
+            />
 
         <meta-data
             android:name="preloaded_fonts"
