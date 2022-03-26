@@ -72,7 +72,7 @@
 
             <item
                 android:id="@+id/feedback"
-                android:icon="@drawable/navbar__feedback"
+                android:icon="@drawable/settings__feedback"
                 android:title="@string/Navbar__Feedback" />
             <item
                 android:id="@+id/featureRequest"
