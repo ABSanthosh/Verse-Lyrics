@@ -315,7 +315,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="12dp"
                         android:layout_marginBottom="10dp"
-                        android:src="@drawable/savedisk" />
+                        android:src="@drawable/navbar__savedisk" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -353,7 +353,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="12dp"
                         android:layout_marginBottom="10dp"
-                        android:src="@drawable/recent" />
+                        android:src="@drawable/navbar__recent" />
 
                     <TextView
                         android:layout_width="match_parent"
