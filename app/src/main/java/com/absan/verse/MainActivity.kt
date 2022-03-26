@@ -104,6 +104,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
 
         findViewById<RelativeLayout>(R.id.openSettings).setOnClickListener {
+            drawerLayout.closeDrawer(GravityCompat.END)
             startActivity(Intent(this, Settings::class.java))
         }
 
