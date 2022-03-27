@@ -7,12 +7,11 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import com.absan.verse.Utils.OpenGitHub
-import com.absan.verse.Utils.OpenGoogleForm
-import com.absan.verse.Utils.SendFeedback
+import com.absan.verse.Utils.*
 
 
 class Settings : AppCompatActivity() {
+    private var RickRollcount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setContentView(R.layout.settings)
@@ -33,6 +32,20 @@ class Settings : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.setting__featureRequest).setOnClickListener {
             OpenGoogleForm(this)
         }
+
+        findViewById<LinearLayout>(R.id.setting__rateInPlaystore).setOnClickListener {
+            RateOnPlayStore(this)
+        }
+
+        findViewById<LinearLayout>(R.id.setting__rateInPlaystore).setOnClickListener {
+            RickRollcount++
+            if (RickRollcount >= 7) {
+                MyName(this)
+                RickRollcount = 0
+            }
+        }
+
+
     }
 
     override fun onBackPressed() {
