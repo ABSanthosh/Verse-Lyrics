@@ -37,7 +37,7 @@ class Settings : AppCompatActivity() {
             RateOnPlayStore(this)
         }
 
-        findViewById<LinearLayout>(R.id.setting__rateInPlaystore).setOnClickListener {
+        findViewById<LinearLayout>(R.id.setting__myName).setOnClickListener {
             RickRollcount++
             if (RickRollcount >= 7) {
                 MyName(this)
