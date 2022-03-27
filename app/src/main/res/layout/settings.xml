@@ -171,7 +171,9 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:id="@+id/setting__openGithub"
+                    >
 
                     <ImageView
                         android:layout_width="20dp"
