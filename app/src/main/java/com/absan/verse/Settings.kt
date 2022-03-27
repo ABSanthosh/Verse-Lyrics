@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.absan.verse.Utils.OpenGitHub
+import com.absan.verse.Utils.OpenGoogleForm
 import com.absan.verse.Utils.SendFeedback
 
 
@@ -27,6 +28,10 @@ class Settings : AppCompatActivity() {
 
         findViewById<LinearLayout>(R.id.setting__openGithub).setOnClickListener {
             OpenGitHub(this)
+        }
+
+        findViewById<LinearLayout>(R.id.setting__featureRequest).setOnClickListener {
+            OpenGoogleForm(this)
         }
     }
 
