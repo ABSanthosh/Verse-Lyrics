@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="RoundedCornersDialog" parent="@style/Theme.MaterialComponents.Dialog">
         <item name="dialogCornerRadius">4dp</item>
     </style>
@@ -10,6 +11,14 @@
         <item name="colorSecondary">@color/secondary</item>
         <item name="colorError">@color/error</item>
         <item name="android:textColor">@color/textColor</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
 
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/settings__bottomsheetborder</item>
+    </style>
 </resources>
