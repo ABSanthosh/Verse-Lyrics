@@ -85,16 +85,29 @@
                         android:src="@drawable/settings__font" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:fontFamily="@font/manrope"
                         android:gravity="center_vertical"
                         android:text="Font face"
                         android:textSize="18sp" />
 
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginBottom="18dp"
+                        android:gravity="center_vertical"
+                        android:src="@drawable/settings__newactivity" />
+
+
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/setting__textSize"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@color/white"
@@ -102,6 +115,7 @@
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:orientation="horizontal">
+
 
                     <ImageView
                         android:layout_width="20dp"
@@ -112,12 +126,24 @@
                         android:src="@drawable/settings__fontsize" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:fontFamily="@font/manrope"
                         android:gravity="center_vertical"
                         android:text="Text size"
                         android:textSize="18sp" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginEnd="12dp"
+                        android:rotation="90"
+                        android:layout_marginBottom="18dp"
+                        android:gravity="center_vertical"
+                        android:src="@drawable/settings__newactivity" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -165,15 +191,14 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/setting__openGithub"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@color/white"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:orientation="horizontal"
-                    android:id="@+id/setting__openGithub"
-                    >
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="20dp"
@@ -184,25 +209,34 @@
                         android:src="@drawable/settings__github" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:fontFamily="@font/manrope"
                         android:gravity="center_vertical"
+                        android:paddingEnd="40dp"
                         android:text="Github"
                         android:textSize="18sp" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="23dp"
+                        android:gravity="center_vertical"
+                        android:src="@drawable/settings__newwindow" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/setting__giveFeedback"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@color/white"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:orientation="horizontal"
-                    android:id="@+id/setting__giveFeedback"
-                    >
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="20dp"
@@ -213,25 +247,33 @@
                         android:src="@drawable/settings__feedback" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:fontFamily="@font/manrope"
                         android:gravity="center_vertical"
                         android:text="@string/Navbar__Feedback"
                         android:textSize="18sp" />
 
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="23dp"
+                        android:gravity="center_vertical"
+                        android:src="@drawable/settings__newwindow" />
+
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/setting__featureRequest"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@color/white"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:orientation="horizontal"
-                    android:id="@+id/setting__featureRequest"
-                    >
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="25dp"
@@ -242,25 +284,33 @@
                         android:src="@drawable/settings__featurerequest" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:fontFamily="@font/manrope"
                         android:gravity="center_vertical"
                         android:text="@string/Navbar__FeatureRequest"
                         android:textSize="18sp" />
 
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="23dp"
+                        android:gravity="center_vertical"
+                        android:src="@drawable/settings__newwindow" />
+
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/setting__rateInPlaystore"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@color/white"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:orientation="horizontal"
-                    android:id="@+id/setting__rateInPlaystore"
-                    >
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="28dp"
@@ -271,12 +321,21 @@
                         android:src="@drawable/settings__rating" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:fontFamily="@font/manrope"
                         android:gravity="center_vertical"
                         android:text="@string/Navbar__Rate"
                         android:textSize="18sp" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="23dp"
+                        android:gravity="center_vertical"
+                        android:src="@drawable/settings__newwindow" />
 
                 </LinearLayout>
 
@@ -324,15 +383,14 @@
                     android:textStyle="bold" />
 
                 <LinearLayout
+                    android:id="@+id/setting__myName"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@color/white"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:orientation="horizontal"
-                    android:id="@+id/setting__myName"
-                    >
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="20dp"
