@@ -7,6 +7,7 @@ import android.content.res.Configuration
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.ImageView
 import android.widget.RelativeLayout
@@ -15,6 +16,7 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.absan.verse.Utils.*
@@ -24,6 +26,8 @@ import com.absan.verse.Utils.DatabaseRelated.removeSong
 import com.absan.verse.Utils.DatabaseRelated.setBookmark
 import com.absan.verse.data.*
 import com.absan.verse.ui.*
+import com.addisonelliott.segmentedbutton.SegmentedButton
+import com.addisonelliott.segmentedbutton.SegmentedButtonGroup
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -104,9 +108,64 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
 
         findViewById<RelativeLayout>(R.id.openSettings).setOnClickListener {
-            drawerLayout.closeDrawer(GravityCompat.END)
             startActivity(Intent(this, Settings::class.java))
+            drawerLayout.closeDrawer(GravityCompat.END)
         }
+
+        val themeToggle = findViewById<SegmentedButtonGroup>(R.id.navbar__themeSelector)
+        val darkModeButton = findViewById<SegmentedButton>(R.id.navbar__darkMode)
+        val autoModeButton = findViewById<SegmentedButton>(R.id.navbar__autoMode)
+        val lightModeButton = findViewById<SegmentedButton>(R.id.navbar__lightMode)
+
+        fun changeThemeIcon(position: Int) {
+            when (position) {
+                0 -> {
+                    darkModeButton.drawable =
+                        ContextCompat.getDrawable(this, R.drawable.navbar__moonfill)
+                    autoModeButton.drawable =
+                        ContextCompat.getDrawable(this, R.drawable.navbar__autoframe)
+                    lightModeButton.drawable =
+                        ContextCompat.getDrawable(this, R.drawable.navbar__sunframe)
+                }
+                1 -> {
+                    darkModeButton.drawable =
+                        ContextCompat.getDrawable(this, R.drawable.navbar__moonframe)
+                    autoModeButton.drawable =
+                        ContextCompat.getDrawable(this, R.drawable.navbar__autofill)
+                    lightModeButton.drawable =
+                        ContextCompat.getDrawable(this, R.drawable.navbar__sunframe)
+                }
+                2 -> {
+                    darkModeButton.drawable =
+                        ContextCompat.getDrawable(this, R.drawable.navbar__moonframe)
+                    autoModeButton.drawable =
+                        ContextCompat.getDrawable(this, R.drawable.navbar__autoframe)
+                    lightModeButton.drawable =
+                        ContextCompat.getDrawable(this, R.drawable.navbar__sunfill)
+                }
+            }
+        }
+
+//      TODO: set postion according to previous theme setting
+        themeToggle.setPosition(2, false)
+        changeThemeIcon(themeToggle.position)
+
+        darkModeButton.setOnClickListener {
+            changeThemeIcon(0)
+        }
+        autoModeButton.setOnClickListener {
+            changeThemeIcon(1)
+        }
+        lightModeButton.setOnClickListener {
+            changeThemeIcon(2)
+        }
+
+//        themeToggle.setOnPositionChangedListener {
+//            Log.e("Log", themeToggle.position.toString())
+//            changeThemeIcon(themeToggle.position)
+//
+//        }
+
 
 //        val navigationView = findViewById<NavigationView>(R.id.navView)
 //        navigationView.setNavigationItemSelectedListener(this)
