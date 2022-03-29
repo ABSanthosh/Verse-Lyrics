@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="10dp"
+
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/Heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/aladin"
+            android:text="Font Size"
+            android:textAlignment="center"
+            android:textColor="@color/textColor"
+            android:textSize="45sp" />
+
+        <ImageView
+            android:id="@+id/topLeft"
+            android:layout_width="102dp"
+            android:layout_height="93dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="-5dp"
+            android:layout_marginTop="0dp"
+            android:contentDescription="@string/Fragment__Border"
+            android:rotation="-90"
+            android:rotationY="0"
+            app:srcCompat="@drawable/fragment__border"
+            app:tint="@color/metaTextColor" />
+
+        <ImageView
+            android:id="@+id/topRight"
+            android:layout_width="102dp"
+            android:layout_height="93dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="-5dp"
+            android:contentDescription="@string/Fragment__Border"
+            app:srcCompat="@drawable/fragment__border"
+            app:tint="@color/metaTextColor" />
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:fontFamily="@font/manrope"
+        android:gravity="center_vertical"
+        android:paddingStart="10dp"
+        android:paddingEnd="0dp"
+        android:text="Current Size: Mango"
+        android:textSize="18sp" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/slider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:valueFrom="0"
+        android:valueTo="100"
+        app:labelBehavior="gone"
+        app:thumbColor="#E30425"
+        app:trackColorActive="#E30425"
+        app:trackColorInactive="#51E30425" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/Setting__textSize__defaultButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="0.9"
+            android:background="@drawable/button__borderradius"
+            android:clickable="true"
+            android:focusable="true"
+            android:maxWidth="200dp"
+            android:text="Default"
+            android:textColor="#fff"
+            app:backgroundTint="#e4e" />
+
+        <Button
+            android:id="@+id/Setting__textSize__saveButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="0.9"
+            android:background="@drawable/button__borderradius"
+            android:clickable="true"
+            android:focusable="true"
+            android:maxWidth="200dp"
+            android:text="Save"
+            android:textColor="#fff"
+            app:backgroundTint="#e4e" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
