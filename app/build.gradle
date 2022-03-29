@@ -57,6 +57,6 @@ dependencies {
     implementation 'org.jsoup:jsoup:1.13.1'
 
     implementation files('../app-remote-lib/spotify-app-remote-release-0.7.2.aar')
-    implementation 'com.github.ceryle:SegmentedButton:v2.0.2'
+    implementation 'com.github.addisonelliott:SegmentedButton:3.1.9'
     implementation 'com.google.android.material:material:1.5.0'
 }

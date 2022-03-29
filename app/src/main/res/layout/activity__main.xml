@@ -295,14 +295,14 @@
 
 
                 <RelativeLayout
+                    android:id="@+id/openSavedLyrics"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_below="@+id/adsAndSavedContainerParent"
+                    android:layout_marginTop="10dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/openSavedLyrics"
                     android:gravity="center">
 
                     <ImageView
@@ -333,14 +333,14 @@
 
 
                 <RelativeLayout
+                    android:id="@+id/openRecentSongs"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_below="@+id/openSavedLyrics"
+                    android:layout_marginTop="2dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:layout_marginTop="2dp"
-                    android:id="@+id/openRecentSongs"
                     android:gravity="center">
 
                     <ImageView
@@ -384,16 +384,88 @@
                 android:layout_marginBottom="0dp"
                 android:orientation="vertical">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/navbar__themeborder"
+                    android:backgroundTint="#EBEBEB">
+
+
+                    <com.addisonelliott.segmentedbutton.SegmentedButtonGroup
+                        android:id="@+id/navbar__themeSelector"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        app:radius="9dp"
+                        app:ripple="false"
+                        app:selectedBackground="#fff"
+                        app:selectedButtonRadius="7dp">
+
+
+                        <com.addisonelliott.segmentedbutton.SegmentedButton
+                            android:id="@+id/navbar__darkMode"
+                            android:layout_width="0dp"
+                            android:layout_height="35dp"
+                            android:layout_weight="1"
+                            app:drawable="@drawable/navbar__moonfill"
+                            app:drawableGravity="left"
+                            app:drawableHeight="20dp"
+                            app:drawablePadding="7dp"
+                            app:drawableWidth="20dp"
+                            app:rounded="true"
+                            app:selectedTextColor="#000"
+                            app:text="Dark"
+                            app:textColor="@color/black"
+                            app:textSize="18sp" />
+
+                        <com.addisonelliott.segmentedbutton.SegmentedButton
+                            android:id="@+id/navbar__autoMode"
+                            android:layout_width="0dp"
+                            android:layout_height="35dp"
+                            android:layout_weight="1"
+                            app:drawable="@drawable/navbar__autofill"
+                            app:drawableGravity="left"
+                            app:drawableHeight="20dp"
+                            app:drawablePadding="7dp"
+                            app:drawableWidth="20dp"
+                            app:rounded="true"
+                            app:selectedTextColor="#000"
+                            app:text="Auto"
+                            app:textColor="@color/black"
+                            app:textSize="18sp" />
+
+                        <com.addisonelliott.segmentedbutton.SegmentedButton
+                            android:id="@+id/navbar__lightMode"
+                            android:layout_width="0dp"
+                            android:layout_height="35dp"
+                            android:layout_weight="1"
+                            app:drawable="@drawable/navbar__sunfill"
+                            app:drawableGravity="left"
+                            app:drawableHeight="20dp"
+                            app:drawablePadding="7dp"
+                            app:drawableWidth="20dp"
+                            app:rounded="true"
+                            app:selectedTextColor="#000"
+                            app:text="Light"
+                            app:textColor="@color/black"
+                            app:textSize="18sp" />
+
+                    </com.addisonelliott.segmentedbutton.SegmentedButtonGroup>
+                </LinearLayout>
 
                 <RelativeLayout
+                    android:id="@+id/openSettings"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_below="@+id/openSavedLyrics"
+                    android:layout_marginBottom="8dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:layout_marginBottom="8dp"
-                    android:id="@+id/openSettings"
                     android:gravity="center">
 
                     <ImageView
