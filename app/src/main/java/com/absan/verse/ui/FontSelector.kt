@@ -27,7 +27,7 @@ import com.absan.verse.data.Constants.TYPEFACE
 class FontSelector : DialogFragment() {
     lateinit var textContent: TextView
     private val mainPrefInstance by lazy {
-        activity!!.applicationContext.getSharedPreferences(
+        requireActivity().applicationContext.getSharedPreferences(
             "main",
             Context.MODE_PRIVATE
         )
@@ -47,19 +47,19 @@ class FontSelector : DialogFragment() {
     override fun onStart() {
 
         textContent = view?.findViewById(R.id.testContent)!!
-        view!!.findViewById<Button>(R.id.setDefault).setOnClickListener {
+        requireView().findViewById<Button>(R.id.setDefault).setOnClickListener {
             mainPrefInstance.edit().apply {
                 putString("FontQuery", null)
             }.apply()
             TYPEFACE = Typeface.DEFAULT
-            ResetLyricView(activity!!.findViewById(R.id.lyricsContainer), context)
-            textContent.setTypeface(ResourcesCompat.getFont(context!!, R.font.walter_turncoat))
+            ResetLyricView(requireActivity().findViewById(R.id.lyricsContainer), context)
+            textContent.setTypeface(ResourcesCompat.getFont(requireContext(), R.font.walter_turncoat))
         }
 
-        view!!.findViewById<Button>(R.id.setFont).setOnClickListener {
-            if (TYPEFACE != Typeface.DEFAULT) ResetLyricView(activity!!.findViewById(R.id.lyricsContainer))
+        requireView().findViewById<Button>(R.id.setFont).setOnClickListener {
+            if (TYPEFACE != Typeface.DEFAULT) ResetLyricView(requireActivity().findViewById(R.id.lyricsContainer))
             TYPEFACE = textContent.typeface
-            ResetLyricView(activity!!.findViewById(R.id.lyricsContainer), context)
+            ResetLyricView(requireActivity().findViewById(R.id.lyricsContainer), context)
         }
 
 
@@ -67,7 +67,7 @@ class FontSelector : DialogFragment() {
         handlerThread.start()
         mHandler = Handler(handlerThread.looper)
 
-        val listView = view!!.findViewById<TableLayout>(R.id.font__Listview)
+        val listView = requireView().findViewById<TableLayout>(R.id.font__Listview)
 
         if (TYPEFACE != Typeface.DEFAULT) textContent.typeface = TYPEFACE
 
@@ -88,7 +88,7 @@ class FontSelector : DialogFragment() {
         )
         params.setMargins(MarginInDp, 0, MarginInDp, 0)
         val outval = TypedValue()
-        context!!.theme.resolveAttribute(android.R.attr.selectableItemBackground, outval, true)
+        requireContext().theme.resolveAttribute(android.R.attr.selectableItemBackground, outval, true)
         val adview = Thread {
             resources.getStringArray(R.array.family_names).forEachIndexed { _, s ->
                 val fontName = TextView(context)
@@ -96,14 +96,14 @@ class FontSelector : DialogFragment() {
                 fontName.textSize = 24F
                 fontName.layoutParams = params
                 fontName.setPadding(MarginInDp, 0, 0, 0)
-                fontName.setTextColor(ContextCompat.getColor(context!!,R.color.textColor))
+                fontName.setTextColor(ContextCompat.getColor(requireContext(),R.color.textColor))
                 fontName.isClickable = true
                 fontName.isFocusable = true
                 fontName.gravity = Gravity.CENTER_VERTICAL
                 fontName.setBackgroundResource(outval.resourceId)
                 fontName.setOnClickListener {
                     requestCustomFont(
-                        context = context!!,
+                        context = requireContext(),
                         familyName = (fontName.text).toString(),
                         mHandler = mHandler,
                         textView = textContent,
