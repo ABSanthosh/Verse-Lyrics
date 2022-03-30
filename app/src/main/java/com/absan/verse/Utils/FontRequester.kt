@@ -22,7 +22,6 @@ fun requestCustomFont(
     val mainPrefInstance by lazy { context.getSharedPreferences("main", Context.MODE_PRIVATE) }
     val query = queryBuilder.build()
 
-//    Log.d("Fontname", "Requesting a font. Query: $query")
     val request = FontRequest(
         "com.google.android.gms.fonts",
         "com.google.android.gms",
@@ -39,7 +38,7 @@ fun requestCustomFont(
         }
 
         override fun onTypefaceRequestFailed(reason: Int) {
-            Toast.makeText(context, "Unable to fetch font", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "${reason}: Unable to fetch font", Toast.LENGTH_SHORT).show()
         }
     }
 
