@@ -11,7 +11,8 @@ import com.absan.verse.data.Constants.TYPEFACE
 
 
 fun ResetLyricView(table: TableLayout, context: Context? = null) {
-    for(i in 0 until table.childCount-1) {
+//    TODO: Add -1 to length to avoid licence if its there
+    for(i in 0 until table.childCount) {
         if (table.getChildAt(i) != null) {
             (table.getChildAt(i) as TextView).setTypeface(
                 if(TYPEFACE != Typeface.DEFAULT || context == null) TYPEFACE else (
