@@ -4,7 +4,30 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#FFFFFF"
-    android:orientation="horizontal">
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/testContentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:focusable="true">
+
+        <TextView
+            android:id="@+id/setting__fontSelector__sample"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="45dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/Fragment__FontSelector_TestContent"
+            android:textAlignment="center"
+            android:textColor="@color/textColor"
+            android:textSize="24sp"
+            android:textStyle="normal" />
+    </ScrollView>
 
     <com.aigestudio.wheelpicker.WheelPicker
         android:id="@+id/setting__fontSelector__roller"
@@ -19,5 +42,30 @@
         aigestudio:wheel_item_text_size="24sp"
         aigestudio:wheel_selected_item_text_color="#536D8A" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="14dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/setFont"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="7dp"
+            android:text="@string/Fragment__FontSelector_B1"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/setDefault"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="7dp"
+            android:text="@string/Fragment__FontSelector_B2"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
 
 </LinearLayout>
