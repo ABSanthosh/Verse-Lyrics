@@ -289,6 +289,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //        menuItem__adblock.actionView.findViewById<TextView>(R.id.AdCount).text =
 //            mainPrefInstance.getInt("AdCount", 0).toString()
 
+        ResetLyricView(findViewById(R.id.lyricsContainer))
         startLoggerService()
 
         if (mainPrefInstance.getBoolean("FirstTime", true)) FirstTime().show(
@@ -387,12 +388,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             song.playing -> {
                 if (findViewById<RelativeLayout>(R.id.NoSongParent).visibility == View.VISIBLE) {
                     findViewById<RelativeLayout>(R.id.NoSongParent).visibility = View.GONE
-                } else {
-                    findViewById<RelativeLayout>(R.id.NoSongParent).visibility = View.VISIBLE
                 }
                 handleNewSongPlaying(song)
             }
-            else -> handleSongNotPlaying(song)
+            else -> {
+                if (findViewById<RelativeLayout>(R.id.NoSongParent).visibility == View.GONE) {
+                    findViewById<RelativeLayout>(R.id.NoSongParent).visibility = View.VISIBLE
+                }
+                handleSongNotPlaying(song)
+            }
         }
     }
 
@@ -460,6 +464,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun handleSongNotPlaying(song: Song) {
         pausedSong = song
+//        if (findViewById<RelativeLayout>(R.id.NoSongParent).visibility == View.VISIBLE) {
+//            findViewById<RelativeLayout>(R.id.NoSongParent).visibility = View.GONE
+//        } else {
+//            findViewById<RelativeLayout>(R.id.NoSongParent).visibility = View.VISIBLE
+//        }
         Run.handler.removeCallbacksAndMessages(null)
     }
 
