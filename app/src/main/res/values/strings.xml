@@ -69,7 +69,7 @@
     <!--  Font Selector Fragment  -->
     <string name="Fragment__FontSelector">Font Selector</string>
     <string name="Fragment__FontSelector_H1">Preview</string>
-    <string name="Fragment__FontSelector_TestContent">Lorem ipsum dolor sit\n\nAenean a nisl lobortis, ullamcorper\n\nIn sagittis lacus eu neque venenatis.</string>
+    <string name="Fragment__FontSelector_TestContent">Lorem ipsum dolor sit.</string>
     <string name="Fragment__FontSelector_H2">Select a Font</string>
     <string name="Fragment__FontSelector_B1">Set Font</string>
     <string name="Fragment__FontSelector_B2">Default</string>
