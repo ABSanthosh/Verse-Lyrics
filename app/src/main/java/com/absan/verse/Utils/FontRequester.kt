@@ -16,7 +16,8 @@ fun requestCustomFont(
     familyName: String,
     mHandler: Handler,
     textView: TextView? = null,
-    setConstant:Boolean = true
+    setConstant: Boolean = true,
+    isPutString: Boolean= true
 ) {
     val queryBuilder = QueryBuilder(familyName)
     val mainPrefInstance by lazy { context.getSharedPreferences("main", Context.MODE_PRIVATE) }
@@ -32,9 +33,9 @@ fun requestCustomFont(
 
     val callback = object : FontsContractCompat.FontRequestCallback() {
         override fun onTypefaceRetrieved(typeface: Typeface) {
-            mainPrefInstance.edit().apply { putString("FontQuery", query) }.apply()
-            if(setConstant) TYPEFACE = typeface
-            if(textView!=null) textView.typeface = typeface
+            if(isPutString) mainPrefInstance.edit().apply { putString("FontQuery", query) }.apply()
+            if (setConstant) TYPEFACE = typeface
+            if (textView != null) textView.typeface = typeface
         }
 
         override fun onTypefaceRequestFailed(reason: Int) {
@@ -42,7 +43,7 @@ fun requestCustomFont(
         }
     }
 
-    if(familyName != "null") {
+    if (familyName != "null") {
         FontsContractCompat
             .requestFont(context, request, callback, mHandler)
     }
