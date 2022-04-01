@@ -6,10 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
 import android.util.Log
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.absan.verse.Utils.*
@@ -47,11 +44,12 @@ class Settings : AppCompatActivity() {
             val saveButton =
                 textSizeModal.findViewById<Button>(R.id.Setting__textSize__saveButton)
 
+            val closeSheet = textSizeModal.findViewById<Button>(R.id.setting__textSize__close)
 
 
             textSizeModal.setCancelable(false)
 
-            defaultButton?.setOnClickListener {
+            closeSheet?.setOnClickListener {
                 textSizeModal.dismiss()
             }
 
@@ -90,12 +88,17 @@ class Settings : AppCompatActivity() {
                 }.apply()
                 Constants.TYPEFACE = ResourcesCompat.getFont(this, R.font.walter_turncoat)!!
                 textContent.typeface = ResourcesCompat.getFont(this, R.font.walter_turncoat)
+
             }
+
+            fontSelectorModal.findViewById<Button>(R.id.setting__textFont__close)
+                ?.setOnClickListener {
+                    fontSelectorModal.dismiss()
+                }
 
             fontSelectorModal.findViewById<Button>(R.id.setFont)?.setOnClickListener {
                 Constants.TYPEFACE = textContent.typeface
             }
-
 
             fontRoller?.setOnItemSelectedListener { fontRoller, fontList, position ->
                 run {
@@ -108,11 +111,13 @@ class Settings : AppCompatActivity() {
                         familyName = fontListData.get(position),
                         mHandler = mHandler,
                         textView = textContent,
-                        setConstant = false
+                        setConstant = false,
+                        isPutString = false
                     )
                 }
             }
 
+            fontSelectorModal.setCancelable(false)
             fontSelectorModal.show()
         }
 
