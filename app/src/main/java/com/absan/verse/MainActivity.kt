@@ -109,7 +109,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         findViewById<RelativeLayout>(R.id.openSettings).setOnClickListener {
             startActivity(Intent(this, Settings::class.java))
-            drawerLayout.closeDrawer(GravityCompat.END)
+//            drawerLayout.closeDrawer(GravityCompat.END)
         }
 
         val themeToggle = findViewById<SegmentedButtonGroup>(R.id.navbar__themeSelector)
@@ -290,6 +290,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //            mainPrefInstance.getInt("AdCount", 0).toString()
 
         ResetLyricView(findViewById(R.id.lyricsContainer))
+
+        val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
+        drawerLayout.closeDrawer(GravityCompat.END)
+
         startLoggerService()
 
         if (mainPrefInstance.getBoolean("FirstTime", true)) FirstTime().show(
