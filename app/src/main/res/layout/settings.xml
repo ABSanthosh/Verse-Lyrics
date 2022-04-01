@@ -102,10 +102,12 @@
                         android:layout_marginEnd="12dp"
                         android:layout_marginBottom="18dp"
                         android:gravity="center_vertical"
+                        android:rotation="90"
                         android:src="@drawable/settings__newactivity" />
 
 
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/setting__textSize"
@@ -141,9 +143,9 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="18dp"
                         android:layout_marginEnd="12dp"
-                        android:rotation="90"
                         android:layout_marginBottom="18dp"
                         android:gravity="center_vertical"
+                        android:rotation="90"
                         android:src="@drawable/settings__newactivity" />
 
                 </LinearLayout>
