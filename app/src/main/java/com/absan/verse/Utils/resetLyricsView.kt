@@ -7,6 +7,7 @@ import android.widget.TableLayout
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import com.absan.verse.R
+import com.absan.verse.data.Constants.FONTSIZE
 import com.absan.verse.data.Constants.TYPEFACE
 
 
@@ -19,6 +20,7 @@ fun ResetLyricView(table: TableLayout, context: Context? = null) {
                     ResourcesCompat.getFont(context,R.font.walter_turncoat)),
                 Typeface.NORMAL
             )
+            (table.getChildAt(i) as TextView).textSize = FONTSIZE
         }
     }
 }
