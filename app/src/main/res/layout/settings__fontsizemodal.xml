@@ -51,15 +51,16 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/setting__textSize__preview"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:fontFamily="@font/manrope"
         android:gravity="center"
         android:text="Mango"
-        android:textSize="18sp" />
+        android:textSize="24sp" />
 
     <com.google.android.material.slider.Slider
-        android:id="@+id/slider"
+        android:id="@+id/setting__textSize__slider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -68,8 +69,10 @@
         android:layout_marginBottom="10dp"
         android:valueFrom="0"
         android:valueTo="100"
+        android:value="50"
         app:labelBehavior="gone"
         app:thumbColor="#E30425"
+        android:stepSize="25"
         app:trackColorActive="#E30425"
         app:trackColorInactive="#51E30425" />
 
