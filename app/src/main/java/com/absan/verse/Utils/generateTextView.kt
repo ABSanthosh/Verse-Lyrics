@@ -21,7 +21,7 @@ fun generateTextView(context: Context, text: String): TextView {
 
     val lyricLine = TextView(context)
     lyricLine.textAlignment = View.TEXT_ALIGNMENT_CENTER
-    lyricLine.setTextColor(ContextCompat.getColor(context,R.color.textColor))
+    lyricLine.setTextColor(ContextCompat.getColor(context, R.color.textColor))
     if (text == "") {
         lyricLine.text = "♫\n"
     } else {
@@ -40,7 +40,13 @@ fun generateTextView(context: Context, text: String): TextView {
     } else {
         lyricLine.typeface = ResourcesCompat.getFont(context, R.font.walter_turncoat)
     }
-    lyricLine.textSize = 24F
+
+    if (mainPrefInstance.getFloat("FontSize", 0f) != 0f) {
+        lyricLine.textSize = mainPrefInstance.getFloat("FontSize", 0f)
+    } else {
+        lyricLine.textSize = 24F
+    }
+
 
     return lyricLine
 }
