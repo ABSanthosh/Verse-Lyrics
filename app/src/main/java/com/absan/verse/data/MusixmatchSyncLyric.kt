@@ -58,10 +58,10 @@ suspend fun MusixmatchSyncLyric(
             "format=json&" +
             "namespace=lyrics_synched&" +
             "part=lyrics_crowd%2Cuser%2Clyrics_verified_by&" +
-            "q_album=${URLEncoder.encode(albumName, " utf -8")}&" +
-            "q_artist=${URLEncoder.encode(artistName, " utf -8")}&" +
-            "q_artists=${URLEncoder.encode(artistsName, " utf -8")}&" +
-            "q_track=${URLEncoder.encode(trackName, " utf -8")}&" +
+            "q_album=${URLEncoder.encode(albumName, "utf-8")}&" +
+            "q_artist=${URLEncoder.encode(artistName, "utf-8")}&" +
+            "q_artists=${URLEncoder.encode(artistsName, "utf-8")}&" +
+            "q_track=${URLEncoder.encode(trackName, "utf-8")}&" +
             "user_language=en&" +
             "tags=nowplaying&" +
             "track_spotify_id=spotify%3Atrack%3A$songId&" +
