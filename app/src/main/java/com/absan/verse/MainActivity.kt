@@ -32,6 +32,8 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
+import kotlin.concurrent.schedule
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -47,6 +49,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private var NetworkCall = CoroutineScope(Dispatchers.Main)
     private var isSaved = false
     private val mainPrefInstance by lazy { getSharedPreferences("main", Context.MODE_PRIVATE) }
+    private var prevTheme = "light"
 
 
     private val loggerServiceIntentForeground by lazy {
@@ -117,47 +120,91 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val autoModeButton = findViewById<SegmentedButton>(R.id.navbar__autoMode)
         val lightModeButton = findViewById<SegmentedButton>(R.id.navbar__lightMode)
 
-        fun changeThemeIcon(position: Int) {
+        fun changeThemeIcon(position: Int, isAnimated: Boolean = true) {
             when (position) {
                 0 -> {
+                    // Darkmode
                     darkModeButton.drawable =
                         ContextCompat.getDrawable(this, R.drawable.navbar__moonfill)
                     autoModeButton.drawable =
                         ContextCompat.getDrawable(this, R.drawable.navbar__autoframe)
                     lightModeButton.drawable =
                         ContextCompat.getDrawable(this, R.drawable.navbar__sunframe)
+
+                    themeToggle.setPosition(0, isAnimated)
+                    themeToggle.setOnPositionChangedListener {
+                        ThemeHelper.applyTheme("dark")
+                    }
+                    mainPrefInstance.edit().apply { putString("Theme", "dark") }.apply()
+
+//                    Timer("SettingUp", false).schedule(800) {
+//                        runOnUiThread {
+//                        }
+//                    }
                 }
                 1 -> {
+                    // Automode
                     darkModeButton.drawable =
                         ContextCompat.getDrawable(this, R.drawable.navbar__moonframe)
                     autoModeButton.drawable =
                         ContextCompat.getDrawable(this, R.drawable.navbar__autofill)
                     lightModeButton.drawable =
                         ContextCompat.getDrawable(this, R.drawable.navbar__sunframe)
+
+                    themeToggle.setPosition(1, isAnimated)
+                    themeToggle.setOnPositionChangedListener {
+
+                    }
+                    mainPrefInstance.edit().apply { putString("Theme", "default") }.apply()
+
+//                    Timer("SettingUp", false).schedule(800) {
+//                        runOnUiThread {
+////                    ThemeHelper.applyTheme("default", isDarkThemeOn())
+//                        }
+//                    }
                 }
                 2 -> {
+                    // Lightmode
                     darkModeButton.drawable =
                         ContextCompat.getDrawable(this, R.drawable.navbar__moonframe)
                     autoModeButton.drawable =
                         ContextCompat.getDrawable(this, R.drawable.navbar__autoframe)
                     lightModeButton.drawable =
                         ContextCompat.getDrawable(this, R.drawable.navbar__sunfill)
+
+                    themeToggle.setPosition(2, isAnimated)
+                    themeToggle.setOnPositionChangedListener {
+                        ThemeHelper.applyTheme("light")
+                    }
+                    mainPrefInstance.edit().apply { putString("Theme", "light") }.apply()
+
+//                    Timer("SettingUp", false).schedule(800) {
+//                        runOnUiThread {
+//                        }
+//                    }
                 }
             }
         }
 
-//      TODO: set postion according to previous theme setting
-        themeToggle.setPosition(2, false)
-        changeThemeIcon(themeToggle.position)
+        when (mainPrefInstance.getString("Theme", "light")) {
+            "dark" -> changeThemeIcon(0, false)
+            "default" -> changeThemeIcon(1, false)
+            "light" -> changeThemeIcon(2, false)
+        }
+
+
 
         darkModeButton.setOnClickListener {
             changeThemeIcon(0)
+            prevTheme = "dark"
         }
         autoModeButton.setOnClickListener {
             changeThemeIcon(1)
+            prevTheme = "default"
         }
         lightModeButton.setOnClickListener {
             changeThemeIcon(2)
+            prevTheme = "light"
         }
 
 //        themeToggle.setOnPositionChangedListener {
@@ -294,6 +341,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
         drawerLayout.closeDrawer(GravityCompat.END)
 
+        val themeToggle = findViewById<SegmentedButtonGroup>(R.id.navbar__themeSelector)
+
+//        when (prevTheme) {
+//            "dark" -> themeToggle.setPosition(0, false)
+//            "default" -> themeToggle.setPosition(1, false)
+//            "light" -> themeToggle.setPosition(2, false)
+//        }
+
+        when (mainPrefInstance.getString("Theme", "light")) {
+            "dark" -> themeToggle.setPosition(0, false)
+            "default" -> themeToggle.setPosition(1, false)
+            "light" -> themeToggle.setPosition(2, false)
+        }
+
         startLoggerService()
 
         if (mainPrefInstance.getBoolean("FirstTime", true)) FirstTime().show(
@@ -371,21 +432,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (song.isDuplicateOf(lastSong)) return
 
         // Set bookmark if it already exists in db
-        isSaved = if (DatabaseHandler(this).isAlreadySaved(song)) {
-            setBookmark(
-                true,
-                findViewById<ImageView>(R.id.bookmark),
-                this
-            )
-            true
-        } else {
-            setBookmark(
-                false,
-                findViewById<ImageView>(R.id.bookmark),
-                this
-            )
-            false
-        }
+//        isSaved = if (DatabaseHandler(this).isAlreadySaved(song)) {
+//            setBookmark(
+//                true,
+//                findViewById<ImageView>(R.id.bookmark),
+//                this
+//            )
+//            true
+//        } else {
+//            setBookmark(
+//                false,
+//                findViewById<ImageView>(R.id.bookmark),
+//                this
+//            )
+//            false
+//        }
 
         lastSong = song
         when {
