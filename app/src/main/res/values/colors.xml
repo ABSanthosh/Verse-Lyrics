@@ -11,27 +11,27 @@
     <color name="uparrow_background">#575757</color>
 
     <!-- app palette -->
-    <!--    <color name="primary">#97747065</color>-->
-    <!--    <color name="secondary">#F57C00</color>-->
-    <!--    <color name="error">#E53935</color>-->
+        <color name="primary">#97747065</color>
+        <color name="secondary">#F57C00</color>
+        <color name="error">#E53935</color>
 
-    <!--    <color name="textColor">#747065</color>-->
-    <!--    <color name="metaTextColor">#121212</color>-->
-    <!--    <color name="bgColor">#FFF5DD</color>-->
-    <!--    <color name="ColorSecondary">#121212</color>-->
-    <!--    <color name="fragcolor">#D8CCB0</color>-->
-    <!--    <color name="navcolor">#FFFFFF</color>-->
-    <!--    <color name="recyclerColor">#CFC7B5</color>-->
+        <color name="textColor">#747065</color>
+        <color name="metaTextColor">#121212</color>
+        <color name="bgColor">#FFF5DD</color>
+        <color name="ColorSecondary">#121212</color>
+        <color name="fragcolor">#D8CCB0</color>
+        <color name="navcolor">#FFFFFF</color>
+        <color name="recyclerColor">#CFC7B5</color>
 
-    <color name="primary">#97747065</color>
-    <color name="secondary">#F57C00</color>
-    <color name="error">#E53935</color>
+<!--    <color name="primary">#97747065</color>-->
+<!--    <color name="secondary">#F57C00</color>-->
+<!--    <color name="error">#E53935</color>-->
 
-    <color name="textColor">#000</color>
-    <color name="metaTextColor">#000</color>
-    <color name="bgColor">#ffffff</color>
-    <color name="ColorSecondary">#ffffff</color>
-    <color name="fragcolor">#fff</color>
-    <color name="navcolor">#FFFFFF</color>
-    <color name="recyclerColor">#fff</color>
+<!--    <color name="textColor">#000</color>-->
+<!--    <color name="metaTextColor">#000</color>-->
+<!--    <color name="bgColor">#ffffff</color>-->
+<!--    <color name="ColorSecondary">#ffffff</color>-->
+<!--    <color name="fragcolor">#fff</color>-->
+<!--    <color name="navcolor">#FFFFFF</color>-->
+<!--    <color name="recyclerColor">#fff</color>-->
 </resources>
