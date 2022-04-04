@@ -112,7 +112,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         findViewById<RelativeLayout>(R.id.openSettings).setOnClickListener {
             startActivity(Intent(this, Settings::class.java))
-//            drawerLayout.closeDrawer(GravityCompat.END)
         }
 
         val themeToggle = findViewById<SegmentedButtonGroup>(R.id.navbar__themeSelector)
@@ -126,62 +125,67 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     // Darkmode
                     darkModeButton.drawable =
                         ContextCompat.getDrawable(this, R.drawable.navbar__moonfill)
+                    darkModeButton.removeDrawableTint()
+
                     autoModeButton.drawable =
                         ContextCompat.getDrawable(this, R.drawable.navbar__autoframe)
+                    autoModeButton.drawableTint =
+                        ContextCompat.getColor(this, R.color.themeToggleNonActiveTint)
+
                     lightModeButton.drawable =
                         ContextCompat.getDrawable(this, R.drawable.navbar__sunframe)
+                    lightModeButton.drawableTint =
+                        ContextCompat.getColor(this, R.color.themeToggleNonActiveTint)
 
                     themeToggle.setPosition(0, isAnimated)
                     themeToggle.setOnPositionChangedListener {
                         ThemeHelper.applyTheme("dark")
                     }
                     mainPrefInstance.edit().apply { putString("Theme", "dark") }.apply()
-
-//                    Timer("SettingUp", false).schedule(800) {
-//                        runOnUiThread {
-//                        }
-//                    }
                 }
                 1 -> {
                     // Automode
                     darkModeButton.drawable =
                         ContextCompat.getDrawable(this, R.drawable.navbar__moonframe)
+                    darkModeButton.drawableTint =
+                        ContextCompat.getColor(this, R.color.themeToggleNonActiveTint)
+
                     autoModeButton.drawable =
                         ContextCompat.getDrawable(this, R.drawable.navbar__autofill)
+                    autoModeButton.removeDrawableTint()
+
                     lightModeButton.drawable =
                         ContextCompat.getDrawable(this, R.drawable.navbar__sunframe)
+                    lightModeButton.drawableTint =
+                        ContextCompat.getColor(this, R.color.themeToggleNonActiveTint)
 
                     themeToggle.setPosition(1, isAnimated)
                     themeToggle.setOnPositionChangedListener {
 
                     }
                     mainPrefInstance.edit().apply { putString("Theme", "default") }.apply()
-
-//                    Timer("SettingUp", false).schedule(800) {
-//                        runOnUiThread {
-////                    ThemeHelper.applyTheme("default", isDarkThemeOn())
-//                        }
-//                    }
                 }
                 2 -> {
                     // Lightmode
                     darkModeButton.drawable =
                         ContextCompat.getDrawable(this, R.drawable.navbar__moonframe)
+                    darkModeButton.drawableTint =
+                        ContextCompat.getColor(this, R.color.themeToggleNonActiveTint)
+
                     autoModeButton.drawable =
                         ContextCompat.getDrawable(this, R.drawable.navbar__autoframe)
+                    autoModeButton.drawableTint =
+                        ContextCompat.getColor(this, R.color.themeToggleNonActiveTint)
+
                     lightModeButton.drawable =
                         ContextCompat.getDrawable(this, R.drawable.navbar__sunfill)
+                    lightModeButton.removeDrawableTint()
 
                     themeToggle.setPosition(2, isAnimated)
                     themeToggle.setOnPositionChangedListener {
                         ThemeHelper.applyTheme("light")
                     }
                     mainPrefInstance.edit().apply { putString("Theme", "light") }.apply()
-
-//                    Timer("SettingUp", false).schedule(800) {
-//                        runOnUiThread {
-//                        }
-//                    }
                 }
             }
         }
@@ -342,17 +346,33 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout.closeDrawer(GravityCompat.END)
 
         val themeToggle = findViewById<SegmentedButtonGroup>(R.id.navbar__themeSelector)
-
-//        when (prevTheme) {
-//            "dark" -> themeToggle.setPosition(0, false)
-//            "default" -> themeToggle.setPosition(1, false)
-//            "light" -> themeToggle.setPosition(2, false)
-//        }
+        val darkModeButton = findViewById<SegmentedButton>(R.id.navbar__darkMode)
+        val autoModeButton = findViewById<SegmentedButton>(R.id.navbar__autoMode)
+        val lightModeButton = findViewById<SegmentedButton>(R.id.navbar__lightMode)
 
         when (mainPrefInstance.getString("Theme", "light")) {
-            "dark" -> themeToggle.setPosition(0, false)
-            "default" -> themeToggle.setPosition(1, false)
-            "light" -> themeToggle.setPosition(2, false)
+            "dark" -> {
+                darkModeButton.removeDrawableTint()
+                autoModeButton.drawableTint =
+                    ContextCompat.getColor(this, R.color.themeToggleNonActiveTint)
+                themeToggle.setPosition(0, false)
+            }
+            "default" -> {
+                darkModeButton.drawableTint =
+                    ContextCompat.getColor(this, R.color.themeToggleNonActiveTint)
+                autoModeButton.removeDrawableTint()
+                lightModeButton.drawableTint =
+                    ContextCompat.getColor(this, R.color.themeToggleNonActiveTint)
+                themeToggle.setPosition(1, false)
+            }
+            "light" -> {
+                darkModeButton.drawableTint =
+                    ContextCompat.getColor(this, R.color.themeToggleNonActiveTint)
+                autoModeButton.drawableTint =
+                    ContextCompat.getColor(this, R.color.themeToggleNonActiveTint)
+                lightModeButton.removeDrawableTint()
+                themeToggle.setPosition(2, false)
+            }
         }
 
         startLoggerService()
