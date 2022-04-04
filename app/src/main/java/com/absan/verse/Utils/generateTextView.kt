@@ -2,6 +2,7 @@ package com.absan.verse.Utils
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Handler
 import android.os.HandlerThread
@@ -21,7 +22,21 @@ fun generateTextView(context: Context, text: String): TextView {
 
     val lyricLine = TextView(context)
     lyricLine.textAlignment = View.TEXT_ALIGNMENT_CENTER
-    lyricLine.setTextColor(ContextCompat.getColor(context, R.color.textColor))
+
+    if (mainPrefInstance.getString("Theme", "light") == "light") {
+        lyricLine.setTextColor(
+            Color.parseColor("#55524B")
+        )
+    } else if (mainPrefInstance.getString("Theme", "light") == "default") {
+        lyricLine.setTextColor(
+            Color.parseColor("#55524B")
+        )
+    } else {
+        lyricLine.setTextColor(
+            Color.parseColor("#CCC1A5")
+        )
+    }
+
     if (text == "") {
         lyricLine.text = "♫\n"
     } else {
