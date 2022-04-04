@@ -14,7 +14,7 @@
         android:background="@color/bgColor"
         tools:context=".MainActivity">
 
-        <include layout="@layout/navbar__toolbar" />
+        <include layout="@layout/activity__toolbar" />
 
         <TextView
             android:id="@+id/songname"
@@ -156,29 +156,36 @@
         app:itemIconTint="@color/metaTextColor"
         app:itemTextColor="@color/metaTextColor">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="185dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/button__borderradius"
+                    android:fontFamily="@font/yeseva_one"
+                    android:gravity="center"
+                    android:text="@string/verse"
+                    android:textSize="69sp" />
+            </LinearLayout>
 
 
-            <include
-                android:id="@+id/IncludedHeader"
-                layout="@layout/navbar__header"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="0dp" />
-
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/topNavPanel"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@+id/bottomNavPanel"
-                android:layout_below="@+id/IncludedHeader"
+                android:layout_height="0dp"
                 android:layout_marginTop="0dp"
-                android:layout_marginBottom="0dp">
+                android:layout_marginBottom="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <RelativeLayout
                     android:id="@+id/adsAndSavedContainerParent"
@@ -207,7 +214,8 @@
                                 android:layout_marginStart="0dp"
                                 android:layout_marginTop="12dp"
                                 android:layout_marginBottom="10dp"
-                                android:src="@drawable/navbar__blockad" />
+                                android:src="@drawable/navbar__blockad"
+                                app:tint="@color/metaTextColor" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -218,6 +226,7 @@
                                 android:layout_toEndOf="@+id/blockAdImg"
                                 android:fontFamily="@font/manrope"
                                 android:text="183"
+
                                 android:textSize="23sp" />
 
                             <TextView
@@ -252,7 +261,8 @@
                                 android:layout_marginStart="0dp"
                                 android:layout_marginTop="12dp"
                                 android:layout_marginBottom="10dp"
-                                android:src="@drawable/main__bookmark" />
+                                android:src="@drawable/main__bookmark"
+                                app:tint="@color/metaTextColor" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -315,7 +325,8 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="12dp"
                         android:layout_marginBottom="10dp"
-                        android:src="@drawable/navbar__savedisk" />
+                        android:src="@drawable/navbar__savedisk"
+                        app:tint="@color/metaTextColor" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -327,6 +338,7 @@
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@+id/saveDiskImage"
                         android:fontFamily="@font/manrope"
+                        android:paddingTop="2dp"
                         android:text="Saved"
                         android:textSize="18sp" />
                 </RelativeLayout>
@@ -353,7 +365,8 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="12dp"
                         android:layout_marginBottom="10dp"
-                        android:src="@drawable/navbar__recent" />
+                        android:src="@drawable/navbar__recent"
+                        app:tint="@color/metaTextColor" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -365,12 +378,13 @@
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@+id/recentSongImage"
                         android:fontFamily="@font/manrope"
+                        android:paddingTop="2dp"
                         android:text="Recently Played"
                         android:textSize="18sp" />
                 </RelativeLayout>
 
 
-            </RelativeLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/bottomNavPanel"
@@ -391,8 +405,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/navbar__themeborder"
-                    android:backgroundTint="#EBEBEB">
-
+                    android:backgroundTint="@color/themeToggleBackground">
 
                     <com.addisonelliott.segmentedbutton.SegmentedButtonGroup
                         android:id="@+id/navbar__themeSelector"
@@ -402,7 +415,7 @@
                         android:layout_margin="5dp"
                         app:radius="9dp"
                         app:ripple="false"
-                        app:selectedBackground="#fff"
+                        app:selectedBackground="@color/themeToggleActiveBg"
                         app:selectedButtonRadius="7dp">
 
 
@@ -411,15 +424,15 @@
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="1"
-                            app:drawable="@drawable/navbar__moonfill"
+                            app:drawable="@drawable/navbar__moonframe"
                             app:drawableGravity="left"
                             app:drawableHeight="20dp"
                             app:drawablePadding="7dp"
+                            app:drawableTint="@color/themeToggleNonActiveTint"
                             app:drawableWidth="20dp"
                             app:rounded="true"
-                            app:selectedTextColor="#000"
                             app:text="Dark"
-                            app:textColor="@color/black"
+                            app:textColor="@color/textColor"
                             app:textSize="18sp" />
 
                         <com.addisonelliott.segmentedbutton.SegmentedButton
@@ -427,15 +440,15 @@
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="1"
-                            app:drawable="@drawable/navbar__autofill"
+                            app:drawable="@drawable/navbar__autoframe"
                             app:drawableGravity="left"
                             app:drawableHeight="20dp"
                             app:drawablePadding="7dp"
+                            app:drawableTint="@color/themeToggleNonActiveTint"
                             app:drawableWidth="20dp"
                             app:rounded="true"
-                            app:selectedTextColor="#000"
                             app:text="Auto"
-                            app:textColor="@color/black"
+                            app:textColor="@color/textColor"
                             app:textSize="18sp" />
 
                         <com.addisonelliott.segmentedbutton.SegmentedButton
@@ -443,15 +456,15 @@
                             android:layout_width="0dp"
                             android:layout_height="35dp"
                             android:layout_weight="1"
-                            app:drawable="@drawable/navbar__sunfill"
+                            app:drawable="@drawable/navbar__sunframe"
                             app:drawableGravity="left"
                             app:drawableHeight="20dp"
                             app:drawablePadding="7dp"
+                            app:drawableTint="@color/themeToggleNonActiveTint"
                             app:drawableWidth="20dp"
                             app:rounded="true"
-                            app:selectedTextColor="#000"
                             app:text="Light"
-                            app:textColor="@color/black"
+                            app:textColor="@color/textColor"
                             app:textSize="18sp" />
 
                     </com.addisonelliott.segmentedbutton.SegmentedButtonGroup>
@@ -478,7 +491,8 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="12dp"
                         android:layout_marginBottom="10dp"
-                        android:src="@drawable/settings" />
+                        android:src="@drawable/settings"
+                        app:tint="@color/metaTextColor" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -486,10 +500,11 @@
                         android:layout_alignParentTop="true"
                         android:layout_alignParentBottom="true"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="9dp"
+                        android:layout_marginBottom="8dp"
                         android:layout_toEndOf="@+id/settingsIcon"
                         android:fontFamily="@font/manrope"
+                        android:paddingTop="3dp"
                         android:text="Settings"
                         android:textSize="18sp" />
                 </RelativeLayout>
@@ -497,7 +512,7 @@
 
             </LinearLayout>
 
-        </RelativeLayout>
+        </LinearLayout>
 
 
     </com.google.android.material.navigation.NavigationView>

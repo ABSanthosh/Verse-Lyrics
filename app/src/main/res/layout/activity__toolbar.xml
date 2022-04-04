@@ -6,9 +6,9 @@
     android:layout_height="wrap_content"
     android:layoutDirection="rtl"
 
-    android:textColor="@color/black"
+    android:textColor="@color/textColor"
     android:theme="@style/TextAppearance.MaterialComponents.Overline"
-    app:tint="@color/black">
+    app:tint="@color/textColor">
 
 
 </androidx.appcompat.widget.Toolbar>
