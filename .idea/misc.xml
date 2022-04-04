@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.14375" />
+        <entry key="app/src/main/res/drawable/button__borderradius.xml" value="0.2835" />
         <entry key="app/src/main/res/drawable/fragment__border.xml" value="0.2575" />
         <entry key="app/src/main/res/drawable/fragment__itembg.xml" value="0.2575" />
         <entry key="app/src/main/res/drawable/main__bookmark_selected.xml" value="0.2575" />
