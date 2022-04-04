@@ -10,15 +10,19 @@
     <color name="colorFocused">#bbdefb</color>
     <color name="uparrow_background">#575757</color>
 
-    <color name="primary">#64B5F6</color> <!-- Blue 300 -->
+    <color name="primary">#DACEB1</color> <!-- Blue 300 -->
     <color name="secondary">#FFCC80</color> <!-- Orange 200 -->
     <color name="error">#Ef9A9A</color> <!-- Red 200 -->
 
-    <color name="textColor">#ACA38B</color>
+    <color name="textColor">#CCC1A5</color>
     <color name="metaTextColor">#B6B6B6</color>
     <color name="bgColor">#232323</color>
     <color name="ColorSecondary">#B6B6B6</color>
     <color name="fragcolor">#232323</color>
     <color name="navcolor">#232323</color>
     <color name="recyclerColor">#5C5C5C</color>
+
+    <color name="themeToggleBackground">#2AEBEBEB</color>
+    <color name="themeToggleNonActiveTint">#A7A7A7</color>
+    <color name="themeToggleActiveBg">#232323</color>
 </resources>
