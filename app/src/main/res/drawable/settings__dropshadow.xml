@@ -5,7 +5,7 @@
 
     <gradient
         android:angle="90"
-        android:endColor="#60555555"
-        android:startColor="#E5E5E5" />
+        android:endColor="@color/settingsToolbarShadowStart"
+        android:startColor="@color/settingsToolbarShadowEnd" />
 
 </shape>
