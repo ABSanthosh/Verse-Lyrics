@@ -61,7 +61,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         )
     }
 
-    @SuppressLint("UseCompatLoadingForDrawables", "CommitPrefEdits")
     override fun onCreate(savedInstanceState: Bundle?) {
         // Set full screen
         @Suppress("DEPRECATION")
@@ -332,15 +331,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    @SuppressLint("CutPasteId", "UseCompatLoadingForDrawables")
     override fun onStart() {
 //        val navigationView = findViewById<NavigationView>(R.id.navView)
 //        val menuItem__adblock: MenuItem = navigationView.menu.findItem(R.id.adblockmenu)
 //        menuItem__adblock.actionView.findViewById<TextView>(R.id.AdCount).text =
 //            mainPrefInstance.getInt("AdCount", 0).toString()
 
-        ResetLyricView(findViewById(R.id.lyricsContainer))
+        ResetLyricView(
+            findViewById(R.id.lyricsContainer),
+            stuff = mainPrefInstance.getString("FontQuery", null).toString(),
+            context = this
+        )
 
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
         drawerLayout.closeDrawer(GravityCompat.END)
