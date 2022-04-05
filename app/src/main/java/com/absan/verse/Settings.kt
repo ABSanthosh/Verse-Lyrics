@@ -59,9 +59,11 @@ class Settings : AppCompatActivity() {
         setContentView(R.layout.settings)
         super.onCreate(savedInstanceState)
 
+
         val handlerThread = HandlerThread("fonts")
         handlerThread.start()
         mHandler = Handler(handlerThread.looper)
+
 
         findViewById<LinearLayout>(R.id.setting__textSize).setOnClickListener {
 
@@ -128,6 +130,7 @@ class Settings : AppCompatActivity() {
         }
 
         findViewById<LinearLayout>(R.id.setting__textFont).setOnClickListener {
+
             val fontSelectorModal = BottomSheetDialog(this)
             fontSelectorModal.setContentView(R.layout.settings__fontselector)
 
