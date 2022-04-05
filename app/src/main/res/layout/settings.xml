@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -14,12 +16,13 @@
             android:layout_width="match_parent"
             android:layout_height="69dp">
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/settingBackButton"
                 android:layout_width="28dp"
                 android:layout_height="match_parent"
-                android:background="#00FFFFFF"
-                android:src="@drawable/settings__leftarrow" />
+                android:src="@drawable/settings__leftarrow"
+                app:tint="@color/metaTextColor"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -43,9 +46,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E5E5E5"
-
-        >
+        android:background="@color/settingsBg">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -71,7 +72,7 @@
                     android:id="@+id/setting__textFont"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="@color/white"
+                    android:background="@color/settingsFg"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
@@ -83,7 +84,8 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="12dp"
                         android:gravity="center_vertical"
-                        android:src="@drawable/settings__font" />
+                        android:src="@drawable/settings__font"
+                        app:tint="@color/metaTextColor" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -103,7 +105,8 @@
                         android:layout_marginBottom="18dp"
                         android:gravity="center_vertical"
                         android:rotation="90"
-                        android:src="@drawable/settings__newactivity" />
+                        android:src="@drawable/settings__newactivity"
+                        app:tint="@color/metaTextColor" />
 
 
                 </LinearLayout>
@@ -113,7 +116,7 @@
                     android:id="@+id/setting__textSize"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="@color/white"
+                    android:background="@color/settingsFg"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
@@ -126,7 +129,8 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="12dp"
                         android:gravity="center_vertical"
-                        android:src="@drawable/settings__fontsize" />
+                        android:src="@drawable/settings__fontsize"
+                        app:tint="@color/metaTextColor" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -146,7 +150,8 @@
                         android:layout_marginBottom="18dp"
                         android:gravity="center_vertical"
                         android:rotation="90"
-                        android:src="@drawable/settings__newactivity" />
+                        android:src="@drawable/settings__newactivity"
+                        app:tint="@color/metaTextColor" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -169,7 +174,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="@color/white"
+                    android:background="@color/settingsFg"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
@@ -181,7 +186,8 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="12dp"
                         android:gravity="center_vertical"
-                        android:src="@drawable/settings__help" />
+                        android:src="@drawable/settings__help"
+                        app:tint="@color/metaTextColor" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -197,7 +203,7 @@
                     android:id="@+id/setting__openGithub"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="@color/white"
+                    android:background="@color/settingsFg"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
@@ -209,7 +215,8 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="12dp"
                         android:gravity="center_vertical"
-                        android:src="@drawable/settings__github" />
+                        android:src="@drawable/settings__github"
+                        app:tint="@color/metaTextColor" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -227,7 +234,8 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginEnd="23dp"
                         android:gravity="center_vertical"
-                        android:src="@drawable/settings__newwindow" />
+                        android:src="@drawable/settings__newwindow"
+                        app:tint="@color/metaTextColor" />
 
                 </LinearLayout>
 
@@ -235,7 +243,7 @@
                     android:id="@+id/setting__giveFeedback"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="@color/white"
+                    android:background="@color/settingsFg"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
@@ -247,7 +255,8 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="12dp"
                         android:gravity="center_vertical"
-                        android:src="@drawable/settings__feedback" />
+                        android:src="@drawable/settings__feedback"
+                        app:tint="@color/metaTextColor" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -264,7 +273,8 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginEnd="23dp"
                         android:gravity="center_vertical"
-                        android:src="@drawable/settings__newwindow" />
+                        android:src="@drawable/settings__newwindow"
+                        app:tint="@color/metaTextColor" />
 
                 </LinearLayout>
 
@@ -272,7 +282,7 @@
                     android:id="@+id/setting__featureRequest"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="@color/white"
+                    android:background="@color/settingsFg"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
@@ -284,7 +294,8 @@
                         android:layout_marginStart="18dp"
                         android:layout_marginEnd="10dp"
                         android:gravity="center_vertical"
-                        android:src="@drawable/settings__featurerequest" />
+                        android:src="@drawable/settings__featurerequest"
+                        app:tint="@color/metaTextColor" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -301,7 +312,8 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginEnd="23dp"
                         android:gravity="center_vertical"
-                        android:src="@drawable/settings__newwindow" />
+                        android:src="@drawable/settings__newwindow"
+                        app:tint="@color/metaTextColor" />
 
                 </LinearLayout>
 
@@ -309,7 +321,7 @@
                     android:id="@+id/setting__rateInPlaystore"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="@color/white"
+                    android:background="@color/settingsFg"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
@@ -321,7 +333,8 @@
                         android:layout_marginStart="17dp"
                         android:layout_marginEnd="8dp"
                         android:gravity="center_vertical"
-                        android:src="@drawable/settings__rating" />
+                        android:src="@drawable/settings__rating"
+                        app:tint="@color/metaTextColor" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -338,14 +351,15 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginEnd="23dp"
                         android:gravity="center_vertical"
-                        android:src="@drawable/settings__newwindow" />
+                        android:src="@drawable/settings__newwindow"
+                        app:tint="@color/metaTextColor" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="@color/white"
+                    android:background="@color/settingsFg"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
@@ -357,7 +371,8 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="12dp"
                         android:gravity="center_vertical"
-                        android:src="@drawable/settings__attribution" />
+                        android:src="@drawable/settings__attribution"
+                        app:tint="@color/metaTextColor" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -389,7 +404,7 @@
                     android:id="@+id/setting__myName"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="@color/white"
+                    android:background="@color/settingsFg"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
@@ -401,7 +416,8 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="12dp"
                         android:gravity="center_vertical"
-                        android:src="@drawable/settings__code" />
+                        android:src="@drawable/settings__code"
+                        app:tint="@color/metaTextColor" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -416,7 +432,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="@color/white"
+                    android:background="@color/settingsFg"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
@@ -441,7 +457,7 @@
                 android:gravity="center_horizontal|bottom"
                 android:paddingBottom="5dp"
                 android:text="You are using Verse 2022.01.0.1"
-                android:textColor="#8B8B8B"
+                android:textColor="@color/textColor"
                 android:textSize="13sp" />
         </LinearLayout>
 
