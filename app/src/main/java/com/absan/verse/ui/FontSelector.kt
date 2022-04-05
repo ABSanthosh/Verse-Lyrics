@@ -52,14 +52,14 @@ class FontSelector : DialogFragment() {
                 putString("FontQuery", null)
             }.apply()
             TYPEFACE = Typeface.DEFAULT
-            ResetLyricView(requireActivity().findViewById(R.id.lyricsContainer), context)
+//            ResetLyricView(requireActivity().findViewById(R.id.lyricsContainer), context)
             textContent.setTypeface(ResourcesCompat.getFont(requireContext(), R.font.walter_turncoat))
         }
 
         requireView().findViewById<Button>(R.id.setFont).setOnClickListener {
-            if (TYPEFACE != Typeface.DEFAULT) ResetLyricView(requireActivity().findViewById(R.id.lyricsContainer))
-            TYPEFACE = textContent.typeface
-            ResetLyricView(requireActivity().findViewById(R.id.lyricsContainer), context)
+//            if (TYPEFACE != Typeface.DEFAULT) ResetLyricView(requireActivity().findViewById(R.id.lyricsContainer))
+//            TYPEFACE = textContent.typeface
+//            ResetLyricView(requireActivity().findViewById(R.id.lyricsContainer), context)
         }
 
 
