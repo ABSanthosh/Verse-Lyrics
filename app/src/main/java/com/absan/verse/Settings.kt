@@ -214,7 +214,7 @@ class Settings : AppCompatActivity() {
             fontSelectorModal.show()
         }
 
-        findViewById<ImageButton>(R.id.settingBackButton).setOnClickListener {
+        findViewById<ImageView>(R.id.settingBackButton).setOnClickListener {
             finish()
         }
 
