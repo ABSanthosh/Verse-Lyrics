@@ -25,4 +25,9 @@
     <color name="themeToggleBackground">#2AEBEBEB</color>
     <color name="themeToggleNonActiveTint">#A7A7A7</color>
     <color name="themeToggleActiveBg">#232323</color>
+
+    <color name="settingsFg">#373636</color>
+    <color name="settingsBg">#232323</color>
+    <color name="settingsToolbarShadowStart">#131313</color>
+    <color name="settingsToolbarShadowEnd">#131313</color>
 </resources>
