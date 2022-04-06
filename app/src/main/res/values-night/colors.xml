@@ -14,20 +14,23 @@
     <color name="secondary">#FFCC80</color> <!-- Orange 200 -->
     <color name="error">#Ef9A9A</color> <!-- Red 200 -->
 
-    <color name="textColor">#CCC1A5</color>
-    <color name="metaTextColor">#B6B6B6</color>
-    <color name="bgColor">#232323</color>
+    <color name="textColor">#C1B79D</color>
+    <color name="metaTextColor">#828588</color>
+    <color name="bgColor">#0a0a0a</color>
     <color name="ColorSecondary">#B6B6B6</color>
     <color name="fragcolor">#232323</color>
-    <color name="navcolor">#232323</color>
+    <color name="navcolor">#0a0a0a</color>
     <color name="recyclerColor">#5C5C5C</color>
 
-    <color name="themeToggleBackground">#2AEBEBEB</color>
+    <color name="themeToggleBackground">#2A828282</color>
     <color name="themeToggleNonActiveTint">#A7A7A7</color>
-    <color name="themeToggleActiveBg">#232323</color>
+    <color name="themeToggleActiveBg">#0a0a0a</color>
 
-    <color name="settingsFg">#373636</color>
-    <color name="settingsBg">#232323</color>
+    <color name="settingsFg">#121212</color>
+    <color name="settingsBg">#0a0a0a</color>
     <color name="settingsToolbarShadowStart">#131313</color>
     <color name="settingsToolbarShadowEnd">#131313</color>
+
+    <color name="buttonBg">#CCC1A5</color>
+    <color name="buttontextColor">#55524B</color>
 </resources>
