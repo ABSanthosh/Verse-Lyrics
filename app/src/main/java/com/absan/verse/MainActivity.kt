@@ -61,6 +61,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         )
     }
 
+    @SuppressLint("CommitPrefEdits")
     override fun onCreate(savedInstanceState: Bundle?) {
         // Set full screen
         @Suppress("DEPRECATION")
@@ -412,10 +413,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
         super.onStart()
-    }
-
-    fun openSettings() {
-        startActivity(Intent(this, Settings::class.java))
     }
 
     override fun onBackPressed() {
