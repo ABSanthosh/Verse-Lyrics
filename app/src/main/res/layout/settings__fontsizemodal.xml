@@ -67,50 +67,58 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
+        android:stepSize="25"
+        android:value="50"
         android:valueFrom="0"
         android:valueTo="100"
-        android:value="50"
         app:labelBehavior="gone"
         app:thumbColor="#E30425"
-        android:stepSize="25"
         app:trackColorActive="#E30425"
         app:trackColorInactive="#51E30425" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:orientation="horizontal"
         android:paddingStart="14dp"
         android:paddingTop="10dp"
         android:paddingEnd="14dp">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/Setting__textSize__defaultButton"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="38dp"
             android:layout_marginEnd="7dp"
+            android:layout_marginStart="5dp"
             android:layout_weight="1"
+            android:background="@drawable/button__background"
             android:text="@string/Fragment__FontSelector_B2"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textColor="@color/buttontextColor" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/Setting__textSize__saveButton"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="38dp"
             android:layout_marginStart="7dp"
             android:layout_marginEnd="7dp"
             android:layout_weight="1"
+            android:background="@drawable/button__background"
             android:text="Save"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textColor="@color/buttontextColor" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/setting__textSize__close"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="38dp"
             android:layout_marginStart="7dp"
+            android:layout_marginEnd="5dp"
             android:layout_weight="1"
+            android:background="@drawable/button__background"
             android:text="Close"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textColor="@color/buttontextColor" />
 
     </LinearLayout>
 
