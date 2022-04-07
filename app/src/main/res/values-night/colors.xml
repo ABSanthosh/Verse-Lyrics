@@ -27,6 +27,7 @@
     <color name="themeToggleActiveBg">#0a0a0a</color>
 
     <color name="settingsFg">#121212</color>
+    <color name="settingsCoffee">#B8C534</color>
     <color name="settingsBg">#0a0a0a</color>
     <color name="settingsToolbarShadowStart">#131313</color>
     <color name="settingsToolbarShadowEnd">#131313</color>
