@@ -29,8 +29,8 @@
     <color name="settingsFg">#121212</color>
     <color name="settingsCoffee">#B8C534</color>
     <color name="settingsBg">#0a0a0a</color>
-    <color name="settingsToolbarShadowStart">#131313</color>
-    <color name="settingsToolbarShadowEnd">#131313</color>
+    <color name="settingsToolbarShadowStart">#41090909</color>
+    <color name="settingsToolbarShadowEnd">#00050505</color>
 
     <color name="buttonBg">#CCC1A5</color>
     <color name="buttontextColor">#55524B</color>
