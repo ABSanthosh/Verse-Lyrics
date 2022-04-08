@@ -39,11 +39,11 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <!--        <View-->
-        <!--            android:id="@+id/shadow_view"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="5dp"-->
-        <!--            android:background="@drawable/settings__dropshadow" />-->
+<!--        <View-->
+<!--            android:id="@+id/shadow_view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:background="#65D0D0D0" />-->
     </LinearLayout>
 
     <ScrollView
