@@ -8,43 +8,39 @@
     app:itemIconTint="@color/metaTextColor"
     app:itemTextColor="@color/metaTextColor">
 
-    <LinearLayout
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="?attr/actionBarSize">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/settingBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:contentDescription="TODO"
+            android:src="@drawable/settings__leftarrow"
+            app:tint="@color/metaTextColor"
+            tools:ignore="HardcodedText" />
+
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="67dp">
+            android:layout_height="match_parent"
+            android:fontFamily="@font/manrope"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:text="Settings"
+            android:textFontWeight="@integer/material_motion_duration_long_2"
+            android:textSize="26sp" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/settingBackButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:contentDescription="TODO"
-                android:src="@drawable/settings__leftarrow"
-                app:tint="@color/metaTextColor"
-                tools:ignore="HardcodedText" />
+        <View
+            android:id="@+id/shadow_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#65D0D0D0" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/manrope"
-                android:gravity="center_vertical"
-                android:paddingStart="10dp"
-                android:text="Settings"
-                android:textFontWeight="@integer/material_motion_duration_long_2"
-                android:textSize="26sp" />
+    </androidx.appcompat.widget.Toolbar>
 
-        </androidx.appcompat.widget.Toolbar>
-
-<!--        <View-->
-<!--            android:id="@+id/shadow_view"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="1dp"-->
-<!--            android:background="#65D0D0D0" />-->
-    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
