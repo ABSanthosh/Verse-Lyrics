@@ -100,7 +100,7 @@ class Settings : AppCompatActivity() {
 
             requestCustomFont(
                 context = this,
-                familyName = mainPrefInstance.getString("FontQuery", null).toString(),
+                familyName = mainPrefInstance.getString("FontQuery", "Walter Turncoat").toString(),
                 mHandler = mHandler,
                 textView = previewText,
                 setConstant = false,
@@ -128,6 +128,9 @@ class Settings : AppCompatActivity() {
                 Constants.FONTSIZE = 24f
                 setFontSize(50f, previewText)
                 sizeSlider.value = 50f
+
+                Toast.makeText(this, "Font size set to default", Toast.LENGTH_SHORT)
+                    .show()
             }
 
             saveButton?.setOnClickListener {
@@ -135,6 +138,9 @@ class Settings : AppCompatActivity() {
                     putFloat("FontSize", selectedFontSize)
                 }.apply()
                 Constants.FONTSIZE = selectedFontSize
+                Toast.makeText(this, "Font size set to $selectedFontSize", Toast.LENGTH_SHORT)
+                    .show()
+                textSizeModal.dismiss()
             }
 
             closeSheet?.setOnClickListener {
@@ -161,12 +167,12 @@ class Settings : AppCompatActivity() {
 
             Timer("SettingUp", false).schedule(100) {
                 fontRoller?.selectedItemPosition =
-                    fontList.indexOf(mainPrefInstance.getString("FontQuery", null))
+                    fontList.indexOf(mainPrefInstance.getString("FontQuery", "Walter Turncoat"))
 
             }
             requestCustomFont(
                 context = this,
-                familyName = mainPrefInstance.getString("FontQuery", null).toString(),
+                familyName = mainPrefInstance.getString("FontQuery", "Walter Turncoat").toString(),
                 mHandler = mHandler,
                 textView = textContent,
                 setConstant = false,
@@ -180,6 +186,9 @@ class Settings : AppCompatActivity() {
                 Constants.TYPEFACE = ResourcesCompat.getFont(this, R.font.walter_turncoat)!!
                 textContent.typeface = ResourcesCompat.getFont(this, R.font.walter_turncoat)
 
+                fontRoller?.selectedItemPosition = fontList.indexOf("Walter Turncoat")
+                selectedFontName = "Walter Turncoat"
+
                 requestCustomFont(
                     context = this,
                     familyName = "Walter Turncoat",
@@ -188,6 +197,10 @@ class Settings : AppCompatActivity() {
                     setConstant = true,
                     isPutString = true,
                 )
+
+                Toast.makeText(this, "Font set to default", Toast.LENGTH_SHORT)
+                    .show()
+                fontSelectorModal.dismiss()
             }
 
             fontSelectorModal.findViewById<Button>(R.id.setting__textFont__close)
@@ -205,6 +218,9 @@ class Settings : AppCompatActivity() {
                     isPutString = true,
                 )
 //                Constants.TYPEFACE = textContent.typeface
+                Toast.makeText(this, "Font face set to $selectedFontName", Toast.LENGTH_SHORT)
+                    .show()
+                fontSelectorModal.dismiss()
             }
 
             fontRoller?.setOnItemSelectedListener { fontRoller, fontList, position ->
