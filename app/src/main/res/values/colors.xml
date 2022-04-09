@@ -33,6 +33,10 @@
     <color name="settingsToolbarShadowStart">#60555555</color>
     <color name="settingsToolbarShadowEnd">#E5E5E5</color>
 
+    <color name="settingsFontSelectorBg">#E5DEEB</color>
+    <color name="settingsFontSelectorCurtain">#00E5DEEB</color>
+    <color name="settingsFontSelectorSelectedText">#536D8A</color>
+
     <color name="buttonBg">#55524B</color>
     <color name="buttontextColor">#FFF5DD</color>
 </resources>

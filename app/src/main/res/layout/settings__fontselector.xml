@@ -69,15 +69,15 @@
         android:id="@+id/setting__fontSelector__roller"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E5DEEB"
+        android:background="@color/settingsFontSelectorBg"
         aigestudio:wheel_atmospheric="false"
         aigestudio:wheel_curved="true"
         aigestudio:wheel_cyclic="false"
         aigestudio:wheel_item_align="center"
         aigestudio:wheel_item_text_color="#A7A7DB"
         aigestudio:wheel_item_text_size="24sp"
-
-        aigestudio:wheel_selected_item_text_color="#536D8A" />
+        aigestudio:wheel_selected_item_text_color="@color/settingsFontSelectorSelectedText"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
