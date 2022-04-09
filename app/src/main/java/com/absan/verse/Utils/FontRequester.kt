@@ -6,6 +6,7 @@ import android.os.Handler
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.provider.FontRequest
 import androidx.core.provider.FontsContractCompat
 import com.absan.verse.R
@@ -17,7 +18,7 @@ fun requestCustomFont(
     mHandler: Handler,
     textView: TextView? = null,
     setConstant: Boolean = true,
-    isPutString: Boolean= true
+    isPutString: Boolean = true
 ) {
     val queryBuilder = QueryBuilder(familyName)
     val mainPrefInstance by lazy { context.getSharedPreferences("main", Context.MODE_PRIVATE) }
@@ -33,7 +34,7 @@ fun requestCustomFont(
 
     val callback = object : FontsContractCompat.FontRequestCallback() {
         override fun onTypefaceRetrieved(typeface: Typeface) {
-            if(isPutString) mainPrefInstance.edit().apply { putString("FontQuery", query) }.apply()
+            if (isPutString) mainPrefInstance.edit().apply { putString("FontQuery", query) }.apply()
             if (setConstant) TYPEFACE = typeface
             if (textView != null) textView.typeface = typeface
         }
@@ -44,8 +45,12 @@ fun requestCustomFont(
     }
 
     if (familyName != "null") {
-        FontsContractCompat
-            .requestFont(context, request, callback, mHandler)
+        if (familyName == "Walter Turncoat") {
+            textView?.typeface = ResourcesCompat.getFont(context, R.font.walter_turncoat)
+        } else {
+            FontsContractCompat
+                .requestFont(context, request, callback, mHandler)
+        }
     }
 
 }
