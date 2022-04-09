@@ -53,7 +53,8 @@
     <TextView
         android:id="@+id/setting__textSize__preview"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
         android:fontFamily="@font/manrope"
         android:gravity="center"
         android:text="Mango"
