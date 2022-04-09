@@ -33,12 +33,6 @@
             android:textFontWeight="@integer/material_motion_duration_long_2"
             android:textSize="26sp" />
 
-        <View
-            android:id="@+id/shadow_view"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#65D0D0D0" />
-
     </androidx.appcompat.widget.Toolbar>
 
 
