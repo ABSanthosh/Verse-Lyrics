@@ -62,19 +62,6 @@ class Settings : AppCompatActivity() {
         setContentView(R.layout.settings)
         super.onCreate(savedInstanceState)
 
-        @Suppress("DEPRECATION")
-        try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                window.insetsController?.hide(WindowInsets.Type.statusBars())
-            } else {
-                window.setFlags(
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN
-                )
-            }
-        } catch (err: Exception) {
-        }
-
 
         val handlerThread = HandlerThread("fonts")
         handlerThread.start()

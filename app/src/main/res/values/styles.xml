@@ -12,6 +12,10 @@
         <item name="colorError">@color/error</item>
         <item name="android:textColor">@color/textColor</item>
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 
     <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
