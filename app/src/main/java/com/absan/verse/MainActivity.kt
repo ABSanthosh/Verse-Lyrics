@@ -97,6 +97,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
         }
 
+        findViewById<RelativeLayout>(R.id.openSavedLyrics).setOnClickListener {
+            startActivity(Intent(this, SavedSongs::class.java))
+        }
+
         findViewById<RelativeLayout>(R.id.openSettings).setOnClickListener {
             startActivity(Intent(this, Settings::class.java))
         }
