@@ -27,7 +27,9 @@
             android:fontFamily="@font/satisfy"
             android:gravity="center|top"
             android:includeFontPadding="false"
+            android:paddingStart="20dp"
             android:paddingTop="0dp"
+            android:paddingEnd="20dp"
             android:textColor="@color/textColor"
             android:textSize="40sp" />
 
