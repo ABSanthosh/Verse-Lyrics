@@ -22,6 +22,7 @@ fun generateTextView(context: Context, text: String): TextView {
 
     val lyricLine = TextView(context)
     lyricLine.textAlignment = View.TEXT_ALIGNMENT_CENTER
+    lyricLine.setPadding(6,0,6,0)
 
     if (mainPrefInstance.getString("Theme", "light") == "light") {
         lyricLine.setTextColor(
