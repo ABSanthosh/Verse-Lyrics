@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/recentlyPlayedBackButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/settings__leftarrow"
+                app:tint="@color/metaTextColor" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/manrope"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:text="Recently played"
+                android:textFontWeight="@integer/material_motion_duration_long_2"
+                android:textSize="26sp" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/adsAndSavedContainer"
+            android:background="#ADD0D0D0" />
+    </LinearLayout>
+
+</LinearLayout>
