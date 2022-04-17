@@ -101,6 +101,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivity(Intent(this, SavedSongs::class.java))
         }
 
+        findViewById<RelativeLayout>(R.id.openRecentSongs).setOnClickListener {
+            startActivity(Intent(this, RecentlyPlayed::class.java))
+        }
+
         findViewById<RelativeLayout>(R.id.openSettings).setOnClickListener {
             startActivity(Intent(this, Settings::class.java))
         }
