@@ -6,8 +6,7 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.absan.verse.R
@@ -27,8 +26,28 @@ class SaveLyric__ItemAdapter(val context: Context, private val songList: ArrayLi
         val view =
             LayoutInflater.from(context).inflate(R.layout.fragment__savelyrics_row, parent, false)
         view.setOnClickListener {
+//            val songIdTextview = view.findViewById<TextView>(R.id.saveSong__songId)
+//            OpenSongInSpotify(songIdTextview.text.toString())
+        }
+
+        view.findViewById<ImageView>(R.id.savedLyricsOptions).setOnClickListener {
+            val popupMenu =
+                PopupMenu(context, view.findViewById<ImageView>(R.id.savedLyricsOptions))
+            popupMenu.menuInflater.inflate(R.menu.savedsongs__menu, popupMenu.menu)
             val songIdTextview = view.findViewById<TextView>(R.id.saveSong__songId)
-            OpenSongInSpotify(songIdTextview.text.toString())
+            popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.popUpPlaySong -> {
+                        OpenSongInSpotify(songIdTextview.text.toString())
+                    }
+
+                    R.id.popUpDeleteSong ->
+                        Toast.makeText(context, "You Clicked : " + item.title, Toast.LENGTH_SHORT)
+                            .show()
+                }
+                true
+            })
+            popupMenu.show()
         }
 
         return ViewHolder(view)
