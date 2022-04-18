@@ -1,8 +1,13 @@
 package com.absan.verse
 
+import android.content.Context
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.absan.verse.Utils.DatabaseRelated.DatabaseHandler
+import com.absan.verse.data.SaveLyric__ItemAdapter
 
 class SavedSongs : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,6 +17,22 @@ class SavedSongs : AppCompatActivity() {
 
         findViewById<ImageView>(R.id.savedSongBackButton).setOnClickListener {
             finish()
+        }
+
+    }
+
+    override fun onStart() {
+        setAdapter(this)
+
+        super.onStart()
+    }
+
+    private fun setAdapter(context: Context) {
+        if (DatabaseHandler(context).readLyrics().size > 0) {
+            val recycler = findViewById<RecyclerView>(R.id.savedLyrics_Recycler)
+            recycler.layoutManager = LinearLayoutManager(context)
+            val itemAdapter = SaveLyric__ItemAdapter(context, DatabaseHandler(context).readLyrics())
+            recycler.adapter = itemAdapter
         }
 
     }
