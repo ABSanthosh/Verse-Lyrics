@@ -3,6 +3,7 @@ package com.absan.verse.data
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import android.widget.*
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.absan.verse.R
+import com.absan.verse.Utils.DatabaseRelated.removeSong
 
 
 class SaveLyric__ItemAdapter(val context: Context, private val songList: ArrayList<Song>) :
@@ -19,16 +21,13 @@ class SaveLyric__ItemAdapter(val context: Context, private val songList: ArrayLi
         val songName = view.findViewById<TextView>(R.id.saveSong__Songname)
         val ArtistName = view.findViewById<TextView>(R.id.saveSong__Artistname)
         val SongID = view.findViewById<TextView>(R.id.saveSong__songId)
+        val SongPos = view.findViewById<TextView>(R.id.saveSong__songPos)
     }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
             LayoutInflater.from(context).inflate(R.layout.fragment__savelyrics_row, parent, false)
-        view.setOnClickListener {
-//            val songIdTextview = view.findViewById<TextView>(R.id.saveSong__songId)
-//            OpenSongInSpotify(songIdTextview.text.toString())
-        }
 
         view.findViewById<ImageView>(R.id.savedLyricsOptions).setOnClickListener {
             val popupMenu =
@@ -41,9 +40,21 @@ class SaveLyric__ItemAdapter(val context: Context, private val songList: ArrayLi
                         OpenSongInSpotify(songIdTextview.text.toString())
                     }
 
-                    R.id.popUpDeleteSong ->
-                        Toast.makeText(context, "You Clicked : " + item.title, Toast.LENGTH_SHORT)
-                            .show()
+                    R.id.popUpDeleteSong -> {
+                        songList.forEach {
+                            if (it.id == songIdTextview.text) {
+                                removeSong(context, it)
+                            }
+                        }
+
+                        (view.parent as RecyclerView).removeViewAt(
+                            Integer.parseInt(
+                                view.findViewById<TextView>(
+                                    R.id.saveSong__songPos
+                                ).text.toString()
+                            )
+                        )
+                    }
                 }
                 true
             })
@@ -53,11 +64,13 @@ class SaveLyric__ItemAdapter(val context: Context, private val songList: ArrayLi
         return ViewHolder(view)
     }
 
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = songList[position]
         holder.SongID.text = item.id
         holder.songName.text = item.track
         holder.ArtistName.text = item.artist
+        holder.SongPos.text = position.toString()
     }
 
     override fun getItemCount() = songList.size
