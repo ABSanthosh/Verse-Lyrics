@@ -27,7 +27,7 @@
         <entry key="app/src/main/res/layout/fragment__fontselector.xml" value="0.2791666666666667" />
         <entry key="app/src/main/res/layout/fragment__helpme.xml" value="0.2791666666666667" />
         <entry key="app/src/main/res/layout/fragment__savelyrics.xml" value="0.2791666666666667" />
-        <entry key="app/src/main/res/layout/fragment__savelyrics_row.xml" value="1.5" />
+        <entry key="app/src/main/res/layout/fragment__savelyrics_row.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment__whatsnew.xml" value="0.2791666666666667" />
         <entry key="app/src/main/res/layout/navbar__button__muteads.xml" value="0.2791666666666667" />
         <entry key="app/src/main/res/layout/navbar__header.xml" value="0.2791666666666667" />
