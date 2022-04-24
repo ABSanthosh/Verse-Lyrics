@@ -50,7 +50,7 @@ class DatabaseHandler(context: Context) :
         return response
     }
 
-    @SuppressLint("Recycle")
+    @SuppressLint("Recycle", "Range")
     fun readLyrics(): ArrayList<Song> {
         val savedLyrics = ArrayList<Song>()
 
