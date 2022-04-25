@@ -150,7 +150,7 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="end"
         android:background="@color/navcolor"
@@ -165,7 +165,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="185dp"
+                android:layout_height="215dp"
                 android:orientation="vertical"
                 android:padding="16dp">
 
@@ -185,7 +185,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="0dp"
-                android:layout_marginBottom="0dp"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -199,8 +199,14 @@
                         android:id="@+id/adsAndSavedContainer"
                         android:layout_width="match_parent"
                         android:layout_height="47dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
                         android:gravity="center"
                         android:orientation="horizontal">
+
+                        <include layout="@layout/include__spacers" />
 
                         <RelativeLayout
                             android:layout_width="116dp"
@@ -243,11 +249,16 @@
                                 android:textSize="11.5sp" />
                         </RelativeLayout>
 
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="35dp"
-                            android:layout_marginEnd="12dp"
-                            android:background="#65D0D0D0" />
+                        <include layout="@layout/include__spacers" />
+
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="35dp"
+                                android:layout_marginEnd="12dp"
+                                android:background="#65D0D0D0" />
+
+                        <include layout="@layout/include__spacers" />
 
                         <RelativeLayout
                             android:layout_width="116dp"
@@ -289,7 +300,7 @@
                                 android:textSize="11.5sp" />
                         </RelativeLayout>
 
-
+                        <include layout="@layout/include__spacers" />
                     </LinearLayout>
 
                     <View
@@ -340,7 +351,7 @@
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@+id/saveDiskImage"
                         android:fontFamily="@font/manrope"
-                        android:paddingTop="2dp"
+                        android:gravity="bottom|left"
                         android:text="Saved"
                         android:textSize="18sp" />
                 </RelativeLayout>
@@ -380,7 +391,7 @@
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@+id/recentSongImage"
                         android:fontFamily="@font/manrope"
-                        android:paddingTop="2dp"
+                        android:gravity="bottom|left"
                         android:text="Recently Played"
                         android:textSize="18sp" />
                 </RelativeLayout>
@@ -506,7 +517,7 @@
                         android:layout_marginBottom="8dp"
                         android:layout_toEndOf="@+id/settingsIcon"
                         android:fontFamily="@font/manrope"
-                        android:paddingTop="3dp"
+                        android:gravity="bottom|left"
                         android:text="Settings"
                         android:textSize="18sp" />
                 </RelativeLayout>
