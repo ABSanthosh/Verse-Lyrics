@@ -76,6 +76,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.navbar)
 
+
+        if(mainPrefInstance.getString("Theme", "light") == "dark") {
+            drawerLayout.setScrimColor(
+                ContextCompat.getColor(
+                    this,
+                    R.color.darkModeScrimColor
+                )
+            );
+        }
+
         toggle = ActionBarDrawerToggle(
             this,
             drawerLayout,
