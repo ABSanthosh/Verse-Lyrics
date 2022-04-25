@@ -39,4 +39,6 @@
 
     <color name="buttonBg">#55524B</color>
     <color name="buttontextColor">#FFF5DD</color>
+
+    <color name="darkModeScrimColor">#20FFFFFF</color>
 </resources>
