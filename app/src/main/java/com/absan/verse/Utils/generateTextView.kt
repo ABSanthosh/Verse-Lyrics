@@ -6,7 +6,9 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Handler
 import android.os.HandlerThread
+import android.text.TextUtils
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -22,7 +24,10 @@ fun generateTextView(context: Context, text: String): TextView {
 
     val lyricLine = TextView(context)
     lyricLine.textAlignment = View.TEXT_ALIGNMENT_CENTER
-    lyricLine.setPadding(6,0,6,0)
+//    lyricLine.setPadding(6, 0, 6, 0)
+    lyricLine.gravity = Gravity.CENTER
+    lyricLine.ellipsize = TextUtils.TruncateAt.END
+
 
     if (mainPrefInstance.getString("Theme", "light") == "light") {
         lyricLine.setTextColor(
