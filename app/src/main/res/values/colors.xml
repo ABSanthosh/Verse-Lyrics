@@ -21,7 +21,7 @@
     <color name="ColorSecondary">#121212</color>
     <color name="fragcolor">#D8CCB0</color>
     <color name="navcolor">#FFFFFF</color>
-    <color name="recyclerColor">#CFC7B5</color>
+    <color name="recyclerColor">#E5DBC7</color>
 
     <color name="themeToggleBackground">#EBEBEB</color>
     <color name="themeToggleNonActiveTint">#121212</color>

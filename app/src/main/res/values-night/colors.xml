@@ -20,7 +20,7 @@
     <color name="ColorSecondary">#B6B6B6</color>
     <color name="fragcolor">#232323</color>
     <color name="navcolor">#0a0a0a</color>
-    <color name="recyclerColor">#5C5C5C</color>
+    <color name="recyclerColor">#2E2E2E</color>
 
     <color name="themeToggleBackground">#2A828282</color>
     <color name="themeToggleNonActiveTint">#A7A7A7</color>
