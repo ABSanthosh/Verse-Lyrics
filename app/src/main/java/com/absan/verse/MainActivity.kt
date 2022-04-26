@@ -32,9 +32,6 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.util.*
-import kotlin.concurrent.schedule
-
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -76,6 +73,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.navbar)
 
+        updateSavedLyricsCount(this, drawerLayout)
 
         if(mainPrefInstance.getString("Theme", "light") == "dark") {
             drawerLayout.setScrimColor(
@@ -334,6 +332,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 setBookmark(isSaved, bookmarkIcon, this)
                 // Log.e("SaveSong","$currentSong")
             }
+            updateSavedLyricsCount(this, drawerLayout)
         }
         // Save lyrics - End
 
@@ -421,6 +420,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
         super.onStart()
+    }
+
+    override fun onResume() {
+        val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
+        updateSavedLyricsCount(this, drawerLayout)
+        super.onResume()
     }
 
     override fun onBackPressed() {
