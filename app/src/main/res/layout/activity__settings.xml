@@ -471,6 +471,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:minHeight="55dp"
                         android:layout_alignParentBottom="true"
                         android:layout_gravity="end"
                         android:gravity="center_horizontal|bottom"
