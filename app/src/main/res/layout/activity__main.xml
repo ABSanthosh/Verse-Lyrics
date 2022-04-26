@@ -31,7 +31,15 @@
             android:paddingTop="0dp"
             android:paddingEnd="20dp"
             android:textColor="@color/textColor"
-            android:textSize="40sp" />
+            android:textSize="40sp"
+
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            />
 
         <TextView
             android:id="@+id/artistName"
@@ -345,15 +353,13 @@
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentBottom="true"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@+id/saveDiskImage"
                         android:fontFamily="@font/manrope"
-                        android:gravity="bottom|left"
+                        android:gravity="center_vertical"
                         android:text="Saved"
                         android:textSize="18sp" />
                 </RelativeLayout>
@@ -389,11 +395,9 @@
                         android:layout_alignParentTop="true"
                         android:layout_alignParentBottom="true"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@+id/recentSongImage"
                         android:fontFamily="@font/manrope"
-                        android:gravity="bottom|left"
+                        android:gravity="center_vertical"
                         android:text="Recently Played"
                         android:textSize="18sp" />
                 </RelativeLayout>
@@ -504,22 +508,20 @@
                         android:layout_alignParentTop="true"
                         android:layout_alignParentBottom="true"
                         android:layout_marginStart="20dp"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:src="@drawable/settings"
                         app:tint="@color/metaTextColor" />
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentBottom="true"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="9dp"
-                        android:layout_marginBottom="8dp"
                         android:layout_toEndOf="@+id/settingsIcon"
                         android:fontFamily="@font/manrope"
-                        android:gravity="bottom|left"
+                        android:gravity="center_vertical"
                         android:text="Settings"
                         android:textSize="18sp" />
                 </RelativeLayout>

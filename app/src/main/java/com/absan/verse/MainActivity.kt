@@ -119,10 +119,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivity(Intent(this, Settings::class.java))
         }
 
+        val songName = findViewById<TextView>(R.id.songname)
         val themeToggle = findViewById<SegmentedButtonGroup>(R.id.navbar__themeSelector)
         val darkModeButton = findViewById<SegmentedButton>(R.id.navbar__darkMode)
         val autoModeButton = findViewById<SegmentedButton>(R.id.navbar__autoMode)
         val lightModeButton = findViewById<SegmentedButton>(R.id.navbar__lightMode)
+
+        songName.isSelected = true
 
         fun changeThemeIcon(position: Int, isAnimated: Boolean = true) {
             when (position) {
