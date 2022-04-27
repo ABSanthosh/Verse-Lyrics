@@ -31,7 +31,7 @@ class SavedSongs : AppCompatActivity() {
         if (DatabaseHandler(context).readLyrics().size > 0) {
             val recycler = findViewById<RecyclerView>(R.id.savedLyrics_Recycler)
             recycler.layoutManager = LinearLayoutManager(context)
-            val itemAdapter = SaveLyric__ItemAdapter(context, DatabaseHandler(context).readLyrics())
+            val itemAdapter = SaveLyric__ItemAdapter(context, DatabaseHandler(context).readLyrics(),recycler)
             recycler.adapter = itemAdapter
         }
 

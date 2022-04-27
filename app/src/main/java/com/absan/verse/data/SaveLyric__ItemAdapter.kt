@@ -14,7 +14,11 @@ import com.absan.verse.R
 import com.absan.verse.Utils.DatabaseRelated.removeSong
 
 
-class SaveLyric__ItemAdapter(val context: Context, private val songList: ArrayList<Song>) :
+class SaveLyric__ItemAdapter(
+    val context: Context,
+    private val songList: ArrayList<Song>,
+    val recycler: RecyclerView
+) :
     RecyclerView.Adapter<SaveLyric__ItemAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -47,13 +51,21 @@ class SaveLyric__ItemAdapter(val context: Context, private val songList: ArrayLi
                             }
                         }
 
-                        (view.parent as RecyclerView).removeViewAt(
+                        recycler.removeViewAt(
                             Integer.parseInt(
                                 view.findViewById<TextView>(
                                     R.id.saveSong__songPos
                                 ).text.toString()
                             )
                         )
+
+//                        (view.parent as RecyclerView).removeViewAt(
+//                            Integer.parseInt(
+//                                view.findViewById<TextView>(
+//                                    R.id.saveSong__songPos
+//                                ).text.toString()
+//                            )
+//                        )
                     }
                 }
                 true
