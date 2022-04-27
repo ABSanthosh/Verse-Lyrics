@@ -4,50 +4,56 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="5dp"
-    android:layout_marginTop="7dp"
     android:layout_marginEnd="5dp"
-    android:layout_marginBottom="7dp"
+    android:layout_marginBottom="14dp"
     app:cardBackgroundColor="@color/recyclerColor"
-    app:cardCornerRadius="8dp">
+    app:cardCornerRadius="5dp">
 
     <LinearLayout
         android:id="@+id/saveSong__RowParent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:gravity="center"
         android:orientation="horizontal">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="55dp"
-            android:layout_weight="1">
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/saveSong__Songname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 android:layout_marginTop="0dp"
-                android:ellipsize="end"
-                android:maxLines="1"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:scrollHorizontally="true"
                 android:text="@string/placeholder"
                 android:textColor="@color/textColor"
                 android:textSize="23sp" />
 
+
             <TextView
                 android:id="@+id/saveSong__Artistname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_marginBottom="0dp"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:scrollHorizontally="true"
                 android:text="@string/placeholder"
                 android:textColor="@color/textColor"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_marginTop="3dp"
                 android:textSize="16sp" />
 
             <TextView
@@ -67,13 +73,13 @@
                 android:layout_marginEnd="362dp"
                 android:layout_marginBottom="30dp"
                 android:text="@string/placeholder" />
-        </RelativeLayout>
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/savedLyricsOptions"
             style="?android:attr/actionOverflowButtonStyle"
             android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:paddingStart="0dp"
             android:paddingEnd="0dp"
             app:tint="@color/metaTextColor" />
