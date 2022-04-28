@@ -463,21 +463,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (song.isDuplicateOf(lastSong)) return
 
         // Set bookmark if it already exists in db
-//        isSaved = if (DatabaseHandler(this).isAlreadySaved(song)) {
-//            setBookmark(
-//                true,
-//                findViewById<ImageView>(R.id.bookmark),
-//                this
-//            )
-//            true
-//        } else {
-//            setBookmark(
-//                false,
-//                findViewById<ImageView>(R.id.bookmark),
-//                this
-//            )
-//            false
-//        }
+        isSaved = if (DatabaseHandler(this).isAlreadySaved(song)) {
+            setBookmark(
+                true,
+                findViewById<ImageView>(R.id.bookmark),
+                this
+            )
+            true
+        } else {
+            setBookmark(
+                false,
+                findViewById<ImageView>(R.id.bookmark),
+                this
+            )
+            false
+        }
 
         lastSong = song
         when {
