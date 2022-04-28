@@ -22,7 +22,7 @@
         <entry key="app/src/main/res/layout/activity__main.xml" value="0.46813186813186813" />
         <entry key="app/src/main/res/layout/activity__recentlyplayed.xml" value="0.2791666666666667" />
         <entry key="app/src/main/res/layout/activity__savedsongs.xml" value="0.2791666666666667" />
-        <entry key="app/src/main/res/layout/activity__settings.xml" value="0.2791666666666667" />
+        <entry key="app/src/main/res/layout/activity__settings.xml" value="0.625" />
         <entry key="app/src/main/res/layout/activity__splashscreen.xml" value="0.2749094202898551" />
         <entry key="app/src/main/res/layout/fragment__fontselector.xml" value="0.2791666666666667" />
         <entry key="app/src/main/res/layout/fragment__helpme.xml" value="0.2791666666666667" />

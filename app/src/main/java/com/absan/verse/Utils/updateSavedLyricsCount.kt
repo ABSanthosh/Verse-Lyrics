@@ -8,7 +8,7 @@ import com.absan.verse.Utils.DatabaseRelated.DatabaseHandler
 
 fun updateSavedLyricsCount(context:Context, drawerLayout:DrawerLayout){
     if(DatabaseHandler(context).readLyrics().size == 0)
-        drawerLayout.findViewById<TextView>(R.id.navbar__savedLyricsCount).text = "-"
+        drawerLayout.findViewById<TextView>(R.id.navbar__savedLyricsCount).text = "--"
     else
         drawerLayout.findViewById<TextView>(R.id.navbar__savedLyricsCount).text = DatabaseHandler(context).readLyrics().size.toString()
 }
