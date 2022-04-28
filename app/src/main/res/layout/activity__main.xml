@@ -236,6 +236,7 @@
                                 app:tint="@color/metaTextColor" />
 
                             <TextView
+                                android:id="@+id/navbar__blockedAdCount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentTop="true"
