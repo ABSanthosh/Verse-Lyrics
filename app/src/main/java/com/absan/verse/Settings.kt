@@ -1,6 +1,8 @@
 package com.absan.verse
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
@@ -22,6 +24,16 @@ class Settings : AppCompatActivity() {
     private val mainPrefInstance by lazy { getSharedPreferences("main", Context.MODE_PRIVATE) }
     private var selectedFontName = ""
     private var selectedFontSize = 24f
+
+    private val loggerServiceIntentForeground by lazy {
+        Intent(
+            "START_FOREGROUND",
+            Uri.EMPTY,
+            this,
+            Logger::class.java
+        )
+    }
+
 
     fun setFontSize(value: Float, previewText: TextView?) {
         when (value) {
@@ -59,6 +71,7 @@ class Settings : AppCompatActivity() {
 
 
         val handlerThread = HandlerThread("fonts")
+        val sharedEditor = mainPrefInstance.edit()
         handlerThread.start()
         mHandler = Handler(handlerThread.looper)
 
@@ -227,6 +240,35 @@ class Settings : AppCompatActivity() {
             fontSelectorModal.setCancelable(false)
             fontSelectorModal.show()
         }
+
+        findViewById<Switch>(R.id.setting__adBlockSwitch).isChecked = mainPrefInstance.getBoolean("MuteAd",false)
+
+        findViewById<Switch>(R.id.setting__adBlockSwitch).setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                this.startService(loggerServiceIntentForeground)
+                Toast.makeText(
+                    this,
+                    "Muting service started",
+                    Toast.LENGTH_SHORT
+                ).show()
+                sharedEditor.apply {
+                    putBoolean("MuteAd", true)
+                }.apply()
+            } else {
+                this.stopService(loggerServiceIntentForeground)
+                Toast.makeText(
+                    this,
+                    "Muting service ended",
+                    Toast.LENGTH_SHORT
+                ).show()
+                sharedEditor.apply {
+                    putBoolean("MuteAd", false)
+                }.apply()
+            }
+        }
+
+
+
 
         findViewById<ImageView>(R.id.settingBackButton).setOnClickListener {
             finish()
