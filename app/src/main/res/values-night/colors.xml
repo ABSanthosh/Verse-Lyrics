@@ -26,7 +26,7 @@
     <color name="themeToggleNonActiveTint">#A7A7A7</color>
     <color name="themeToggleActiveBg">#0a0a0a</color>
 
-    <color name="settingsFg">#121212</color>
+    <color name="settingsFg">#212121</color>
     <color name="settingsCoffee">#B8C534</color>
     <color name="settingsBg">#0a0a0a</color>
     <color name="settingsToolbarShadowStart">#41090909</color>
