@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         updateSavedLyricsCount(this, drawerLayout)
 
-        if(mainPrefInstance.getString("Theme", "light") == "dark") {
+        if (mainPrefInstance.getString("Theme", "light") == "dark") {
             drawerLayout.setScrimColor(
                 ContextCompat.getColor(
                     this,
@@ -234,37 +234,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
         // Toggle for Ad mute function - Start
-//        val menuItem__adblock: MenuItem = navigationView.menu.findItem(R.id.adblockmenu)
-//        menuItem__adblock.actionView.findViewById<TextView>(R.id.AdCount).text =
-//            mainPrefInstance.getInt("AdCount", 0).toString()
-//
-//        val toggleButton__adblock: androidx.appcompat.widget.SwitchCompat =
-//            menuItem__adblock.actionView.findViewById(R.id.MuteAds__toggle)
-//        toggleButton__adblock.setOnCheckedChangeListener { _, isChecked ->
-//            if (isChecked) {
-//                this.startService(loggerServiceIntentForeground)
-//                Toast.makeText(
-//                    this,
-//                    "Muting service started",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//
-//                sharedEditor.apply {
-//                    putBoolean("MuteAd", true)
-//                }.apply()
-//
-//            } else {
-//                this.stopService(loggerServiceIntentForeground)
-//                Toast.makeText(
-//                    this,
-//                    "Muting service ended",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//                sharedEditor.apply {
-//                    putBoolean("MuteAd", false)
-//                }.apply()
-//            }
-//        }
+        val blockedAdCountTV = findViewById<TextView>(R.id.navbar__blockedAdCount)
+        if(mainPrefInstance.getBoolean("MuteAd",false))
+            blockedAdCountTV.text = mainPrefInstance.getInt("AdCount", 0).toString()
+        else
+            blockedAdCountTV.text = "--"
         // Toggle for Ad mute function - End
 
         // Toggle for Google and Musixmatch lyrics - Start
@@ -391,33 +365,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             "First time"
         )
 
-//        navigationView.menu.findItem(R.id.adblockmenu)
-//            .actionView
-//            .findViewById<androidx.appcompat.widget.SwitchCompat>(R.id.MuteAds__toggle)
-//            .isChecked = mainPrefInstance.getBoolean("MuteAd", false)
-//
-//        navigationView.menu.findItem(R.id.synclyricmenu)
-//            .actionView
-//            .findViewById<androidx.appcompat.widget.SwitchCompat>(R.id.SyncLyric__toggle)
-//            .isChecked = mainPrefInstance.getBoolean("SyncLyrics", false)
-
-
-//        val navDraw = findViewById<NavigationView>(R.id.navView).menu.findItem(R.id.mode)
-//        when {
-//            mainPrefInstance.getString("Theme", "light") == "light" -> {
-//                navDraw.title = "Light Mode"
-//                navDraw.icon = getDrawable(R.drawable.navbar__lightmode)
-//            }
-//            mainPrefInstance.getString("Theme", "light") == "dark" -> {
-//                navDraw.title = "Dark Mode"
-//                navDraw.icon = getDrawable(R.drawable.navbar__darkmode)
-//            }
-//            mainPrefInstance.getString("Theme", "light") == "default" -> {
-//                navDraw.title = "Default Mode"
-//                navDraw.icon = getDrawable(R.drawable.navbar__defaultmode)
-//            }
-//        }
-
 
         super.onStart()
     }
@@ -425,6 +372,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onResume() {
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
         updateSavedLyricsCount(this, drawerLayout)
+
+        val blockedAdCountTV = findViewById<TextView>(R.id.navbar__blockedAdCount)
+        if(mainPrefInstance.getBoolean("MuteAd",false))
+            blockedAdCountTV.text = mainPrefInstance.getInt("AdCount", 0).toString()
+        else
+            blockedAdCountTV.text = "--"
+
         super.onResume()
     }
 
