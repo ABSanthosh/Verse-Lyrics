@@ -29,12 +29,17 @@ class SaveLyrics : DialogFragment() {
     }
 
     private fun setAdapter(context: Context) {
-        if (DatabaseHandler(context).readLyrics().size > 0) {
-            val recycler = requireView().findViewById<RecyclerView>(R.id.savedLyrics_Recycler)
-            recycler.layoutManager = LinearLayoutManager(context)
-            val itemAdapter = SaveLyric__ItemAdapter(context, DatabaseHandler(context).readLyrics(),recycler)
-            recycler.adapter = itemAdapter
-        }
+//        if (DatabaseHandler(context).readLyrics().size > 0) {
+//            val recycler = requireView().findViewById<RecyclerView>(R.id.savedLyrics_Recycler)
+//            recycler.layoutManager = LinearLayoutManager(context)
+//            val itemAdapter = SaveLyric__ItemAdapter(
+//                context,
+//                DatabaseHandler(context).readLyrics(),
+//                recycler,
+//                messageText
+//            )
+//            recycler.adapter = itemAdapter
+//        }
 
     }
 
