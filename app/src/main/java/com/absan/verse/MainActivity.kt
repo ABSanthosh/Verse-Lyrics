@@ -7,7 +7,6 @@ import android.content.res.Configuration
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.ImageView
 import android.widget.RelativeLayout
@@ -33,7 +32,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var toggle: ActionBarDrawerToggle
     private var RickRollcount = 0
@@ -69,7 +68,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Sharedpref setup - End
 
 
-        // Navigation drawer -- Start
+        // Navigation drawer - Start
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.navbar)
 
@@ -230,12 +229,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 //        val logo: TextView = findViewById(R.id.logo)
 //        logo.visibility = View.VISIBLE
-        //Navigation Drawer -- End
+        //Navigation Drawer - End
 
 
         // Toggle for Ad mute function - Start
         val blockedAdCountTV = findViewById<TextView>(R.id.navbar__blockedAdCount)
-        if(mainPrefInstance.getBoolean("MuteAd",false))
+        if (mainPrefInstance.getBoolean("MuteAd", false))
             blockedAdCountTV.text = mainPrefInstance.getInt("AdCount", 0).toString()
         else
             blockedAdCountTV.text = "--"
@@ -309,15 +308,46 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             updateSavedLyricsCount(this, drawerLayout)
         }
         // Save lyrics - End
+    }
 
-
+    private fun isSongSaved(song: Song = currentSong) {
+        isSaved = if (DatabaseHandler(this).isAlreadySaved(song)) {
+            setBookmark(
+                true,
+                findViewById<ImageView>(R.id.bookmark),
+                this
+            )
+            true
+        } else {
+            setBookmark(
+                false,
+                findViewById<ImageView>(R.id.bookmark),
+                this
+            )
+            false
+        }
     }
 
     override fun onStart() {
-//        val navigationView = findViewById<NavigationView>(R.id.navView)
-//        val menuItem__adblock: MenuItem = navigationView.menu.findItem(R.id.adblockmenu)
-//        menuItem__adblock.actionView.findViewById<TextView>(R.id.AdCount).text =
-//            mainPrefInstance.getInt("AdCount", 0).toString()
+
+        // update ad count - start
+        val blockedAdCountTV = findViewById<TextView>(R.id.navbar__blockedAdCount)
+        if (mainPrefInstance.getBoolean("MuteAd", false))
+            blockedAdCountTV.text = mainPrefInstance.getInt("AdCount", 0).toString()
+        else
+            blockedAdCountTV.text = "--"
+        // update ad count - End
+
+        // update bookmark - start
+        isSongSaved()
+        val bookmarkIcon = findViewById<ImageView>(R.id.bookmark)
+        if (isSaved) {
+            setBookmark(isSaved, bookmarkIcon, this)
+        } else {
+            setBookmark(isSaved, bookmarkIcon, this)
+        }
+
+        // update bookmark - End
 
         ResetLyricView(
             findViewById(R.id.lyricsContainer),
@@ -365,7 +395,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             "First time"
         )
 
-
         super.onStart()
     }
 
@@ -373,11 +402,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
         updateSavedLyricsCount(this, drawerLayout)
 
+        // update ad count - start
         val blockedAdCountTV = findViewById<TextView>(R.id.navbar__blockedAdCount)
-        if(mainPrefInstance.getBoolean("MuteAd",false))
+        if (mainPrefInstance.getBoolean("MuteAd", false))
             blockedAdCountTV.text = mainPrefInstance.getInt("AdCount", 0).toString()
         else
             blockedAdCountTV.text = "--"
+        // update ad count - End
+
+        // update bookmark - start
+        isSongSaved()
+        val bookmarkIcon = findViewById<ImageView>(R.id.bookmark)
+        if (isSaved) {
+            setBookmark(isSaved, bookmarkIcon, this)
+        } else {
+            setBookmark(isSaved, bookmarkIcon, this)
+        }
+        // update bookmark - End
 
         super.onResume()
     }
@@ -406,32 +447,24 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onDestroy()
     }
 
+
+
     private fun handleSongIntent(song: Song) {
-        // Ad counter Updating
-//        val navigationView = findViewById<NavigationView>(R.id.navView)
-//        val menuItem__adblock: MenuItem = navigationView.menu.findItem(R.id.adblockmenu)
-//        menuItem__adblock.actionView.findViewById<TextView>(R.id.AdCount).text =
-//            mainPrefInstance.getInt("AdCount", 0).toString()
+        // update ad count - Start
+        val blockedAdCountTV = findViewById<TextView>(R.id.navbar__blockedAdCount)
+        if (mainPrefInstance.getBoolean("MuteAd", false))
+            blockedAdCountTV.text = mainPrefInstance.getInt("AdCount", 0).toString()
+        else
+            blockedAdCountTV.text = "--"
+        // update ad count - End
+
+        isSongSaved()
         currentSong = song
 
         if (song.isDuplicateOf(lastSong)) return
 
         // Set bookmark if it already exists in db
-        isSaved = if (DatabaseHandler(this).isAlreadySaved(song)) {
-            setBookmark(
-                true,
-                findViewById<ImageView>(R.id.bookmark),
-                this
-            )
-            true
-        } else {
-            setBookmark(
-                false,
-                findViewById<ImageView>(R.id.bookmark),
-                this
-            )
-            false
-        }
+
 
         lastSong = song
         when {
@@ -526,72 +559,4 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return resources.configuration.uiMode and
                 Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
     }
-
-
-    @SuppressLint("UseCompatLoadingForDrawables")
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.getItemId()) {
-            R.id.open_spotify -> OpenSpotify(this)
-            R.id.rateapp -> RateOnPlayStore(this)
-            R.id.otherapps -> OpenGitHub(this)
-            R.id.feedback -> SendFeedback(this)
-            R.id.featureRequest -> OpenGoogleForm(this)
-
-            R.id.saveLyrics -> {
-                SaveLyrics().show(supportFragmentManager, "Save Lyric")
-            }
-            R.id.synclyricmenu -> {
-                SyncLyrics().show(supportFragmentManager, "Sync Lyric")
-            }
-
-            R.id.adblockmenu -> {
-                MuteAds().show(supportFragmentManager, "Ad Mute")
-            }
-            R.id.helper -> {
-                HelpMe().show(supportFragmentManager, "Help me")
-            }
-            R.id.newfeatures -> {
-                WhatsNew().show(supportFragmentManager, "Whats New")
-            }
-            R.id.aboutapp -> {
-                About().show(supportFragmentManager, "About")
-            }
-            R.id.font -> {
-                FontSelector().show(supportFragmentManager, "Font")
-            }
-            R.id.mode -> {
-//                val navDraw = findViewById<NavigationView>(R.id.navView).menu.findItem(R.id.mode)
-//                when {
-//                    mainPrefInstance.getString("Theme", "light") == "light" -> {
-//                        mainPrefInstance.edit().apply { putString("Theme", "dark") }.apply()
-//                        navDraw.title = "Dark Mode"
-//                        navDraw.icon = getDrawable(R.drawable.navbar__darkmode)
-//                        ThemeHelper.applyTheme("dark")
-//                    }
-//                    mainPrefInstance.getString("Theme", "light") == "dark" -> {
-//                        mainPrefInstance.edit().apply { putString("Theme", "default") }.apply()
-//                        navDraw.title = "Default Mode"
-//                        navDraw.icon = getDrawable(R.drawable.navbar__defaultmode)
-//                        ThemeHelper.applyTheme("default", isDarkThemeOn())
-//                    }
-//                    mainPrefInstance.getString("Theme", "light") == "default" -> {
-//                        mainPrefInstance.edit().apply { putString("Theme", "light") }.apply()
-//                        navDraw.title = "Light Mode"
-//                        navDraw.icon = getDrawable(R.drawable.navbar__lightmode)
-//                        ThemeHelper.applyTheme("light")
-//                    }
-//                }
-            }
-            R.id.myname -> {
-                RickRollcount++
-                if (RickRollcount >= 7) {
-                    MyName(this)
-                    RickRollcount = 0
-                }
-            }
-        }
-        return true
-    }
-
 }
