@@ -11,13 +11,15 @@ import android.widget.*
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.absan.verse.R
+import com.absan.verse.Utils.DatabaseRelated.DatabaseHandler
 import com.absan.verse.Utils.DatabaseRelated.removeSong
 
 
 class SaveLyric__ItemAdapter(
     val context: Context,
-    private val songList: ArrayList<Song>,
-    val recycler: RecyclerView
+    private var songList: ArrayList<Song>,
+    val recycler: RecyclerView,
+    val messageText: TextView
 ) :
     RecyclerView.Adapter<SaveLyric__ItemAdapter.ViewHolder>() {
 
@@ -25,7 +27,6 @@ class SaveLyric__ItemAdapter(
         val songName = view.findViewById<TextView>(R.id.saveSong__Songname)
         val ArtistName = view.findViewById<TextView>(R.id.saveSong__Artistname)
         val SongID = view.findViewById<TextView>(R.id.saveSong__songId)
-        val SongPos = view.findViewById<TextView>(R.id.saveSong__songPos)
     }
 
 
@@ -51,21 +52,17 @@ class SaveLyric__ItemAdapter(
                             }
                         }
 
-                        recycler.removeViewAt(
-                            Integer.parseInt(
-                                view.findViewById<TextView>(
-                                    R.id.saveSong__songPos
-                                ).text.toString()
-                            )
-                        )
+                        songList = DatabaseHandler(context).readLyrics()
 
-//                        (view.parent as RecyclerView).removeViewAt(
-//                            Integer.parseInt(
-//                                view.findViewById<TextView>(
-//                                    R.id.saveSong__songPos
-//                                ).text.toString()
-//                            )
-//                        )
+
+                        if (songList.size == 0) {
+                            messageText.visibility = View.VISIBLE
+                        }
+
+                        val viewPos = recycler.indexOfChild(view)
+                        recycler.removeView(view)
+                        notifyItemRemoved(viewPos)
+
                     }
                 }
                 true
@@ -82,7 +79,6 @@ class SaveLyric__ItemAdapter(
         holder.SongID.text = item.id
         holder.songName.text = item.track
         holder.ArtistName.text = item.artist
-        holder.SongPos.text = position.toString()
     }
 
     override fun getItemCount() = songList.size
