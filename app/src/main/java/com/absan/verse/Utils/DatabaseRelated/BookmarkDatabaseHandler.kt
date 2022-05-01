@@ -77,6 +77,8 @@ class BookmarkDatabaseHandler(context: Context) :
             } while (cursor.moveToNext())
         }
 
+        db.close()
+        cursor.close()
         return savedLyrics
     }
 
