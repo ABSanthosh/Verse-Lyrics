@@ -17,10 +17,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.absan.verse.Utils.*
-import com.absan.verse.Utils.DatabaseRelated.BookmarkDatabaseHandler
-import com.absan.verse.Utils.DatabaseRelated.addSong
-import com.absan.verse.Utils.DatabaseRelated.removeSong
-import com.absan.verse.Utils.DatabaseRelated.setBookmark
+import com.absan.verse.Utils.DatabaseRelated.*
 import com.absan.verse.data.*
 import com.absan.verse.ui.*
 import com.addisonelliott.segmentedbutton.SegmentedButton
@@ -444,8 +441,6 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
     }
 
-
-
     private fun handleSongIntent(song: Song) {
         // update ad count - Start
         val blockedAdCountTV = findViewById<TextView>(R.id.navbar__blockedAdCount)
@@ -460,8 +455,7 @@ class MainActivity : AppCompatActivity() {
 
         if (song.isDuplicateOf(lastSong)) return
 
-        // Set bookmark if it already exists in db
-
+        RecentlyPlayedDatabaseHandler(this).addRecentlyPlayed(song)
 
         lastSong = song
         when {
@@ -489,6 +483,10 @@ class MainActivity : AppCompatActivity() {
 //        if (findViewById<TextView>(R.id.verseRestart).visibility == View.VISIBLE) {
 //            findViewById<TextView>(R.id.verseRestart).visibility = View.GONE
 //        }
+
+
+        RecentlyPlayedDatabaseHandler(this).addRecentlyPlayed(newSong)
+
 
         if (isGoogle) {
             GoogleLyrics(newSong)
