@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_marginTop="2.5dp"
+    android:layout_marginBottom="2.5dp"
+    android:orientation="horizontal"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/recentlyPlayed__songName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:fontFamily="@font/manrope"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="@string/placeholder"
+            android:textColor="@color/textColor"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/recentlyPlayed__artistName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="0dp"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:fontFamily="@font/manrope"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="@string/placeholder"
+            android:textColor="@color/textColor"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/recentlyPlayed__songId"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="362dp"
+            android:layout_marginBottom="30dp"
+            android:text="@string/placeholder"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/recentlyPlayed__openSpotify"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:padding="12dp"
+        android:src="@drawable/navbar__spotify"
+        app:tint="@color/metaTextColor"
+        tools:ignore="ContentDescription" />
+</LinearLayout>
