@@ -31,7 +31,7 @@ class SaveLyric__ItemAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
-            LayoutInflater.from(context).inflate(R.layout.fragment__savelyrics_row, parent, false)
+            LayoutInflater.from(context).inflate(R.layout.savelyrics__item, parent, false)
 
         view.findViewById<ImageView>(R.id.savedLyricsOptions).setOnClickListener {
             val popupMenu =
