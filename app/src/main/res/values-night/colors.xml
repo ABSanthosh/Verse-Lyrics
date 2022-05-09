@@ -3,7 +3,6 @@
     <color name="textColor">#C1B79D</color>
     <color name="metaTextColor">#828588</color>
     <color name="bgColor">#0a0a0a</color>
-    <color name="ColorSecondary">#B6B6B6</color>
     <color name="fragcolor">#232323</color>
     <color name="navcolor">#0a0a0a</color>
     <color name="recyclerColor">#2E2E2E</color>
@@ -15,11 +14,8 @@
     <color name="settingsFg">#212121</color>
     <color name="settingsCoffee">#B8C534</color>
     <color name="settingsBg">#0a0a0a</color>
-    <color name="settingsToolbarShadowStart">#41090909</color>
-    <color name="settingsToolbarShadowEnd">#00050505</color>
 
     <color name="settingsFontSelectorBg">#0a0a0a</color>
-    <color name="settingsFontSelectorCurtain">#BBB5C0</color>
     <color name="settingsFontSelectorSelectedText">#03A9F4</color>
 
     <color name="buttonBg">#CCC1A5</color>
