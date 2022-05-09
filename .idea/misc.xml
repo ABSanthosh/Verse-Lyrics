@@ -11,6 +11,16 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.26" />
         <entry key="app/src/main/res/drawable/main__bookmark_selected.xml" value="0.2575" />
         <entry key="app/src/main/res/drawable/main_logo.xml" value="0.2575" />
+        <entry key="app/src/main/res/drawable/navbar__darkmode.xml" value="0.141" />
+        <entry key="app/src/main/res/drawable/navbar__defaultmode.xml" value="0.141" />
+        <entry key="app/src/main/res/drawable/navbar__dev.xml" value="0.141" />
+        <entry key="app/src/main/res/drawable/navbar__font.xml" value="0.141" />
+        <entry key="app/src/main/res/drawable/navbar__helpme.xml" value="0.141" />
+        <entry key="app/src/main/res/drawable/navbar__info.xml" value="0.141" />
+        <entry key="app/src/main/res/drawable/navbar__lightmode.xml" value="0.141" />
+        <entry key="app/src/main/res/drawable/navbar__new.xml" value="0.141" />
+        <entry key="app/src/main/res/drawable/navbar__normallyric.xml" value="0.141" />
+        <entry key="app/src/main/res/drawable/navbar__rateapp.xml" value="0.141" />
         <entry key="app/src/main/res/drawable/navbar__spotify.xml" value="0.1035" />
         <entry key="app/src/main/res/drawable/navbar__themeborder.xml" value="0.2575" />
         <entry key="app/src/main/res/drawable/roundedborder.xml" value="0.2575" />
