@@ -11,8 +11,6 @@ import android.util.Log
 import com.absan.verse.data.Song
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 
 
 class RecentlyPlayedDatabaseHandler(context: Context) :
@@ -55,7 +53,7 @@ class RecentlyPlayedDatabaseHandler(context: Context) :
     )
 
     fun addRecentlyPlayed(song: Song): Long {
-        if (isAlreadyRecorded(song)) return 0
+        if (isAlreadyRecorded(song)) removeSong(song)
 
         val db = this.writableDatabase
 
@@ -123,13 +121,18 @@ class RecentlyPlayedDatabaseHandler(context: Context) :
         data.asReversed().forEach {
             val dKey = "${it.day}, ${it.month} ${it.date}, ${it.year}"
             if (!mutableSongList.containsKey(dKey)) {
-                Log.e("Sort",dKey)
+                Log.e("Sort", dKey)
                 mutableSongList[dKey] = arrayListOf(it.song)
             } else {
                 mutableSongList[dKey]!!.add(0, it.song)
             }
         }
         return mutableSongList
+    }
+
+    private fun removeSong(song: Song): Int {
+        val db = this.writableDatabase
+        return db.delete(TABLE_PLAYED, "_id=?", arrayOf(song.id))
     }
 
     private fun isAlreadyRecorded(song: Song): Boolean {
