@@ -124,7 +124,7 @@ class RecentlyPlayedDatabaseHandler(context: Context) :
                 Log.e("Sort", dKey)
                 mutableSongList[dKey] = arrayListOf(it.song)
             } else {
-                mutableSongList[dKey]!!.add(0, it.song)
+                mutableSongList[dKey]!!.add(it.song)
             }
         }
         return mutableSongList
