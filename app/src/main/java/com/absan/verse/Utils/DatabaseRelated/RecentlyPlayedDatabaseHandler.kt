@@ -151,5 +151,10 @@ class RecentlyPlayedDatabaseHandler(context: Context) :
         return true
     }
 
-
+    fun clearHistoryDatabase() {
+        val db = this.writableDatabase
+        db.execSQL("DELETE FROM $TABLE_PLAYED")
+        db.execSQL("VACUUM")
+        db.close()
+    }
 }
