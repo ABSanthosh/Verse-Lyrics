@@ -132,7 +132,9 @@ class RecentlyPlayedDatabaseHandler(context: Context) :
 
     private fun removeSong(song: Song): Int {
         val db = this.writableDatabase
-        return db.delete(TABLE_PLAYED, "_id=?", arrayOf(song.id))
+        val res = db.delete(TABLE_PLAYED, "_id=?", arrayOf(song.id))
+        db.close()
+        return res
     }
 
     private fun isAlreadyRecorded(song: Song): Boolean {
@@ -145,6 +147,9 @@ class RecentlyPlayedDatabaseHandler(context: Context) :
             return false
         }
         cursor.close()
+        db.close()
         return true
     }
+
+
 }
