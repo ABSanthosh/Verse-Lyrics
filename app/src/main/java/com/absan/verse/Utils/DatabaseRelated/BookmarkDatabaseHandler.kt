@@ -102,4 +102,10 @@ class BookmarkDatabaseHandler(context: Context) :
         return true
     }
 
+    fun clearLyricsDatabase() {
+        val db = this.writableDatabase
+        db.execSQL("DELETE FROM $TABLE_LYRICS")
+        db.execSQL("VACUUM")
+        db.close()
+    }
 }
