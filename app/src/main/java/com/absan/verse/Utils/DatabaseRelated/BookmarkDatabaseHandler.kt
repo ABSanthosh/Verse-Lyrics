@@ -28,7 +28,6 @@ class BookmarkDatabaseHandler(context: Context) :
             "CREATE TABLE $TABLE_LYRICS ($KEY_SONG_ID TEXT PRIMARY KEY, $KEY_SONG_NAME TEXT, $KEY_SONG_ARTIST TEXT)"
 
         db?.execSQL(CREATE_LYRICS_TABLE)
-
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, p1: Int, p2: Int) {
@@ -89,17 +88,18 @@ class BookmarkDatabaseHandler(context: Context) :
         return response
     }
 
-    fun isAlreadySaved(song: Song):Boolean{
+    fun isAlreadySaved(song: Song): Boolean {
         val db = this.readableDatabase
         val selectQuery = "SELECT * FROM $TABLE_LYRICS WHERE _id = '${song.id}'"
         val cursor: Cursor = db.rawQuery(selectQuery, null)
 
-        if(cursor.count <= 0){
+        if (cursor.count <= 0) {
             cursor.close()
             return false
         }
         cursor.close()
+        db.close()
         return true
-
     }
+
 }
