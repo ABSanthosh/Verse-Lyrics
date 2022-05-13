@@ -191,10 +191,9 @@
                         android:id="@+id/setting__adBlockSwitch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingStart="2dp"
-                        android:paddingEnd="0dp"
                         android:layout_marginEnd="10dp"
-                        />
+                        android:paddingStart="2dp"
+                        android:paddingEnd="0dp" />
 
                 </LinearLayout>
 
@@ -440,6 +439,82 @@
                     android:fontFamily="@font/manrope"
                     android:gravity="center_vertical"
                     android:paddingStart="20dp"
+                    android:text="Data"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/setting__clearHistory"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@color/settingsFg"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="12dp"
+                        android:gravity="center_vertical"
+                        android:src="@drawable/savelyric__delete"
+                        app:tint="@color/metaTextColor" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/manrope"
+                        android:gravity="center_vertical"
+                        android:text="Clear History"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/setting__clearSavedSongs"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@color/settingsFg"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="12dp"
+                        android:gravity="center_vertical"
+                        android:src="@drawable/savelyric__delete"
+                        app:tint="@color/metaTextColor" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/manrope"
+                        android:gravity="center_vertical"
+                        android:text="Clear all saved songs"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:fontFamily="@font/manrope"
+                    android:gravity="center_vertical"
+                    android:paddingStart="20dp"
                     android:text="@string/Navbar__developer"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -474,6 +549,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/setting__coffee"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@color/settingsCoffee"
