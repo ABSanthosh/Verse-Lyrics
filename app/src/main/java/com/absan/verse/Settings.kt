@@ -294,6 +294,10 @@ class Settings : AppCompatActivity() {
             RecentlyPlayedDatabaseHandler(this).clearHistoryDatabase()
         }
 
+        findViewById<LinearLayout>(R.id.setting__clearSavedSongs).setOnClickListener {
+            BookmarkDatabaseHandler(this).clearLyricsDatabase()
+        }
+
         findViewById<LinearLayout>(R.id.setting__myName).setOnClickListener {
             RickRollcount++
             if (RickRollcount >= 7) {
