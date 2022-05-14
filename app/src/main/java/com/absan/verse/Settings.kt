@@ -10,6 +10,8 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.absan.verse.Utils.*
+import com.absan.verse.Utils.DatabaseRelated.BookmarkDatabaseHandler
+import com.absan.verse.Utils.DatabaseRelated.RecentlyPlayedDatabaseHandler
 import com.absan.verse.data.Constants
 import com.aigestudio.wheelpicker.WheelPicker
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -241,7 +243,8 @@ class Settings : AppCompatActivity() {
             fontSelectorModal.show()
         }
 
-        findViewById<Switch>(R.id.setting__adBlockSwitch).isChecked = mainPrefInstance.getBoolean("MuteAd",false)
+        findViewById<Switch>(R.id.setting__adBlockSwitch).isChecked =
+            mainPrefInstance.getBoolean("MuteAd", false)
 
         findViewById<Switch>(R.id.setting__adBlockSwitch).setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
@@ -267,9 +270,6 @@ class Settings : AppCompatActivity() {
             }
         }
 
-
-
-
         findViewById<ImageView>(R.id.settingBackButton).setOnClickListener {
             finish()
         }
@@ -288,6 +288,10 @@ class Settings : AppCompatActivity() {
 
         findViewById<LinearLayout>(R.id.setting__rateInPlaystore).setOnClickListener {
             RateOnPlayStore(this)
+        }
+
+        findViewById<LinearLayout>(R.id.setting__clearHistory).setOnClickListener {
+            RecentlyPlayedDatabaseHandler(this).clearHistoryDatabase()
         }
 
         findViewById<LinearLayout>(R.id.setting__myName).setOnClickListener {
