@@ -291,10 +291,20 @@ class Settings : AppCompatActivity() {
         }
 
         findViewById<LinearLayout>(R.id.setting__clearHistory).setOnClickListener {
+            Toast.makeText(
+                this,
+                "Cleared ${RecentlyPlayedDatabaseHandler(this).getHistorySize()} songs",
+                Toast.LENGTH_SHORT
+            ).show()
             RecentlyPlayedDatabaseHandler(this).clearHistoryDatabase()
         }
 
         findViewById<LinearLayout>(R.id.setting__clearSavedSongs).setOnClickListener {
+            Toast.makeText(
+                this,
+                "Cleared ${BookmarkDatabaseHandler(this).readLyrics().size} songs",
+                Toast.LENGTH_SHORT
+            ).show()
             BookmarkDatabaseHandler(this).clearLyricsDatabase()
         }
 
