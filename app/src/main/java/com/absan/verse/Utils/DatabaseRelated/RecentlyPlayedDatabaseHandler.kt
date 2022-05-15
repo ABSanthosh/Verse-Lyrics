@@ -137,6 +137,15 @@ class RecentlyPlayedDatabaseHandler(context: Context) :
         return res
     }
 
+    fun getHistorySize(): Int{
+        val songs = readRecentlyPlayed()
+        var count = 0
+        songs.keys.forEach {
+            count += songs[it]!!.size
+        }
+        return count
+    }
+
     private fun isAlreadyRecorded(song: Song): Boolean {
         val db = this.readableDatabase
         val selectQuery = "SELECT * FROM $TABLE_PLAYED WHERE _id = '${song.id}'"
