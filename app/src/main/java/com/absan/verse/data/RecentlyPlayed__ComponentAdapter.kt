@@ -19,8 +19,8 @@ class RecentlyPlayed__ComponentAdapter(
 ) : RecyclerView.Adapter<RecentlyPlayed__ComponentAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val timeStamp = view.findViewById<TextView>(R.id.recentlyPlayed__Parent_TimeStamp)
-        val songListRecyclerView = view.findViewById<RecyclerView>(R.id.recentlyPlayed__Parent)
+        val timeStamp: TextView = view.findViewById(R.id.recentlyPlayed__Parent_TimeStamp)
+        val songListRecyclerView: RecyclerView = view.findViewById(R.id.recentlyPlayed__Parent)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
