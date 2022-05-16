@@ -36,7 +36,6 @@ suspend fun GoogleLyric(
 
             val lyricDiv = document!!.select("span").select("[jsname='YS01Ge']").first() != null
             if (lyricDiv) {
-                // Log.e("Protocol", "Google")
                 val element: Elements = document.select("span").select("[jsname='YS01Ge']")
                 if (view.findViewById<TextView>(R.id.copyright) == null) {
                     withContext(Dispatchers.Main) {
@@ -44,19 +43,14 @@ suspend fun GoogleLyric(
                             view.addView(generateTextView(context, line.text()))
                         }
                         view.addView(copyrightTextView(context, googleQuery, true))
-
-
                     }
                 }
-
             } else {
-                // Log.e("Protocol", "Musixmatch")
                 MusixmatchNormalLyric(
                     song = song,
                     view = view,
                     context = context
                 )
-
             }
 
         } catch (err: Exception) {
