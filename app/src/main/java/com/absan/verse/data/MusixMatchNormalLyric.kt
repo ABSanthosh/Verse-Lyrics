@@ -63,7 +63,6 @@ suspend fun MusixmatchNormalLyric(
             "signature=9uqG34C5SPnXUjFJTGzJdlyM%2BYI%3D&" +
             "signature_protocol=sha1"
 
-    // Log.e("Query", googleQuery)
     try {
         withContext(Dispatchers.IO) {
             val document: org.jsoup.nodes.Document? =
