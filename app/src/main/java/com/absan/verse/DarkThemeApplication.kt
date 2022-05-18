@@ -5,8 +5,8 @@ import android.content.Context
 import android.graphics.Typeface
 import android.os.Handler
 import android.os.HandlerThread
-import com.absan.verse.Utils.ThemeHelper
-import com.absan.verse.Utils.requestCustomFont
+import com.absan.verse.Helpers.ThemeHelper
+import com.absan.verse.Helpers.requestCustomFont
 import com.absan.verse.data.Constants
 
 class DarkThemeApplication : Application() {
