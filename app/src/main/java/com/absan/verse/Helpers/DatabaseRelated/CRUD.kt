@@ -1,4 +1,4 @@
-package com.absan.verse.Utils.DatabaseRelated
+package com.absan.verse.Helpers.DatabaseRelated
 
 import android.content.Context
 import android.widget.Toast
