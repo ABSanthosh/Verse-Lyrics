@@ -1,9 +1,8 @@
-package com.absan.verse.Utils
+package com.absan.verse.Helpers
 
 import android.content.Context
 import android.graphics.Typeface
 import android.os.Handler
-import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
