@@ -1,4 +1,4 @@
-package com.absan.verse.Utils
+package com.absan.verse.Helpers
 
 internal class QueryBuilder(
     private val familyName: String,
