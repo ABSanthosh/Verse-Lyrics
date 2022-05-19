@@ -1,19 +1,15 @@
-package com.absan.verse.Utils
+package com.absan.verse.Helpers
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
-import android.os.Handler
-import android.os.HandlerThread
 import android.text.TextUtils
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.absan.verse.R
 import com.absan.verse.data.Constants.TYPEFACE
