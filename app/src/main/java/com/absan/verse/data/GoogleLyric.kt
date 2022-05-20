@@ -4,8 +4,8 @@ import android.content.Context
 import android.widget.TableLayout
 import android.widget.TextView
 import com.absan.verse.R
-import com.absan.verse.Utils.copyrightTextView
-import com.absan.verse.Utils.generateTextView
+import com.absan.verse.Helpers.copyrightTextView
+import com.absan.verse.Helpers.generateTextView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.jsoup.Jsoup
