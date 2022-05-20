@@ -1,10 +1,9 @@
-package com.absan.verse.Utils
+package com.absan.verse.Helpers
 
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import kotlin.system.exitProcess
 
