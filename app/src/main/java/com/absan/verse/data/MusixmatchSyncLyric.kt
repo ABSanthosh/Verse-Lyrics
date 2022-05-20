@@ -7,9 +7,9 @@ import android.util.Log
 import android.widget.ScrollView
 import android.widget.TableLayout
 import android.widget.TextView
-import com.absan.verse.Utils.Run
-import com.absan.verse.Utils.copyrightTextView
-import com.absan.verse.Utils.generateTextView
+import com.absan.verse.Helpers.Run
+import com.absan.verse.Helpers.copyrightTextView
+import com.absan.verse.Helpers.generateTextView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
