@@ -2,18 +2,14 @@ package com.absan.verse
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.absan.verse.Utils.DatabaseRelated.BookmarkDatabaseHandler
-import com.absan.verse.Utils.DatabaseRelated.RecentlyPlayedDatabaseHandler
+import com.absan.verse.Helpers.DatabaseRelated.RecentlyPlayedDatabaseHandler
 import com.absan.verse.data.RecentlyPlayed__ComponentAdapter
-import com.absan.verse.data.SaveLyric__ItemAdapter
-import com.absan.verse.data.Song
 
 class RecentlyPlayed : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
