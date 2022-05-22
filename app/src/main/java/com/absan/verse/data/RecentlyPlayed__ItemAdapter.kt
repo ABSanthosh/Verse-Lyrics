@@ -1,17 +1,14 @@
 package com.absan.verse.data
 
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.absan.verse.R
-import com.absan.verse.Utils.openSpotify
+import com.absan.verse.Helpers.openSpotify
 
 class RecentlyPlayed__ItemAdapter(
     val context: Context,
