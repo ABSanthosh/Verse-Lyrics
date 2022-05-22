@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.ImageView
 import android.widget.RelativeLayout
@@ -400,7 +401,6 @@ class MainActivity : AppCompatActivity() {
         // Update bookmark - End
 
         currentSong = song
-
         if (song.isDuplicateOf(lastSong)) return
 
         RecentlyPlayedDatabaseHandler(this).addRecentlyPlayed(song)

@@ -26,6 +26,6 @@ fun Song.isSongReset(prevSong: Song): Boolean {
 
 fun Song.isDuplicateOf(old: Song): Boolean {
     return this.id == old.id &&             // If same song logged twice,
-            this.playing == old.playing && // both playing or both paused,
+//            this.playing == old.playing // both playing or both paused,
             !this.isSongReset(old)         // and new song is _not_ reset
 }
