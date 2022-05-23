@@ -1,4 +1,4 @@
-package com.absan.verse.Utils
+package com.absan.verse.Helpers
 
 import android.app.Activity
 import android.os.Handler
