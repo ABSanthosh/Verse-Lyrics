@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@color/bgColor"
     android:paddingBottom="14dp">
 
     <LinearLayout
@@ -32,7 +33,7 @@
             android:fontFamily="@font/aladin"
             android:gravity="center"
             android:paddingTop="12dp"
-            android:text="Font Size"
+            android:text="@string/Settings__Sub_Interface_TextSize"
             android:textAlignment="center"
             android:textColor="@color/textColor"
             android:textSize="45sp" />
@@ -57,7 +58,7 @@
         android:minHeight="48dp"
         android:fontFamily="@font/manrope"
         android:gravity="center"
-        android:text="Mango"
+        android:text="@string/Settings__Sub_Interface_Mango"
         android:textSize="24sp" />
 
     <com.google.android.material.slider.Slider
@@ -93,7 +94,7 @@
             android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:background="@drawable/button__background"
-            android:text="@string/Fragment__FontSelector_B2"
+            android:text="@string/Settings__Sub_Interface_Default"
             android:textAllCaps="false"
             android:textColor="@color/buttontextColor" />
 
@@ -105,7 +106,7 @@
             android:layout_marginEnd="7dp"
             android:layout_weight="1"
             android:background="@drawable/button__background"
-            android:text="Save"
+            android:text="@string/Settings__Sub_Interface_SaveButton"
             android:textAllCaps="false"
             android:textColor="@color/buttontextColor" />
 
@@ -117,7 +118,7 @@
             android:layout_marginEnd="5dp"
             android:layout_weight="1"
             android:background="@drawable/button__background"
-            android:text="Close"
+            android:text="@string/Settings__Sub_Interface_CloseButton"
             android:textAllCaps="false"
             android:textColor="@color/buttontextColor" />
 
