@@ -243,7 +243,7 @@
                                 android:layout_marginTop="0dp"
                                 android:layout_toEndOf="@+id/blockAdImg"
                                 android:fontFamily="@font/manrope"
-                                android:text="183"
+                                android:text="@string/Navbar__AdsCount"
 
                                 android:textSize="23sp" />
 
@@ -255,7 +255,7 @@
                                 android:layout_marginBottom="0dp"
                                 android:layout_toEndOf="@+id/blockAdImg"
                                 android:fontFamily="@font/manrope"
-                                android:text="Ads Blocked"
+                                android:text="@string/Navbar__AdsTitle"
                                 android:textSize="11.5sp" />
                         </RelativeLayout>
 
@@ -296,7 +296,7 @@
                                 android:layout_marginTop="0dp"
                                 android:layout_toEndOf="@+id/NavsaveLyrics"
                                 android:fontFamily="@font/manrope"
-                                android:text="--"
+                                android:text="@string/Navbar__CountPlaceHolder"
                                 android:textSize="23sp" />
 
                             <TextView
@@ -307,7 +307,7 @@
                                 android:layout_marginBottom="0dp"
                                 android:layout_toEndOf="@+id/NavsaveLyrics"
                                 android:fontFamily="@font/manrope"
-                                android:text="Lyrics Saved"
+                                android:text="@string/Navbar__SavedLyricsTitle"
                                 android:textSize="11.5sp" />
                         </RelativeLayout>
 
@@ -361,7 +361,7 @@
                         android:layout_toEndOf="@+id/saveDiskImage"
                         android:fontFamily="@font/manrope"
                         android:gravity="center_vertical"
-                        android:text="Saved"
+                        android:text="@string/Navbar__Option_Saved"
                         android:textSize="18sp" />
                 </RelativeLayout>
 
@@ -399,7 +399,7 @@
                         android:layout_toEndOf="@+id/recentSongImage"
                         android:fontFamily="@font/manrope"
                         android:gravity="center_vertical"
-                        android:text="Recently Played"
+                        android:text="@string/Navbar__Option_RecentlyPlayed"
                         android:textSize="18sp" />
                 </RelativeLayout>
 
@@ -451,7 +451,7 @@
                             app:drawableTint="@color/themeToggleNonActiveTint"
                             app:drawableWidth="20dp"
                             app:rounded="true"
-                            app:text="Dark"
+                            app:text="@string/Navbar__Theme_Dark"
                             app:textColor="@color/textColor"
                             app:textSize="18sp" />
 
@@ -467,7 +467,7 @@
                             app:drawableTint="@color/themeToggleNonActiveTint"
                             app:drawableWidth="20dp"
                             app:rounded="true"
-                            app:text="Auto"
+                            app:text="@string/Navbar__Theme_Auto"
                             app:textColor="@color/textColor"
                             app:textSize="18sp" />
 
@@ -483,7 +483,7 @@
                             app:drawableTint="@color/themeToggleNonActiveTint"
                             app:drawableWidth="20dp"
                             app:rounded="true"
-                            app:text="Light"
+                            app:text="@string/Navbar__Theme_Light"
                             app:textColor="@color/textColor"
                             app:textSize="18sp" />
 
@@ -523,7 +523,7 @@
                         android:layout_toEndOf="@+id/settingsIcon"
                         android:fontFamily="@font/manrope"
                         android:gravity="center_vertical"
-                        android:text="Settings"
+                        android:text="@string/Navbar__Option_Settings"
                         android:textSize="18sp" />
                 </RelativeLayout>
 

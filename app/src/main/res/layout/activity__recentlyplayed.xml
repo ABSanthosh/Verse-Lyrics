@@ -30,7 +30,7 @@
                 android:fontFamily="@font/manrope"
                 android:gravity="center_vertical"
                 android:paddingStart="10dp"
-                android:text="Recently played"
+                android:text="@string/RecentlyPlayed__AppbarTitle"
                 android:textFontWeight="@integer/material_motion_duration_long_2"
                 android:textSize="26sp" />
 
@@ -68,8 +68,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:padding="25dp"
             android:textSize="20sp"
-            android:text="Songs you Played recently will appear here!" />
+            android:text="@string/RecentlyPlayed__EmptyPageMessage" />
 
     </RelativeLayout>
 </LinearLayout>
