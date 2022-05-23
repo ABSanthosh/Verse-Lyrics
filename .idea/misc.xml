@@ -32,10 +32,11 @@
         <entry key="app/src/main/res/font/walter_turncoat.xml" value="0.309375" />
         <entry key="app/src/main/res/layout-v21/settings.xml" value="0.2791666666666667" />
         <entry key="app/src/main/res/layout/activity__main.xml" value="0.3826291079812207" />
-        <entry key="app/src/main/res/layout/activity__recentlyplayed.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity__recentlyplayed.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity__savedsongs.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity__settings.xml" value="0.44741235392320533" />
         <entry key="app/src/main/res/layout/activity__splashscreen.xml" value="0.2749094202898551" />
+        <entry key="app/src/main/res/layout/activity__toolbar.xml" value="0.2791666666666667" />
         <entry key="app/src/main/res/layout/fragment__about.xml" value="0.2791666666666667" />
         <entry key="app/src/main/res/layout/fragment__firsttime.xml" value="0.2791666666666667" />
         <entry key="app/src/main/res/layout/fragment__fontselector.xml" value="0.2791666666666667" />
@@ -52,7 +53,7 @@
         <entry key="app/src/main/res/layout/navbar__toolbar.xml" value="0.335" />
         <entry key="app/src/main/res/layout/recentlyplayed__child.xml" value="0.375" />
         <entry key="app/src/main/res/layout/recentlyplayed__parent.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/savelyrics__item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/savelyrics__item.xml" value="0.45" />
         <entry key="app/src/main/res/layout/settings.xml" value="0.3915094339622642" />
         <entry key="app/src/main/res/layout/settings__fontselector.xml" value="0.21331521739130435" />
         <entry key="app/src/main/res/layout/settings__fontsizemodal.xml" value="0.2791666666666667" />
