@@ -38,8 +38,7 @@ class Settings : AppCompatActivity() {
         )
     }
 
-
-    fun setFontSize(value: Float, previewText: TextView?) {
+    private fun setFontSize(value: Float, previewText: TextView?) {
         when (value) {
             0f -> {
                 previewText?.text = "Grape"
@@ -268,6 +267,32 @@ class Settings : AppCompatActivity() {
                 ).show()
                 sharedEditor.apply {
                     putBoolean("MuteAd", false)
+                }.apply()
+            }
+        }
+
+
+        findViewById<Switch>(R.id.setting__syncLyricsSwitch).isChecked =
+            !mainPrefInstance.getBoolean("isGoogle", true)
+
+        findViewById<Switch>(R.id.setting__syncLyricsSwitch).setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                Toast.makeText(
+                    this,
+                    "Synced Lyrics Turned on",
+                    Toast.LENGTH_SHORT
+                ).show()
+                sharedEditor.apply {
+                    putBoolean("isGoogle", false)
+                }.apply()
+            } else {
+                Toast.makeText(
+                    this,
+                    "Synced Lyrics Turned Off",
+                    Toast.LENGTH_SHORT
+                ).show()
+                sharedEditor.apply {
+                    putBoolean("isGoogle", true)
                 }.apply()
             }
         }
