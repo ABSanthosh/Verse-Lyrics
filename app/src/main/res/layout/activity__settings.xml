@@ -34,7 +34,7 @@
                 android:fontFamily="@font/manrope"
                 android:gravity="center_vertical"
                 android:paddingStart="10dp"
-                android:text="Settings"
+                android:text="@string/Settings__AppbarTitle"
                 android:textFontWeight="@integer/material_motion_duration_long_2"
                 android:textSize="26sp" />
 
@@ -72,7 +72,7 @@
                     android:fontFamily="@font/manrope"
                     android:gravity="center_vertical"
                     android:paddingStart="20dp"
-                    android:text="Interface"
+                    android:text="@string/Settings__Sub_Interface"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -101,7 +101,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/manrope"
                         android:gravity="center_vertical"
-                        android:text="Font face"
+                        android:text="@string/Settings__Sub_Interface_FontFace"
                         android:textSize="18sp" />
 
                     <androidx.appcompat.widget.AppCompatImageView
@@ -145,7 +145,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/manrope"
                         android:gravity="center_vertical"
-                        android:text="Text size"
+                        android:text="@string/Settings__Sub_Interface_TextSize"
                         android:textSize="18sp" />
 
                     <androidx.appcompat.widget.AppCompatImageView
@@ -184,7 +184,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/manrope"
                         android:gravity="center_vertical"
-                        android:text="Mute Ads"
+                        android:text="@string/Settings__Sub_Interface_MuteAds"
                         android:textSize="18sp" />
 
                     <Switch
@@ -210,7 +210,7 @@
                     android:fontFamily="@font/manrope"
                     android:gravity="center_vertical"
                     android:paddingStart="20dp"
-                    android:text="Support"
+                    android:text="@string/Settings__Sub_Support"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -237,7 +237,7 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/manrope"
                         android:gravity="center_vertical"
-                        android:text="Help"
+                        android:text="@string/Settings__Sub_Support_Help"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -268,7 +268,7 @@
                         android:fontFamily="@font/manrope"
                         android:gravity="center_vertical"
                         android:paddingEnd="40dp"
-                        android:text="Github"
+                        android:text="@string/Settings__Sub_Support_Github"
                         android:textSize="18sp" />
 
                     <androidx.appcompat.widget.AppCompatImageView
@@ -307,7 +307,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/manrope"
                         android:gravity="center_vertical"
-                        android:text="@string/Navbar__Feedback"
+                        android:text="@string/Settings__Sub_Support_Feedback"
                         android:textSize="18sp" />
 
                     <androidx.appcompat.widget.AppCompatImageView
@@ -346,7 +346,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/manrope"
                         android:gravity="center_vertical"
-                        android:text="@string/Navbar__FeatureRequest"
+                        android:text="@string/Settings__Sub_Support_FeatureRequest"
                         android:textSize="18sp" />
 
                     <androidx.appcompat.widget.AppCompatImageView
@@ -385,7 +385,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/manrope"
                         android:gravity="center_vertical"
-                        android:text="@string/Navbar__Rate"
+                        android:text="@string/Settings__Sub_Support_Rate"
                         android:textSize="18sp" />
 
                     <androidx.appcompat.widget.AppCompatImageView
@@ -422,7 +422,7 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/manrope"
                         android:gravity="center_vertical"
-                        android:text="Attributions"
+                        android:text="@string/Settings__Sub_Support_Attributions"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -439,7 +439,7 @@
                     android:fontFamily="@font/manrope"
                     android:gravity="center_vertical"
                     android:paddingStart="20dp"
-                    android:text="Data"
+                    android:text="@string/Settings__Sub_Data"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -467,7 +467,7 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/manrope"
                         android:gravity="center_vertical"
-                        android:text="Clear History"
+                        android:text="@string/Settings__Sub_Data_ClearHistory"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -496,7 +496,7 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/manrope"
                         android:gravity="center_vertical"
-                        android:text="Clear all saved songs"
+                        android:text="@string/Settings__Sub_Data_ClearSavedSongs"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -515,7 +515,7 @@
                     android:fontFamily="@font/manrope"
                     android:gravity="center_vertical"
                     android:paddingStart="20dp"
-                    android:text="@string/Navbar__developer"
+                    android:text="@string/Settings__Sub_Developer"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -543,7 +543,7 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/manrope"
                         android:gravity="center_vertical"
-                        android:text="ABSanthosh"
+                        android:text="@string/Settings__Sub_Developer_MyName"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -598,7 +598,7 @@
                     android:gravity="center_horizontal|bottom"
                     android:minHeight="55dp"
                     android:paddingBottom="5dp"
-                    android:text="You are using Verse 2022.01.0.1"
+                    android:text="@string/Settings__Version"
                     android:textColor="@color/textColor"
                     android:textSize="13sp"
                     tools:ignore="TextContrastCheck" />
