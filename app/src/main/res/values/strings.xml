@@ -60,6 +60,7 @@
     <string name="Settings__Sub_Interface_FontFace">Font face</string>
     <string name="Settings__Sub_Interface_TextSize">Text size</string>
     <string name="Settings__Sub_Interface_MuteAds">Mute Ads</string>
+    <string name="Settings__Sub_Interface_SyncLyrics">Synced Lyrics(Beta)</string>
 
     <string name="Settings__Sub_Interface_TestContent">Lorem ipsum dolor sit.</string>
     <string name="Settings__Sub_Interface_SaveButton">Save</string>
