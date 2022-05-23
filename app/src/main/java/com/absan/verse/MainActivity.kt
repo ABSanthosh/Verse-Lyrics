@@ -33,25 +33,15 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var toggle: ActionBarDrawerToggle
     private var running = false
-    private var isGoogle = true
     private val spotifyReceiverLyrics = Spotify.spotifyReceiver(::handleSongIntent)
     private var currentSong = Song()
     private var lastSong = Song()
     private var pausedSong = Song()
+    private var isGoogle = true
     private var networkCall = CoroutineScope(Dispatchers.Main)
     private var isSaved = false
     private val mainPrefInstance by lazy { getSharedPreferences("main", Context.MODE_PRIVATE) }
     private var prevTheme = "light"
-
-
-    private val loggerServiceIntentForeground by lazy {
-        Intent(
-            "START_FOREGROUND",
-            Uri.EMPTY,
-            this,
-            Logger::class.java
-        )
-    }
 
     @SuppressLint("CommitPrefEdits")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -197,6 +187,62 @@ class MainActivity : AppCompatActivity() {
             updateSavedLyricsCount(this, drawerLayout)
         }
         // Save lyrics - End
+
+        isGoogle = mainPrefInstance.getBoolean("isGoogle", true)
+
+        // Toggle for Google and Musixmatch lyrics - Start
+//        val googleVmusixmatch: MenuItem = navigationView.menu.findItem(R.id.synclyricmenu)
+//        val tooglegoogleVmusixmatch: androidx.appcompat.widget.SwitchCompat =
+//            googleVmusixmatch.actionView.findViewById(R.id.SyncLyric__toggle)
+//        tooglegoogleVmusixmatch.setOnCheckedChangeListener { _, isChecked ->
+//            if (isChecked) {
+//                Toast.makeText(
+//                    this,
+//                    "Switched to Live Lyrics(Beta)",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//                isGoogle = false
+//                navigationView.menu.findItem(R.id.synclyricmenu).title =
+//                    getString(R.string.Navbar__SyncLyric)
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                    navigationView.menu.findItem(R.id.synclyricmenu).icon =
+//                        getDrawable(R.drawable.navbar__synclyric)
+//                }
+//
+//                sharedEditor.apply {
+//                    putBoolean("SyncLyrics", true)
+//                }.apply()
+//
+//                val tableLayout = findViewById<TableLayout>(R.id.lyricsContainer)
+//                tableLayout.removeAllViews()
+//                findViewById<TextView>(R.id.verseRestart).visibility = View.VISIBLE
+//
+//            } else {
+//                Toast.makeText(
+//                    this,
+//                    "Switched to Normal Lyrics",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//                isGoogle = true
+//                navigationView.menu.findItem(R.id.synclyricmenu).title =
+//                    getString(R.string.Navbar__NormalLyric)
+//
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                    navigationView.menu.findItem(R.id.synclyricmenu).icon =
+//                        getDrawable(R.drawable.navbar__normallyric)
+//                }
+//
+//                sharedEditor.apply {
+//                    putBoolean("SyncLyrics", false)
+//                }.apply()
+//
+//                Run.handler.removeCallbacksAndMessages(null)
+//                ResetLyricView(table = findViewById(R.id.lyricsContainer))
+//            }
+//        }
+        // Toggle for Google and Musixmatch lyrics - End
+
+
     }
 
     override fun onStart() {
@@ -217,6 +263,8 @@ class MainActivity : AppCompatActivity() {
             setBookmark(isSaved, bookmarkIcon, this)
         }
         // update bookmark - End
+
+        isGoogle = mainPrefInstance.getBoolean("isGoogle", true)
 
         ResetLyricView(
             findViewById(R.id.lyricsContainer),
@@ -291,6 +339,8 @@ class MainActivity : AppCompatActivity() {
         }
         // update bookmark - End
 
+        isGoogle = mainPrefInstance.getBoolean("isGoogle", true)
+
         super.onResume()
     }
 
@@ -322,14 +372,14 @@ class MainActivity : AppCompatActivity() {
         isSaved = if (BookmarkDatabaseHandler(this).isAlreadySaved(song)) {
             setBookmark(
                 true,
-                findViewById<ImageView>(R.id.bookmark),
+                findViewById(R.id.bookmark),
                 this
             )
             true
         } else {
             setBookmark(
                 false,
-                findViewById<ImageView>(R.id.bookmark),
+                findViewById(R.id.bookmark),
                 this
             )
             false
@@ -358,7 +408,6 @@ class MainActivity : AppCompatActivity() {
         lastSong = song
 
         //Show No Songs playing - Start
-        //TODO: Fix UI
         when {
             song.playing -> {
 //                if (findViewById<RelativeLayout>(R.id.NoSongParent).visibility == View.VISIBLE) {
