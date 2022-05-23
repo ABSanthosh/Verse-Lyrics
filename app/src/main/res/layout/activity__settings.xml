@@ -197,6 +197,40 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@color/settingsFg"
+                    android:orientation="horizontal">
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="25dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="18dp"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="center_vertical"
+                        android:src="@drawable/navbar__synclyric"
+                        app:tint="@color/metaTextColor" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/manrope"
+                        android:gravity="center_vertical"
+                        android:text="@string/Settings__Sub_Interface_SyncLyrics"
+                        android:textSize="18sp" />
+
+                    <Switch
+                        android:id="@+id/setting__syncLyricsSwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:paddingStart="2dp"
+                        android:paddingEnd="0dp" />
+
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
