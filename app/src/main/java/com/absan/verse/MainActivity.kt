@@ -56,11 +56,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity__main)
 
-        // Sharedpref setup - start
-        val sharedEditor = mainPrefInstance.edit()
-        // Sharedpref setup - End
-
-
         // Navigation drawer - Start
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.navbar)
@@ -73,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                     this,
                     R.color.darkModeScrimColor
                 )
-            );
+            )
         }
 
         toggle = ActionBarDrawerToggle(
@@ -117,8 +112,6 @@ class MainActivity : AppCompatActivity() {
 
         songName.isSelected = true
 
-
-
         when (mainPrefInstance.getString("Theme", "light")) {
             "dark" -> changeThemeIcon(
                 darkModeButton,
@@ -142,8 +135,6 @@ class MainActivity : AppCompatActivity() {
                 this, mainPrefInstance, 2, false
             )
         }
-
-
 
         darkModeButton.setOnClickListener {
             changeThemeIcon(
@@ -176,19 +167,6 @@ class MainActivity : AppCompatActivity() {
             prevTheme = "light"
         }
 
-//        themeToggle.setOnPositionChangedListener {
-//            Log.e("Log", themeToggle.position.toString())
-//            changeThemeIcon(themeToggle.position)
-//
-//        }
-
-
-//        val navigationView = findViewById<NavigationView>(R.id.navView)
-//        navigationView.setNavigationItemSelectedListener(this)
-//        navigationView.bringToFront()
-
-//        val logo: TextView = findViewById(R.id.logo)
-//        logo.visibility = View.VISIBLE
         //Navigation Drawer - End
 
 
@@ -199,58 +177,6 @@ class MainActivity : AppCompatActivity() {
         else
             blockedAdCountTV.text = "--"
         // Toggle for Ad mute function - End
-
-        // Toggle for Google and Musixmatch lyrics - Start
-//        val googleVmusixmatch: MenuItem = navigationView.menu.findItem(R.id.synclyricmenu)
-//        val tooglegoogleVmusixmatch: androidx.appcompat.widget.SwitchCompat =
-//            googleVmusixmatch.actionView.findViewById(R.id.SyncLyric__toggle)
-//        tooglegoogleVmusixmatch.setOnCheckedChangeListener { _, isChecked ->
-//            if (isChecked) {
-//                Toast.makeText(
-//                    this,
-//                    "Switched to Live Lyrics(Beta)",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//                isGoogle = false
-//                navigationView.menu.findItem(R.id.synclyricmenu).title =
-//                    getString(R.string.Navbar__SyncLyric)
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//                    navigationView.menu.findItem(R.id.synclyricmenu).icon =
-//                        getDrawable(R.drawable.navbar__synclyric)
-//                }
-//
-//                sharedEditor.apply {
-//                    putBoolean("SyncLyrics", true)
-//                }.apply()
-//
-//                val tableLayout = findViewById<TableLayout>(R.id.lyricsContainer)
-//                tableLayout.removeAllViews()
-//                findViewById<TextView>(R.id.verseRestart).visibility = View.VISIBLE
-//
-//            } else {
-//                Toast.makeText(
-//                    this,
-//                    "Switched to Normal Lyrics",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//                isGoogle = true
-//                navigationView.menu.findItem(R.id.synclyricmenu).title =
-//                    getString(R.string.Navbar__NormalLyric)
-//
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//                    navigationView.menu.findItem(R.id.synclyricmenu).icon =
-//                        getDrawable(R.drawable.navbar__normallyric)
-//                }
-//
-//                sharedEditor.apply {
-//                    putBoolean("SyncLyrics", false)
-//                }.apply()
-//
-//                Run.handler.removeCallbacksAndMessages(null)
-//                ResetLyricView(table = findViewById(R.id.lyricsContainer))
-//            }
-//        }
-        // Toggle for Google and Musixmatch lyrics - End
 
         // Save lyrics - Setup
         val bookmarkIcon = findViewById<ImageView>(R.id.bookmark)
@@ -270,26 +196,7 @@ class MainActivity : AppCompatActivity() {
         // Save lyrics - End
     }
 
-    private fun isSongSaved(song: Song = currentSong) {
-        isSaved = if (BookmarkDatabaseHandler(this).isAlreadySaved(song)) {
-            setBookmark(
-                true,
-                findViewById<ImageView>(R.id.bookmark),
-                this
-            )
-            true
-        } else {
-            setBookmark(
-                false,
-                findViewById<ImageView>(R.id.bookmark),
-                this
-            )
-            false
-        }
-    }
-
     override fun onStart() {
-
         // update ad count - start
         val blockedAdCountTV = findViewById<TextView>(R.id.navbar__blockedAdCount)
         if (mainPrefInstance.getBoolean("MuteAd", false))
@@ -306,7 +213,6 @@ class MainActivity : AppCompatActivity() {
         } else {
             setBookmark(isSaved, bookmarkIcon, this)
         }
-
         // update bookmark - End
 
         ResetLyricView(
@@ -350,10 +256,12 @@ class MainActivity : AppCompatActivity() {
 
         startLoggerService()
 
+        // First time Message - Start
         if (mainPrefInstance.getBoolean("FirstTime", true)) FirstTime().show(
             supportFragmentManager,
             "First time"
         )
+        // First time Message - End
 
         super.onStart()
     }
@@ -393,6 +301,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onDestroy() {
+        unregisterReceiver(spotifyReceiverLyrics)
+        super.onDestroy()
+    }
+
     private fun startLoggerService() {
         if (running) return
         registerReceiver(
@@ -402,9 +315,22 @@ class MainActivity : AppCompatActivity() {
         running = true
     }
 
-    override fun onDestroy() {
-        unregisterReceiver(spotifyReceiverLyrics)
-        super.onDestroy()
+    private fun isSongSaved(song: Song = currentSong) {
+        isSaved = if (BookmarkDatabaseHandler(this).isAlreadySaved(song)) {
+            setBookmark(
+                true,
+                findViewById<ImageView>(R.id.bookmark),
+                this
+            )
+            true
+        } else {
+            setBookmark(
+                false,
+                findViewById<ImageView>(R.id.bookmark),
+                this
+            )
+            false
+        }
     }
 
     private fun handleSongIntent(song: Song) {
@@ -416,7 +342,10 @@ class MainActivity : AppCompatActivity() {
             blockedAdCountTV.text = "--"
         // update ad count - End
 
+        // Update bookmark - Start
         isSongSaved()
+        // Update bookmark - End
+
         currentSong = song
 
         if (song.isDuplicateOf(lastSong)) return
@@ -424,6 +353,9 @@ class MainActivity : AppCompatActivity() {
         RecentlyPlayedDatabaseHandler(this).addRecentlyPlayed(song)
 
         lastSong = song
+
+        //Show No Songs playing - Start
+        //TODO: Fix UI
         when {
             song.playing -> {
                 if (findViewById<RelativeLayout>(R.id.NoSongParent).visibility == View.VISIBLE) {
@@ -438,6 +370,7 @@ class MainActivity : AppCompatActivity() {
                 handleSongNotPlaying(song)
             }
         }
+        //Show No Songs playing - End
     }
 
     private fun handleNewSongPlaying(newSong: Song) {
@@ -446,30 +379,22 @@ class MainActivity : AppCompatActivity() {
 
         songName.text = newSong.track
         artistName.text = newSong.artist
-//        if (findViewById<TextView>(R.id.verseRestart).visibility == View.VISIBLE) {
-//            findViewById<TextView>(R.id.verseRestart).visibility = View.GONE
-//        }
-
 
         RecentlyPlayedDatabaseHandler(this).addRecentlyPlayed(newSong)
 
-
         if (isGoogle) {
-            GoogleLyrics(newSong)
+            googleLyrics(newSong)
         } else {
-            MusixmatchLyrics(newSong)
+            musixmatchLyrics(newSong)
         }
-
     }
 
-    private fun MusixmatchLyrics(newSong: Song) {
+    private fun musixmatchLyrics(newSong: Song) {
         val tableLayout = findViewById<TableLayout>(R.id.lyricsContainer)
         if (newSong.id != pausedSong.id) {
             tableLayout.removeAllViews()
         }
-//        if (findViewById<TextView>(R.id.verseRestart).visibility == View.VISIBLE) {
-//            findViewById<TextView>(R.id.verseRestart).visibility = View.GONE
-//        }
+
         try {
             Run.handler.removeCallbacksAndMessages(null)
         } catch (err: Exception) {
@@ -485,14 +410,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun GoogleLyrics(newSong: Song) {
+    private fun googleLyrics(newSong: Song) {
         val tableLayout = findViewById<TableLayout>(R.id.lyricsContainer)
         if (newSong.id != pausedSong.id) {
             tableLayout.removeAllViews()
         }
-//        if (findViewById<TextView>(R.id.verseRestart).visibility == View.VISIBLE) {
-//            findViewById<TextView>(R.id.verseRestart).visibility = View.GONE
-//        }
         try {
             Run.handler.removeCallbacksAndMessages(null)
         } catch (err: Exception) {
@@ -508,15 +430,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun handleSongNotPlaying(song: Song) {
         pausedSong = song
-//        if (findViewById<RelativeLayout>(R.id.NoSongParent).visibility == View.VISIBLE) {
-//            findViewById<RelativeLayout>(R.id.NoSongParent).visibility = View.GONE
-//        } else {
-//            findViewById<RelativeLayout>(R.id.NoSongParent).visibility = View.VISIBLE
-//        }
         Run.handler.removeCallbacksAndMessages(null)
     }
 
-    fun Context.isDarkThemeOn(): Boolean {
+    private fun Context.isDarkThemeOn(): Boolean {
         return resources.configuration.uiMode and
                 Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
     }
