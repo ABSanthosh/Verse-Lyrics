@@ -44,6 +44,10 @@ class MainActivity : AppCompatActivity() {
     private val mainPrefInstance by lazy { getSharedPreferences("main", Context.MODE_PRIVATE) }
     private var prevTheme = "light"
 
+    //TODO: Help fragment in settings
+    //TODO: Attributions fragment
+    //TODO: Whats New in Settings
+
     @SuppressLint("CommitPrefEdits")
     override fun onCreate(savedInstanceState: Bundle?) {
 
