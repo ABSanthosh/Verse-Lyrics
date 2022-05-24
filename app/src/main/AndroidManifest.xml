@@ -75,7 +75,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
         <service
-            android:name=".Helpers.Classes.Logger"
+            android:name=".helpers.classes.Logger"
             android:enabled="true" />
     </application>
 

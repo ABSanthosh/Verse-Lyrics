@@ -5,9 +5,9 @@ import android.content.Context
 import android.graphics.Typeface
 import android.os.Handler
 import android.os.HandlerThread
-import com.absan.verse.Helpers.ThemeHelper
-import com.absan.verse.Helpers.requestCustomFont
-import com.absan.verse.data.Constants
+import com.absan.verse.helpers.objects.ThemeHelper
+import com.absan.verse.helpers.requestCustomFont
+import com.absan.verse.helpers.objects.Constants
 
 class DarkThemeApplication : Application() {
     private val mainPrefInstance by lazy { getSharedPreferences("main", Context.MODE_PRIVATE) }

@@ -8,8 +8,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.absan.verse.Helpers.Database.RecentlyPlayedDatabaseHandler
-import com.absan.verse.data.RecentlyPlayed__ComponentAdapter
+import com.absan.verse.helpers.database.RecentlyPlayedDatabaseHandler
+import com.absan.verse.helpers.classes.RecentlyPlayed__ComponentAdapter
 
 class RecentlyPlayed : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

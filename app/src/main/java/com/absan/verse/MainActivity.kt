@@ -16,11 +16,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import com.absan.verse.Helpers.*
-import com.absan.verse.Helpers.Classes.Logger
-import com.absan.verse.Helpers.Classes.Run
-import com.absan.verse.Helpers.Database.*
-import com.absan.verse.data.*
+import com.absan.verse.helpers.*
+import com.absan.verse.helpers.classes.Logger
+import com.absan.verse.helpers.classes.Run
+import com.absan.verse.helpers.classes.Spotify
+import com.absan.verse.helpers.database.*
+import com.absan.verse.helpers.data.*
 import com.absan.verse.ui.*
 import com.addisonelliott.segmentedbutton.SegmentedButton
 import com.addisonelliott.segmentedbutton.SegmentedButtonGroup

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.DialogFragment
 import com.absan.verse.R
-import com.absan.verse.Helpers.openSpotify
+import com.absan.verse.helpers.openSpotify
 
 class FirstTime : DialogFragment() {
     private val mainPrefInstance by lazy { requireActivity().applicationContext.getSharedPreferences("main", Context.MODE_PRIVATE) }
