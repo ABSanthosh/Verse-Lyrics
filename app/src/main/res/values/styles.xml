@@ -6,10 +6,6 @@
     </style>
 
     <style name="DarkThemeApp" parent="@style/Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryDark">@color/primary</item>
-        <item name="colorSecondary">@color/secondary</item>
-        <item name="colorError">@color/error</item>
         <item name="android:textColor">@color/textColor</item>
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
         <item name="android:windowNoTitle">true</item>
