@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.absan.verse.Helpers.DatabaseRelated.RecentlyPlayedDatabaseHandler
+import com.absan.verse.Helpers.Database.RecentlyPlayedDatabaseHandler
 import com.absan.verse.data.RecentlyPlayed__ComponentAdapter
 
 class RecentlyPlayed : AppCompatActivity() {
@@ -48,7 +48,7 @@ class RecentlyPlayed : AppCompatActivity() {
 
     override fun onBackPressed() {
         try {
-            finish();
+            finish()
         } catch (err: Exception) {
             super.onBackPressed()
         }

@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.absan.verse.R
-import com.absan.verse.Helpers.DatabaseRelated.BookmarkDatabaseHandler
-import com.absan.verse.Helpers.DatabaseRelated.removeSong
+import com.absan.verse.Helpers.Database.BookmarkDatabaseHandler
+import com.absan.verse.Helpers.Database.removeSong
 import com.absan.verse.Helpers.openSpotify
 
 class SaveLyric__ItemAdapter(

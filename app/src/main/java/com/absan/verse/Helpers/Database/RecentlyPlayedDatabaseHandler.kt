@@ -1,4 +1,4 @@
-package com.absan.verse.Helpers.DatabaseRelated
+package com.absan.verse.Helpers.Database
 
 import android.annotation.SuppressLint
 import android.content.ContentValues

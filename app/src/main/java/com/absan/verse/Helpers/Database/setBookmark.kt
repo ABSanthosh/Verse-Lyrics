@@ -1,4 +1,4 @@
-package com.absan.verse.Helpers.DatabaseRelated
+package com.absan.verse.Helpers.Database
 
 import android.content.Context
 import android.widget.ImageView

@@ -17,7 +17,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.absan.verse.Helpers.*
-import com.absan.verse.Helpers.DatabaseRelated.*
+import com.absan.verse.Helpers.Database.*
 import com.absan.verse.data.*
 import com.absan.verse.ui.*
 import com.addisonelliott.segmentedbutton.SegmentedButton
