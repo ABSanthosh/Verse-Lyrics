@@ -361,15 +361,15 @@ class MainActivity : AppCompatActivity() {
         //TODO: Fix UI
         when {
             song.playing -> {
-                if (findViewById<RelativeLayout>(R.id.NoSongParent).visibility == View.VISIBLE) {
-                    findViewById<RelativeLayout>(R.id.NoSongParent).visibility = View.GONE
-                }
+//                if (findViewById<RelativeLayout>(R.id.NoSongParent).visibility == View.VISIBLE) {
+//                    findViewById<RelativeLayout>(R.id.NoSongParent).visibility = View.GONE
+//                }
                 handleNewSongPlaying(song)
             }
             else -> {
-                if (findViewById<RelativeLayout>(R.id.NoSongParent).visibility == View.GONE) {
-                    findViewById<RelativeLayout>(R.id.NoSongParent).visibility = View.VISIBLE
-                }
+//                if (findViewById<RelativeLayout>(R.id.NoSongParent).visibility == View.GONE) {
+//                    findViewById<RelativeLayout>(R.id.NoSongParent).visibility = View.VISIBLE
+//                }
                 handleSongNotPlaying(song)
             }
         }
