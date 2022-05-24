@@ -8,6 +8,7 @@ import android.os.Handler
 import android.os.HandlerThread
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.absan.verse.helpers.*
 import com.absan.verse.helpers.classes.Logger
@@ -317,6 +318,11 @@ class Settings : AppCompatActivity() {
             }
         }
 
+        findViewById<LinearLayout>(R.id.setting__coffee).setOnClickListener {
+            val browserIntent =
+                Intent(Intent.ACTION_VIEW, Uri.parse("https://www.buymeacoffee.com/absanthosh"))
+            ContextCompat.startActivity(this, browserIntent, null)
+        }
 
     }
 
