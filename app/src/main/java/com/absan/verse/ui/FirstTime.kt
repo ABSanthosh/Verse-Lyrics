@@ -8,15 +8,15 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.DialogFragment
 import com.absan.verse.R
-import com.absan.verse.Utils.OpenSpotify
+import com.absan.verse.Helpers.openSpotify
 
 class FirstTime : DialogFragment() {
-    private val mainPrefInstance by lazy { activity!!.applicationContext.getSharedPreferences("main", Context.MODE_PRIVATE) }
+    private val mainPrefInstance by lazy { requireActivity().applicationContext.getSharedPreferences("main", Context.MODE_PRIVATE) }
     override fun getTheme() = R.style.RoundedCornersDialog
 
     override fun onStart() {
         val broadcastStatus = view?.findViewById<Button>(R.id.spotifyBroadcast)
-        broadcastStatus?.setOnClickListener { OpenSpotify(view!!.context) }
+        broadcastStatus?.setOnClickListener { openSpotify(requireView().context) }
         super.onStart()
     }
 
