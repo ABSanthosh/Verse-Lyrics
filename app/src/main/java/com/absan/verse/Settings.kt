@@ -10,6 +10,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.absan.verse.Helpers.*
+import com.absan.verse.Helpers.Classes.Logger
 import com.absan.verse.Helpers.Database.BookmarkDatabaseHandler
 import com.absan.verse.Helpers.Database.RecentlyPlayedDatabaseHandler
 import com.absan.verse.data.Constants

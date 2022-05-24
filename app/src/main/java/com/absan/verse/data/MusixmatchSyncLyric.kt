@@ -7,7 +7,7 @@ import android.util.Log
 import android.widget.ScrollView
 import android.widget.TableLayout
 import android.widget.TextView
-import com.absan.verse.Helpers.Run
+import com.absan.verse.Helpers.Classes.Run
 import com.absan.verse.Helpers.copyrightTextView
 import com.absan.verse.Helpers.generateTextView
 import kotlinx.coroutines.Dispatchers
