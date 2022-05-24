@@ -9,9 +9,9 @@ import android.os.HandlerThread
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
-import com.absan.verse.Utils.*
-import com.absan.verse.Utils.DatabaseRelated.BookmarkDatabaseHandler
-import com.absan.verse.Utils.DatabaseRelated.RecentlyPlayedDatabaseHandler
+import com.absan.verse.Helpers.*
+import com.absan.verse.Helpers.DatabaseRelated.BookmarkDatabaseHandler
+import com.absan.verse.Helpers.DatabaseRelated.RecentlyPlayedDatabaseHandler
 import com.absan.verse.data.Constants
 import com.aigestudio.wheelpicker.WheelPicker
 import com.google.android.material.bottomsheet.BottomSheetDialog
