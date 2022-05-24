@@ -1,4 +1,4 @@
-package com.absan.verse.Utils
+package com.absan.verse.Helpers
 
 import androidx.appcompat.app.AppCompatDelegate
 
