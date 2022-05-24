@@ -1,31 +1,28 @@
 package com.absan.verse.data
 
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.absan.verse.R
-import com.absan.verse.Utils.DatabaseRelated.BookmarkDatabaseHandler
-import com.absan.verse.Utils.DatabaseRelated.removeSong
-
+import com.absan.verse.Helpers.DatabaseRelated.BookmarkDatabaseHandler
+import com.absan.verse.Helpers.DatabaseRelated.removeSong
+import com.absan.verse.Helpers.openSpotify
 
 class SaveLyric__ItemAdapter(
     val context: Context,
     private var songList: ArrayList<Song>,
-    val recycler: RecyclerView,
-    val messageText: TextView
+    private val recycler: RecyclerView,
+    private val messageText: TextView
 ) :
     RecyclerView.Adapter<SaveLyric__ItemAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val songName = view.findViewById<TextView>(R.id.saveSong__Songname)
-        val ArtistName = view.findViewById<TextView>(R.id.saveSong__Artistname)
-        val SongID = view.findViewById<TextView>(R.id.saveSong__songId)
+        val songName: TextView = view.findViewById(R.id.saveSong__Songname)
+        val artistName: TextView = view.findViewById(R.id.saveSong__Artistname)
+        val songID: TextView = view.findViewById(R.id.saveSong__songId)
     }
 
 
@@ -38,10 +35,10 @@ class SaveLyric__ItemAdapter(
                 PopupMenu(context, view.findViewById<ImageView>(R.id.savedLyricsOptions))
             popupMenu.menuInflater.inflate(R.menu.savedsongs__menu, popupMenu.menu)
             val songIdTextview = view.findViewById<TextView>(R.id.saveSong__songId)
-            popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
+            popupMenu.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.popUpPlaySong -> {
-                        OpenSongInSpotify(songIdTextview.text.toString())
+                        openSpotify(context, songIdTextview.text.toString())
                     }
 
                     R.id.popUpDeleteSong -> {
@@ -65,7 +62,7 @@ class SaveLyric__ItemAdapter(
                     }
                 }
                 true
-            })
+            }
             popupMenu.show()
         }
 
@@ -75,15 +72,11 @@ class SaveLyric__ItemAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = songList[position]
-        holder.SongID.text = item.id
+        holder.songID.text = item.id
         holder.songName.text = item.track
-        holder.ArtistName.text = item.artist
+        holder.artistName.text = item.artist
     }
 
     override fun getItemCount() = songList.size
 
-    fun OpenSongInSpotify(id: String) {
-        val launcher = Intent(Intent.ACTION_VIEW, Uri.parse(id))
-        startActivity(context, launcher, null)
-    }
 }
