@@ -16,8 +16,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import com.absan.verse.Utils.*
-import com.absan.verse.Utils.DatabaseRelated.*
+import com.absan.verse.Helpers.*
+import com.absan.verse.Helpers.DatabaseRelated.*
 import com.absan.verse.data.*
 import com.absan.verse.ui.*
 import com.addisonelliott.segmentedbutton.SegmentedButton
@@ -29,14 +29,13 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity() {
 
     private lateinit var toggle: ActionBarDrawerToggle
-    private var RickRollcount = 0
     private var running = false
     private var isGoogle = true
     private val spotifyReceiverLyrics = Spotify.spotifyReceiver(::handleSongIntent)
     private var currentSong = Song()
     private var lastSong = Song()
     private var pausedSong = Song()
-    private var NetworkCall = CoroutineScope(Dispatchers.Main)
+    private var networkCall = CoroutineScope(Dispatchers.Main)
     private var isSaved = false
     private val mainPrefInstance by lazy { getSharedPreferences("main", Context.MODE_PRIVATE) }
     private var prevTheme = "light"
@@ -118,95 +117,62 @@ class MainActivity : AppCompatActivity() {
 
         songName.isSelected = true
 
-        fun changeThemeIcon(position: Int, isAnimated: Boolean = true) {
-            when (position) {
-                0 -> {
-                    // Darkmode
-                    darkModeButton.drawable =
-                        ContextCompat.getDrawable(this, R.drawable.navbar__moonfill)
-                    darkModeButton.removeDrawableTint()
 
-                    autoModeButton.drawable =
-                        ContextCompat.getDrawable(this, R.drawable.navbar__autoframe)
-                    autoModeButton.drawableTint =
-                        ContextCompat.getColor(this, R.color.themeToggleNonActiveTint)
-
-                    lightModeButton.drawable =
-                        ContextCompat.getDrawable(this, R.drawable.navbar__sunframe)
-                    lightModeButton.drawableTint =
-                        ContextCompat.getColor(this, R.color.themeToggleNonActiveTint)
-
-                    themeToggle.setPosition(0, isAnimated)
-                    themeToggle.setOnPositionChangedListener {
-                        ThemeHelper.applyTheme("dark")
-                    }
-                    mainPrefInstance.edit().apply { putString("Theme", "dark") }.apply()
-                }
-                1 -> {
-                    // Automode
-                    darkModeButton.drawable =
-                        ContextCompat.getDrawable(this, R.drawable.navbar__moonframe)
-                    darkModeButton.drawableTint =
-                        ContextCompat.getColor(this, R.color.themeToggleNonActiveTint)
-
-                    autoModeButton.drawable =
-                        ContextCompat.getDrawable(this, R.drawable.navbar__autofill)
-                    autoModeButton.removeDrawableTint()
-
-                    lightModeButton.drawable =
-                        ContextCompat.getDrawable(this, R.drawable.navbar__sunframe)
-                    lightModeButton.drawableTint =
-                        ContextCompat.getColor(this, R.color.themeToggleNonActiveTint)
-
-                    themeToggle.setPosition(1, isAnimated)
-                    themeToggle.setOnPositionChangedListener {
-
-                    }
-                    mainPrefInstance.edit().apply { putString("Theme", "default") }.apply()
-                }
-                2 -> {
-                    // Lightmode
-                    darkModeButton.drawable =
-                        ContextCompat.getDrawable(this, R.drawable.navbar__moonframe)
-                    darkModeButton.drawableTint =
-                        ContextCompat.getColor(this, R.color.themeToggleNonActiveTint)
-
-                    autoModeButton.drawable =
-                        ContextCompat.getDrawable(this, R.drawable.navbar__autoframe)
-                    autoModeButton.drawableTint =
-                        ContextCompat.getColor(this, R.color.themeToggleNonActiveTint)
-
-                    lightModeButton.drawable =
-                        ContextCompat.getDrawable(this, R.drawable.navbar__sunfill)
-                    lightModeButton.removeDrawableTint()
-
-                    themeToggle.setPosition(2, isAnimated)
-                    themeToggle.setOnPositionChangedListener {
-                        ThemeHelper.applyTheme("light")
-                    }
-                    mainPrefInstance.edit().apply { putString("Theme", "light") }.apply()
-                }
-            }
-        }
 
         when (mainPrefInstance.getString("Theme", "light")) {
-            "dark" -> changeThemeIcon(0, false)
-            "default" -> changeThemeIcon(1, false)
-            "light" -> changeThemeIcon(2, false)
+            "dark" -> changeThemeIcon(
+                darkModeButton,
+                autoModeButton,
+                lightModeButton,
+                themeToggle,
+                this, mainPrefInstance, 0, false
+            )
+            "default" -> changeThemeIcon(
+                darkModeButton,
+                autoModeButton,
+                lightModeButton,
+                themeToggle,
+                this, mainPrefInstance, 1, false
+            )
+            "light" -> changeThemeIcon(
+                darkModeButton,
+                autoModeButton,
+                lightModeButton,
+                themeToggle,
+                this, mainPrefInstance, 2, false
+            )
         }
 
 
 
         darkModeButton.setOnClickListener {
-            changeThemeIcon(0)
+            changeThemeIcon(
+                darkModeButton,
+                autoModeButton,
+                lightModeButton,
+                themeToggle,
+                this, mainPrefInstance, 0
+            )
             prevTheme = "dark"
         }
         autoModeButton.setOnClickListener {
-            changeThemeIcon(1)
+            changeThemeIcon(
+                darkModeButton,
+                autoModeButton,
+                lightModeButton,
+                themeToggle,
+                this, mainPrefInstance, 1
+            )
             prevTheme = "default"
         }
         lightModeButton.setOnClickListener {
-            changeThemeIcon(2)
+            changeThemeIcon(
+                darkModeButton,
+                autoModeButton,
+                lightModeButton,
+                themeToggle,
+                this, mainPrefInstance, 2
+            )
             prevTheme = "light"
         }
 
@@ -508,7 +474,7 @@ class MainActivity : AppCompatActivity() {
             Run.handler.removeCallbacksAndMessages(null)
         } catch (err: Exception) {
         }
-        NetworkCall.launch {
+        networkCall.launch {
             MusixmatchSyncLyric(
                 song = newSong,
                 view = findViewById(R.id.lyricsContainer),
@@ -531,7 +497,7 @@ class MainActivity : AppCompatActivity() {
             Run.handler.removeCallbacksAndMessages(null)
         } catch (err: Exception) {
         }
-        NetworkCall.launch {
+        networkCall.launch {
             GoogleLyric(
                 song = newSong,
                 view = findViewById(R.id.lyricsContainer),
