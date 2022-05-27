@@ -59,8 +59,63 @@
             android:id="@+id/setting__whatsNewModalContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="15dp">
 
+            <hakobastvatsatryan.DropdownTextView
+                style="@style/DropdownTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginBottom="10dp"
+                app:content_text="@string/Ver4.0.0_Content"
+                app:content_text_color="@color/textColor"
+
+                app:title_text="@string/Ver4.0.0"
+                app:title_text_color="@color/textColor"
+
+                app:title_text_color_expanded="@color/textColor" />
+
+            <hakobastvatsatryan.DropdownTextView
+                style="@style/DropdownTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginBottom="10dp"
+                app:content_text="@string/Ver3.2.0_Content"
+                app:content_text_color="@color/textColor"
+
+                app:title_text="@string/Ver3.2.0"
+                app:title_text_color="@color/textColor"
+
+                app:title_text_color_expanded="@color/textColor" />
+
+            <hakobastvatsatryan.DropdownTextView
+                style="@style/DropdownTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginBottom="10dp"
+                app:content_text="@string/Ver3.1.0_Content"
+                app:content_text_color="@color/textColor"
+
+                app:title_text="@string/Ver3.1.0"
+                app:title_text_color="@color/textColor"
+
+                app:title_text_color_expanded="@color/textColor" />
+
+            <hakobastvatsatryan.DropdownTextView
+                style="@style/DropdownTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                app:content_text="@string/Ver3.0.0_Content"
+                app:content_text_color="@color/textColor"
+
+                app:title_text="@string/Ver3.0.0"
+                app:title_text_color="@color/textColor"
+
+                app:title_text_color_expanded="@color/textColor" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
