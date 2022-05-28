@@ -21,4 +21,20 @@
     <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/settings__bottomsheetborder</item>
     </style>
+
+    <style name="DropdownTextView">
+        <item name="arrow_drawable">@drawable/ic_arrow</item>
+
+        <item name="title_font">@font/manrope</item>
+        <item name="content_font">@font/manrope</item>
+
+        <item name="title_text_size">26sp</item>
+
+        <item name="content_text_size">22sp</item>
+        <item name="content_padding">10dp</item>
+
+        <item name="bg_drawable_expanded">@drawable/settings__dropdow_expanded</item>
+        <item name="bg_drawable_regular">@drawable/settings__dropdown_regular</item>
+
+    </style>
 </resources>
