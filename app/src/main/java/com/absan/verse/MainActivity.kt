@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
     //TODO: Help fragment in settings
     //TODO: Attributions fragment
     //TODO: Whats New in Settings
+    //TODO: Auto theme
 
     @SuppressLint("CommitPrefEdits")
     override fun onCreate(savedInstanceState: Bundle?) {
