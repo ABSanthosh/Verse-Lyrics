@@ -12,36 +12,45 @@
     <string name="Fragment__About">About</string>
 
     <!--  What's new  -->
-    <string name="Ver3.0.0">3.0.0</string>
-    <string name="Ver3.0.0_1">3.0.0</string>
-    <string name="Ver3.0.0_2">UI fixes</string>
-    <string name="Ver3.0.0_3">Added what\'s new in navigation menu(Placed in setting currently)</string>
-    <string name="Ver3.0.0_4">Added Rate app in Play Store</string>
-    <string name="Ver3.0.0_5">Added System default theme option</string>
-    <string name="Ver3.0.0_6">Added \'Identify Song\' feature(Removed in latest update)</string>
-    <string name="Ver3.0.0_7">Fixed Ad Mute</string>
-    <string name="Ver3.0.0_8">Fixed version notation to match Play Store</string>
-    <string name="Ver3.0.0_9">Fixed uncertainty in song name when switched between \'Identify song\' and \'Lyrics\' options.</string>
-    <string name="Ver3.0.0_10">Removed old ester egg and added a new one</string>
+    <string name="Ver3.0.0">Ver. 3.0.0</string>
+    <string name="Ver3.0.0_Content">
+        - UI fixes.\n
+        - Added what\'s new in navigation menu(Placed in setting currently)\n
+        - Added Rate app in Play Store\n
+        - Added System default theme option\n
+        - Added \'Identify Song\' feature(Removed in latest update)\n
+        - Fixed Ad Mute\n
+        - Fixed version notation to match Play Store\n
+        - Fixed uncertainty in song name when switched between \'Identify song\' and \'Lyrics\' options.\n
+        - Removed old ester egg and added a new one
+    </string>
 
-    <string name="Ver3.1.0">3.1.0</string>
-    <string name="Ver3.1.0_1">Fixed some typos</string>
-    <string name="Ver3.1.0_2">Added toast message to \'Identify Song\' option to show song name when Verse is not open(Removed in latest update)</string>
 
-    <string name="Ver3.2.0">3.2.0</string>
-    <string name="Ver3.2.0_1">UI tweaks</string>
-    <string name="Ver3.2.0_2">Open the identified song in spotify if available(Removed in latest update)</string>
-    <string name="Ver3.2.0_3">Removed the toast message for song name and added a new UI for the same.(Removed in latest update)</string>
-    <string name="Ver3.2.0_4">Fixed Shared preferences</string>
+    <string name="Ver3.1.0">Ver. 3.1.0</string>
+    <string name="Ver3.1.0_Content">
+        - Fixed some typos\n
+        - Added toast message to \'Identify Song\' option to show song name when Verse is not open(Removed in latest update)\n
+    </string>
 
-    <string name="Ver4.0.0">4.0.0</string>
-    <string name="Ver4.0.0_1">Added fonts selector</string>
-    <string name="Ver4.0.0_2">Synced lyrics(Beta)</string>
-    <string name="Ver4.0.0_3">New App Icon</string>
-    <string name="Ver4.0.0_4">New Ad muting mechanism</string>
-    <string name="Ver4.0.0_5">Save lyrics feature added(Only works while online)</string>
-    <string name="Ver4.0.0_6">New EasterEgg :)</string>
-    <string name="Ver4.0.0_7">Lyrics to more songs than before(Not all though)</string>
+    <string name="Ver3.2.0">Ver. 3.2.0</string>
+    <string name="Ver3.2.0_Content">
+        - UI tweaks\n
+        - Open the identified song in spotify if available(Removed in latest update)\n
+        - Removed the toast message for song name and added a new UI for the same.(Removed in latest update)\n
+        - Fixed Shared preferences
+    </string>
+
+    <string name="Ver4.0.0">Ver. 4.0.0</string>
+    <string name="Ver4.0.0_Content">
+        - Added fonts selector\n
+        - Synced lyrics(Beta)\n
+        - New App Icon\n
+        - New Ad muting mechanism\n
+        - Save lyrics feature added(Only works while online)\n
+        - New EasterEgg :)\n
+        - Lyrics to more songs than before(Not all though)
+    </string>
+
 
     <!--  Help Me Fragment  -->
     <string name="Fragment__Help">Help</string>
