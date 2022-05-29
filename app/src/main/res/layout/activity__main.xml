@@ -24,22 +24,22 @@
             android:layout_marginStart="0dp"
             android:layout_marginTop="53dp"
             android:layout_marginEnd="0dp"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:fontFamily="@font/satisfy"
             android:gravity="center|top"
             android:includeFontPadding="false"
+            android:marqueeRepeatLimit="marquee_forever"
             android:paddingStart="20dp"
+
             android:paddingTop="0dp"
             android:paddingEnd="20dp"
-            android:textColor="@color/textColor"
-            android:textSize="40sp"
-
-            android:singleLine="true"
-            android:ellipsize="marquee"
-            android:marqueeRepeatLimit="marquee_forever"
             android:scrollHorizontally="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            />
+            android:singleLine="true"
+            android:text="No Song is being played!"
+            android:textColor="@color/textColor"
+            android:textSize="40sp" />
 
         <TextView
             android:id="@+id/artistName"
@@ -56,6 +56,7 @@
             android:includeFontPadding="false"
             android:paddingTop="0dp"
             android:paddingBottom="10dp"
+            android:text="Open Spotify and play something"
             android:textColor="@color/textColor"
             android:textSize="20sp" />
 
@@ -99,62 +100,62 @@
 
     </RelativeLayout>
 
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:background="#2C000000">-->
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:background="#2C000000">-->
 
-<!--        <RelativeLayout-->
-<!--            android:id="@+id/NoSongParent"-->
-<!--            android:layout_width="300dp"-->
-<!--            android:layout_height="270dp"-->
-<!--            android:background="@drawable/roundedborder"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.5"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--        <RelativeLayout-->
+    <!--            android:id="@+id/NoSongParent"-->
+    <!--            android:layout_width="300dp"-->
+    <!--            android:layout_height="270dp"-->
+    <!--            android:background="@drawable/roundedborder"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintHorizontal_bias="0.5"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
 
-<!--            app:layout_constraintTop_toTopOf="parent">-->
+    <!--            app:layout_constraintTop_toTopOf="parent">-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/NoSongTitle"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_alignParentStart="true"-->
-<!--                android:layout_alignParentEnd="true"-->
-<!--                android:layout_marginStart="0dp"-->
-<!--                android:layout_marginEnd="0dp"-->
-<!--                android:gravity="center"-->
-<!--                android:text="No Songs?"-->
-<!--                android:textSize="25sp" />-->
+    <!--            <TextView-->
+    <!--                android:id="@+id/NoSongTitle"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_alignParentStart="true"-->
+    <!--                android:layout_alignParentEnd="true"-->
+    <!--                android:layout_marginStart="0dp"-->
+    <!--                android:layout_marginEnd="0dp"-->
+    <!--                android:gravity="center"-->
+    <!--                android:text="No Songs?"-->
+    <!--                android:textSize="25sp" />-->
 
-<!--            <ImageView-->
-<!--                android:id="@+id/NoSongImage"-->
-<!--                android:layout_width="182dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_below="@+id/NoSongTitle"-->
-<!--                android:layout_alignParentStart="true"-->
-<!--                android:layout_alignParentEnd="true"-->
-<!--                android:layout_marginStart="0dp"-->
-<!--                android:layout_marginTop="0dp"-->
-<!--                android:layout_marginEnd="20dp"-->
-<!--                app:srcCompat="@mipmap/nosongs" />-->
+    <!--            <ImageView-->
+    <!--                android:id="@+id/NoSongImage"-->
+    <!--                android:layout_width="182dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_below="@+id/NoSongTitle"-->
+    <!--                android:layout_alignParentStart="true"-->
+    <!--                android:layout_alignParentEnd="true"-->
+    <!--                android:layout_marginStart="0dp"-->
+    <!--                android:layout_marginTop="0dp"-->
+    <!--                android:layout_marginEnd="20dp"-->
+    <!--                app:srcCompat="@mipmap/nosongs" />-->
 
-<!--            <TextView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_below="@+id/NoSongImage"-->
-<!--                android:layout_alignParentBottom="true"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:layout_marginBottom="0dp"-->
-<!--                android:fontFamily="@font/manrope"-->
-<!--                android:gravity="center"-->
-<!--                android:text="Coz we can't find anything playing right now. Open spotify and play someting!" />-->
+    <!--            <TextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_below="@+id/NoSongImage"-->
+    <!--                android:layout_alignParentBottom="true"-->
+    <!--                android:layout_marginTop="5dp"-->
+    <!--                android:layout_marginBottom="0dp"-->
+    <!--                android:fontFamily="@font/manrope"-->
+    <!--                android:gravity="center"-->
+    <!--                android:text="Coz we can't find anything playing right now. Open spotify and play someting!" />-->
 
-<!--        </RelativeLayout>-->
+    <!--        </RelativeLayout>-->
 
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-<!--    -->
+    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <!--    -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navView"
         android:layout_width="match_parent"
@@ -174,9 +175,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.5"
-                android:weightSum="1"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="16dp"
+                android:weightSum="1">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -262,11 +263,11 @@
                         <include layout="@layout/include__spacers" />
 
 
-                            <View
-                                android:layout_width="1dp"
-                                android:layout_height="35dp"
-                                android:layout_marginEnd="12dp"
-                                android:background="#65D0D0D0" />
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="35dp"
+                            android:layout_marginEnd="12dp"
+                            android:background="#65D0D0D0" />
 
                         <include layout="@layout/include__spacers" />
 
@@ -402,7 +403,6 @@
                         android:text="@string/Navbar__Option_RecentlyPlayed"
                         android:textSize="18sp" />
                 </RelativeLayout>
-
 
             </LinearLayout>
 
