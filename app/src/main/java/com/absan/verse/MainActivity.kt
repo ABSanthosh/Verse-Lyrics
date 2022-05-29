@@ -14,6 +14,7 @@ import android.widget.TableLayout
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -46,8 +47,6 @@ class MainActivity : AppCompatActivity() {
 
     //TODO: Help fragment in settings
     //TODO: Attributions fragment
-    //TODO: Whats New in Settings
-    //TODO: Auto theme
 
     @SuppressLint("CommitPrefEdits")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -117,21 +116,24 @@ class MainActivity : AppCompatActivity() {
                 autoModeButton,
                 lightModeButton,
                 themeToggle,
-                this, mainPrefInstance, 0, false
+                this, mainPrefInstance, 0, false,
+                isDarkThemeOn()
             )
             "default" -> changeThemeIcon(
                 darkModeButton,
                 autoModeButton,
                 lightModeButton,
                 themeToggle,
-                this, mainPrefInstance, 1, false
+                this, mainPrefInstance, 1, false,
+                isDarkThemeOn()
             )
             "light" -> changeThemeIcon(
                 darkModeButton,
                 autoModeButton,
                 lightModeButton,
                 themeToggle,
-                this, mainPrefInstance, 2, false
+                this, mainPrefInstance, 2, false,
+                isDarkThemeOn()
             )
         }
 
@@ -195,59 +197,6 @@ class MainActivity : AppCompatActivity() {
         // Save lyrics - End
 
         isGoogle = mainPrefInstance.getBoolean("isGoogle", true)
-
-        // Toggle for Google and Musixmatch lyrics - Start
-//        val googleVmusixmatch: MenuItem = navigationView.menu.findItem(R.id.synclyricmenu)
-//        val tooglegoogleVmusixmatch: androidx.appcompat.widget.SwitchCompat =
-//            googleVmusixmatch.actionView.findViewById(R.id.SyncLyric__toggle)
-//        tooglegoogleVmusixmatch.setOnCheckedChangeListener { _, isChecked ->
-//            if (isChecked) {
-//                Toast.makeText(
-//                    this,
-//                    "Switched to Live Lyrics(Beta)",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//                isGoogle = false
-//                navigationView.menu.findItem(R.id.synclyricmenu).title =
-//                    getString(R.string.Navbar__SyncLyric)
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//                    navigationView.menu.findItem(R.id.synclyricmenu).icon =
-//                        getDrawable(R.drawable.navbar__synclyric)
-//                }
-//
-//                sharedEditor.apply {
-//                    putBoolean("SyncLyrics", true)
-//                }.apply()
-//
-//                val tableLayout = findViewById<TableLayout>(R.id.lyricsContainer)
-//                tableLayout.removeAllViews()
-//                findViewById<TextView>(R.id.verseRestart).visibility = View.VISIBLE
-//
-//            } else {
-//                Toast.makeText(
-//                    this,
-//                    "Switched to Normal Lyrics",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//                isGoogle = true
-//                navigationView.menu.findItem(R.id.synclyricmenu).title =
-//                    getString(R.string.Navbar__NormalLyric)
-//
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//                    navigationView.menu.findItem(R.id.synclyricmenu).icon =
-//                        getDrawable(R.drawable.navbar__normallyric)
-//                }
-//
-//                sharedEditor.apply {
-//                    putBoolean("SyncLyrics", false)
-//                }.apply()
-//
-//                Run.handler.removeCallbacksAndMessages(null)
-//                ResetLyricView(table = findViewById(R.id.lyricsContainer))
-//            }
-//        }
-        // Toggle for Google and Musixmatch lyrics - End
-
 
     }
 
@@ -494,4 +443,15 @@ class MainActivity : AppCompatActivity() {
         return resources.configuration.uiMode and
                 Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
     }
+
+    private fun isUsingNightModeResources(): Boolean {
+        return when (this.resources.configuration.uiMode and
+                Configuration.UI_MODE_NIGHT_MASK) {
+            Configuration.UI_MODE_NIGHT_YES -> true
+            Configuration.UI_MODE_NIGHT_NO -> false
+            Configuration.UI_MODE_NIGHT_UNDEFINED -> false
+            else -> false
+        }
+    }
+
 }

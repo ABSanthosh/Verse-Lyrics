@@ -16,7 +16,8 @@ fun changeThemeIcon(
     context: Context,
     mainPrefInstance: SharedPreferences,
     position: Int,
-    isAnimated: Boolean = true
+    isAnimated: Boolean = true,
+    isDarkThemeOn:Boolean = false
 ) {
     when (position) {
         0 -> {
@@ -37,7 +38,7 @@ fun changeThemeIcon(
 
             themeToggle.setPosition(0, isAnimated)
             themeToggle.setOnPositionChangedListener {
-                ThemeHelper.applyTheme("dark")
+                ThemeHelper.applyTheme("dark",isDarkThemeOn)
             }
             mainPrefInstance.edit().apply { putString("Theme", "dark") }.apply()
         }
@@ -59,7 +60,7 @@ fun changeThemeIcon(
 
             themeToggle.setPosition(1, isAnimated)
             themeToggle.setOnPositionChangedListener {
-
+                ThemeHelper.applyTheme("default",isDarkThemeOn)
             }
             mainPrefInstance.edit().apply { putString("Theme", "default") }.apply()
         }
@@ -81,7 +82,7 @@ fun changeThemeIcon(
 
             themeToggle.setPosition(2, isAnimated)
             themeToggle.setOnPositionChangedListener {
-                ThemeHelper.applyTheme("light")
+                ThemeHelper.applyTheme("light",isDarkThemeOn)
             }
             mainPrefInstance.edit().apply { putString("Theme", "light") }.apply()
         }
