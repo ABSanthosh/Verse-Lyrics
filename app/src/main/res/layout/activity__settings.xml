@@ -292,6 +292,7 @@
                     android:textStyle="bold" />
 
                 <LinearLayout
+                    android:id="@+id/setting__helpDialog"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@color/settingsFg"
@@ -476,33 +477,6 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:background="@color/settingsFg"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:orientation="horizontal">
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="20dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="12dp"
-                        android:gravity="center_vertical"
-                        android:src="@drawable/settings__attribution"
-                        app:tint="@color/metaTextColor" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/manrope"
-                        android:gravity="center_vertical"
-                        android:text="@string/Settings__Sub_Support_Attributions"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout

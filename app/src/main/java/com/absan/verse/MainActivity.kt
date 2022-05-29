@@ -45,9 +45,6 @@ class MainActivity : AppCompatActivity() {
     private val mainPrefInstance by lazy { getSharedPreferences("main", Context.MODE_PRIVATE) }
     private var prevTheme = "light"
 
-    //TODO: Help fragment in settings
-    //TODO: Attributions fragment
-
     @SuppressLint("CommitPrefEdits")
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -364,15 +361,9 @@ class MainActivity : AppCompatActivity() {
         //Show No Songs playing - Start
         when {
             song.playing -> {
-//                if (findViewById<RelativeLayout>(R.id.NoSongParent).visibility == View.VISIBLE) {
-//                    findViewById<RelativeLayout>(R.id.NoSongParent).visibility = View.GONE
-//                }
                 handleNewSongPlaying(song)
             }
             else -> {
-//                if (findViewById<RelativeLayout>(R.id.NoSongParent).visibility == View.GONE) {
-//                    findViewById<RelativeLayout>(R.id.NoSongParent).visibility = View.VISIBLE
-//                }
                 handleSongNotPlaying(song)
             }
         }
@@ -443,15 +434,4 @@ class MainActivity : AppCompatActivity() {
         return resources.configuration.uiMode and
                 Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
     }
-
-    private fun isUsingNightModeResources(): Boolean {
-        return when (this.resources.configuration.uiMode and
-                Configuration.UI_MODE_NIGHT_MASK) {
-            Configuration.UI_MODE_NIGHT_YES -> true
-            Configuration.UI_MODE_NIGHT_NO -> false
-            Configuration.UI_MODE_NIGHT_UNDEFINED -> false
-            else -> false
-        }
-    }
-
 }

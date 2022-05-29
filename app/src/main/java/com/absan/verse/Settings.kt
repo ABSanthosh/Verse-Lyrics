@@ -17,9 +17,9 @@ import com.absan.verse.helpers.classes.Logger
 import com.absan.verse.helpers.database.BookmarkDatabaseHandler
 import com.absan.verse.helpers.database.RecentlyPlayedDatabaseHandler
 import com.absan.verse.helpers.objects.Constants
+import com.absan.verse.ui.HelpMe
 import com.aigestudio.wheelpicker.WheelPicker
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import hakobastvatsatryan.DropdownTextView
 import java.util.*
 import kotlin.concurrent.schedule
 
@@ -41,6 +41,7 @@ class Settings : AppCompatActivity() {
         )
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setFontSize(value: Float, previewText: TextView?) {
         when (value) {
             0f -> {
@@ -310,6 +311,10 @@ class Settings : AppCompatActivity() {
             finish()
         }
 
+        findViewById<LinearLayout>(R.id.setting__helpDialog).setOnClickListener {
+            HelpMe().show(supportFragmentManager,"Help")
+        }
+
         findViewById<LinearLayout>(R.id.setting__giveFeedback).setOnClickListener {
             SendFeedback(this)
         }
@@ -362,7 +367,7 @@ class Settings : AppCompatActivity() {
 
     override fun onBackPressed() {
         try {
-            finish();
+            finish()
         } catch (err: Exception) {
             super.onBackPressed()
         }
