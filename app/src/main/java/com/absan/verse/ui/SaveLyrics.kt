@@ -6,11 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.absan.verse.R
-import com.absan.verse.Utils.DatabaseRelated.DatabaseHandler
-import com.absan.verse.data.SaveLyric__ItemAdapter
 
 class SaveLyrics : DialogFragment() {
 
