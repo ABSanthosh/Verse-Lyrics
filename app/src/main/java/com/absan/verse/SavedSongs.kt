@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.absan.verse.Utils.DatabaseRelated.DatabaseHandler
+import com.absan.verse.Utils.DatabaseRelated.BookmarkDatabaseHandler
 import com.absan.verse.data.SaveLyric__ItemAdapter
 
 class SavedSongs : AppCompatActivity() {
@@ -27,7 +27,7 @@ class SavedSongs : AppCompatActivity() {
     }
 
     private fun setAdapter(context: Context) {
-        val savedSongLen = DatabaseHandler(context).readLyrics().size
+        val savedSongLen = BookmarkDatabaseHandler(context).readLyrics().size
         val messageText = findViewById<TextView>(R.id.saveLyrics__emptyMessage)
         if (savedSongLen == 0) {
             messageText.visibility = View.VISIBLE
@@ -39,7 +39,7 @@ class SavedSongs : AppCompatActivity() {
             val recycler = findViewById<RecyclerView>(R.id.savedLyrics_Recycler)
             recycler.layoutManager = LinearLayoutManager(context)
             val itemAdapter =
-                SaveLyric__ItemAdapter(context, DatabaseHandler(context).readLyrics(), recycler, messageText)
+                SaveLyric__ItemAdapter(context, BookmarkDatabaseHandler(context).readLyrics(), recycler, messageText)
             recycler.adapter = itemAdapter
         }
     }
