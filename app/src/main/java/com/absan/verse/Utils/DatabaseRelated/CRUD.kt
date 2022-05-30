@@ -5,7 +5,7 @@ import android.widget.Toast
 import com.absan.verse.data.Song
 
 fun addSong(context: Context, song: Song) {
-    val databaseHandler = DatabaseHandler(context)
+    val databaseHandler = BookmarkDatabaseHandler(context)
     if (arrayOf(song.track, song.id, song.artist).any { it -> it != "" }) {
         val status = databaseHandler.addLyrics(song)
         if (status < -1) {
@@ -15,7 +15,7 @@ fun addSong(context: Context, song: Song) {
 }
 
 fun removeSong(context: Context, song: Song) {
-    val status = DatabaseHandler(context).removeLyrics(song)
+    val status = BookmarkDatabaseHandler(context).removeLyrics(song)
     if (status < -1) {
         Toast.makeText(context, "Lyrics for ${song.track} removed", Toast.LENGTH_LONG).show()
     }
