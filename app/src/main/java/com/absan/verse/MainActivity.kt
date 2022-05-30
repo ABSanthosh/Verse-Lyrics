@@ -5,21 +5,19 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TableLayout
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.absan.verse.Utils.*
-import com.absan.verse.Utils.DatabaseRelated.DatabaseHandler
+import com.absan.verse.Utils.DatabaseRelated.BookmarkDatabaseHandler
 import com.absan.verse.Utils.DatabaseRelated.addSong
 import com.absan.verse.Utils.DatabaseRelated.removeSong
 import com.absan.verse.Utils.DatabaseRelated.setBookmark
@@ -27,7 +25,6 @@ import com.absan.verse.data.*
 import com.absan.verse.ui.*
 import com.addisonelliott.segmentedbutton.SegmentedButton
 import com.addisonelliott.segmentedbutton.SegmentedButtonGroup
-import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -311,7 +308,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun isSongSaved(song: Song = currentSong) {
-        isSaved = if (DatabaseHandler(this).isAlreadySaved(song)) {
+        isSaved = if (BookmarkDatabaseHandler(this).isAlreadySaved(song)) {
             setBookmark(
                 true,
                 findViewById<ImageView>(R.id.bookmark),
