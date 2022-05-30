@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 import com.absan.verse.data.Song
 
-class DatabaseHandler(context: Context) :
+class BookmarkDatabaseHandler(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
