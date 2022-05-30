@@ -3,7 +3,6 @@ package com.absan.verse.data
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,7 @@ import android.widget.*
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.absan.verse.R
-import com.absan.verse.Utils.DatabaseRelated.DatabaseHandler
+import com.absan.verse.Utils.DatabaseRelated.BookmarkDatabaseHandler
 import com.absan.verse.Utils.DatabaseRelated.removeSong
 
 
@@ -52,7 +51,7 @@ class SaveLyric__ItemAdapter(
                             }
                         }
 
-                        songList = DatabaseHandler(context).readLyrics()
+                        songList = BookmarkDatabaseHandler(context).readLyrics()
 
 
                         if (songList.size == 0) {
