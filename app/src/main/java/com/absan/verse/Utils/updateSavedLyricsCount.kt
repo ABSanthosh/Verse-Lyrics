@@ -4,11 +4,11 @@ import android.content.Context
 import android.widget.TextView
 import androidx.drawerlayout.widget.DrawerLayout
 import com.absan.verse.R
-import com.absan.verse.Utils.DatabaseRelated.DatabaseHandler
+import com.absan.verse.Utils.DatabaseRelated.BookmarkDatabaseHandler
 
 fun updateSavedLyricsCount(context:Context, drawerLayout:DrawerLayout){
-    if(DatabaseHandler(context).readLyrics().size == 0)
+    if(BookmarkDatabaseHandler(context).readLyrics().size == 0)
         drawerLayout.findViewById<TextView>(R.id.navbar__savedLyricsCount).text = "--"
     else
-        drawerLayout.findViewById<TextView>(R.id.navbar__savedLyricsCount).text = DatabaseHandler(context).readLyrics().size.toString()
+        drawerLayout.findViewById<TextView>(R.id.navbar__savedLyricsCount).text = BookmarkDatabaseHandler(context).readLyrics().size.toString()
 }
