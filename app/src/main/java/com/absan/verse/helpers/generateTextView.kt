@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
 import android.text.TextUtils
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -53,6 +54,8 @@ fun generateTextView(context: Context, text: String): TextView {
     if (mainPrefInstance.getString("FontQuery", null) != null) {
         if (TYPEFACE != Typeface.DEFAULT) {
             lyricLine.typeface = TYPEFACE
+        }else{
+            lyricLine.typeface = ResourcesCompat.getFont(context, R.font.walter_turncoat)
         }
     } else {
         lyricLine.typeface = ResourcesCompat.getFont(context, R.font.walter_turncoat)

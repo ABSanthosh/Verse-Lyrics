@@ -8,10 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.TableLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -44,6 +41,15 @@ class MainActivity : AppCompatActivity() {
     private var isSaved = false
     private val mainPrefInstance by lazy { getSharedPreferences("main", Context.MODE_PRIVATE) }
     private var prevTheme = "light"
+
+    private val loggerServiceIntentForeground by lazy {
+        Intent(
+            "START_FOREGROUND",
+            Uri.EMPTY,
+            this,
+            Logger::class.java
+        )
+    }
 
     @SuppressLint("CommitPrefEdits")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -192,7 +198,6 @@ class MainActivity : AppCompatActivity() {
             updateSavedLyricsCount(this, drawerLayout)
         }
         // Save lyrics - End
-
         isGoogle = mainPrefInstance.getBoolean("isGoogle", true)
 
     }
@@ -200,10 +205,14 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         // update ad count - start
         val blockedAdCountTV = findViewById<TextView>(R.id.navbar__blockedAdCount)
-        if (mainPrefInstance.getBoolean("MuteAd", false))
+        if (mainPrefInstance.getBoolean("MuteAd", false)) {
             blockedAdCountTV.text = mainPrefInstance.getInt("AdCount", 0).toString()
-        else
+            this.startService(loggerServiceIntentForeground)
+        }
+        else {
             blockedAdCountTV.text = "--"
+            this.stopService(loggerServiceIntentForeground)
+        }
         // update ad count - End
 
         // update bookmark - start
@@ -215,6 +224,7 @@ class MainActivity : AppCompatActivity() {
             setBookmark(isSaved, bookmarkIcon, this)
         }
         // update bookmark - End
+
 
         isGoogle = mainPrefInstance.getBoolean("isGoogle", true)
 

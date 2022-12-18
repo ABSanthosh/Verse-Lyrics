@@ -125,7 +125,7 @@ class Settings : AppCompatActivity() {
 
             setFontSize(sizeSlider!!.value, previewText)
 
-            sizeSlider.addOnChangeListener { sizeSlider, value, fromUser ->
+            sizeSlider.addOnChangeListener { sizeSlider, value, _ ->
                 setFontSize(value, previewText)
             }
 
